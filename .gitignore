@@ -10,5 +10,8 @@
 bin/
 obj/
 
+# Nuget packages
+*.nupkg
+
 # Resharper
 *.DotSettings

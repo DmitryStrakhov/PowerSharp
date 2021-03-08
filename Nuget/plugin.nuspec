@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>   
+    
+    <metadata>        
+        <id>PowerSharp.Plugin</id>
+        <version>1.0.0</version>
+        <authors>Strakhov Dmitry</authors>
+        <owners>Strakhov Dmitry</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>PowerSharp</description>
+                       
+        <dependencies>
+            <dependency id="Wave" version="[20.0]" />
+        </dependencies>
+                       
+    </metadata>      
+         
+    <files>
+        <file src="..\Src\PowerSharp\bin\Debug\PowerSharp.dll" target="lib\net461" />
+    </files>
+               
+</package>
