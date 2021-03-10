@@ -12,6 +12,7 @@ obj/
 
 # Nuget packages
 *.nupkg
+packages/
 
 # Resharper
 *.DotSettings
