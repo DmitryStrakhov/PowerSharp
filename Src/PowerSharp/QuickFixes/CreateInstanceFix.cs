@@ -12,8 +12,6 @@ using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Daemon.UsageChecking;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
-using JetBrains.ReSharper.Psi.CodeStyle;
-using JetBrains.ReSharper.Psi.CSharp.CodeStyle.Suggestions;
 
 namespace PowerSharp.QuickFixes {
     [QuickFix]
@@ -56,10 +54,38 @@ namespace PowerSharp.QuickFixes {
             return true;
         }
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress) {
-            IClassLikeDeclaration classLikeDeclaration = (IClassLikeDeclaration)memberDeclaration.GetContainingTypeDeclaration().NotNull();
-            IConstructorDeclaration ctor = AddConstructorDeclaration(classLikeDeclaration);
-            AddAssignmentStatement(ctor, memberDeclaration);
+            IClassLikeDeclaration classDeclaration = (IClassLikeDeclaration)memberDeclaration.GetContainingTypeDeclaration().NotNull();
+            
+            ForEachAppropriateConstructor(classDeclaration, 
+                (@class, @constructor) => {
+                    AddAssignmentStatement(constructor, memberDeclaration);
+                },
+                @class => {
+                    IConstructorDeclaration defaultCtor = AddConstructorDeclaration(@class);
+                    AddAssignmentStatement(defaultCtor, memberDeclaration);
+                }
+            );
             return null;
+        }
+        
+        private void ForEachAppropriateConstructor(
+            [NotNull] IClassLikeDeclaration classDeclaration,
+            [NotNull] Action<IClassLikeDeclaration, IConstructorDeclaration> action,
+            [NotNull] Action<IClassLikeDeclaration> fallbackAction) {
+
+            bool hasAny = false;
+            foreach(IConstructorDeclaration constructor in classDeclaration.ConstructorDeclarations) {
+                if(!IsAppropriateConstructor(constructor)) continue;
+                hasAny = true;
+                action(classDeclaration, constructor);
+            }
+            if(!hasAny) {
+                fallbackAction(classDeclaration);
+            }
+        }
+        [Pure]
+        private bool IsAppropriateConstructor([NotNull] IConstructorDeclaration constructor) {
+            return true;
         }
 
         [Pure]
@@ -78,14 +104,11 @@ namespace PowerSharp.QuickFixes {
         private void AddAssignmentStatement([NotNull] IConstructorDeclaration constructorDeclaration, [NotNull] ITypeMemberDeclaration member) {
             CSharpElementFactory factory = CSharpElementFactory.GetInstance(constructorDeclaration);
 
+            IType typeType = ((ITypeOwner)member.DeclaredElement).NotNull().Type;
             string memberName = member.DeclaredElement.NotNull().ShortName;
 
-            ITypeOwner type = member.DeclaredElement as ITypeOwner;
-            IType typeType = type.Type;
-
-            IExpression objectCreationExpression = factory.CreateExpression("new $0()", typeType);
-            ICSharpStatement assignStatement = factory.CreateStatement("this.$0 = $1;", memberName, objectCreationExpression);
-            constructorDeclaration.Body.AddStatementAfter(assignStatement, null);
+            ICSharpStatement assignment = factory.CreateStatement("this.$0 = $1;", memberName, factory.CreateExpression("new $0()", typeType));
+            constructorDeclaration.Body.AddStatementAfter(assignment, null);
         }
     }
 }
