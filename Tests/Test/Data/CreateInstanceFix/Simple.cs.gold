@@ -1,0 +1,18 @@
+﻿using System;
+
+namespace ClassLibrary
+{
+  public class OneClass
+  {
+    AnotherClass obj{caret};
+
+    public OneClass()
+    {
+      this.obj = new AnotherClass();
+    }
+  }
+
+  public class AnotherClass
+  {
+  }
+}

@@ -21,8 +21,8 @@
 
     </metadata>      
     <files>
-        <file src="..\Src\PowerSharp\bin\Debug\PowerSharp.dll" target="lib\net461\" />
-        <file src="..\Src\PowerSharp\bin\Debug\PowerSharp.pdb" target="lib\net461\" />
+        <file src="..\Src\PowerSharp\bin\Debug\PowerSharp.dll" target="dotFiles\" />
+        <file src="..\Src\PowerSharp\bin\Debug\PowerSharp.pdb" target="dotFiles\" />
     </files>
          
 </package>

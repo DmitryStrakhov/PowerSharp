@@ -5,8 +5,14 @@ using JetBrains.TextControl;
 using JetBrains.Application.Progress;
 using JetBrains.ReSharper.Feature.Services.ContextActions;
 
-namespace PowerSharp.ContextActions.TestFixture {
-    [ContextAction(Name = "CreateTestFixture", Description = "Creates a test fixture for a class", Group = "C#", Disabled = false, Priority = 1)]
+namespace PowerSharp.ContextActions {
+    [ContextAction(
+        Name = "CreateTestFixture",
+        Description = "Creates a test fixture for a class",
+        Group = "C#",
+        Disabled = false,
+        Priority = 1)
+    ]
     public class CreateTestFixtureContextAction : ContextActionBase {
         public CreateTestFixtureContextAction(LanguageIndependentContextActionDataProvider dataProvider) {
         }

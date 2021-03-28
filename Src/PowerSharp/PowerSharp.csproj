@@ -372,9 +372,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextActions\FieldInstance\CreateFieldInstanceContextAction.cs" />
-    <Compile Include="ContextActions\TestFixture\CreateTestFixtureContextAction.cs" />
-    <Compile Include="ContextActions\ZoneMarker.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Guard.cs" />
+    <Compile Include="QuickFixes\CreateInstanceFix.cs" />
+    <Compile Include="ContextActions\CreateTestFixtureContextAction.cs" />
+    <Compile Include="ZoneMarker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
