@@ -10,5 +10,7 @@ namespace PowerSharp.Tests.Test.Data {
         [Test] public void TestSimple() { DoNamedTest2(); }
         [Test] public void Test01() { DoNamedTest(); }
         [Test] public void Test02() { DoNamedTest(); }
+        [Test] public void Test03() { DoNamedTest(); }
+        [Test] public void Test04() { DoNamedTest(); }
     }
 }

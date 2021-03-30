@@ -5,7 +5,7 @@ namespace ClassLibrary
   public class OneClass
   {
     int x;
-    AnotherClass obj{caret};
+    readonly AnotherClass obj{caret};
 
     public OneClass(int x)
     {

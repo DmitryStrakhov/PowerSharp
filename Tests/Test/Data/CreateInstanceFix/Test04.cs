@@ -4,12 +4,12 @@ namespace ClassLibrary
 {
   public class OneClass
   {
-    int x;
-    readonly AnotherClass obj{caret};
+    static AnotherClass obj{caret};
+    static object x;
 
-    public OneClass(int x)
+    static OneClass()
     {
-      this.x = x;
+      x = new object();
     }
   }
 

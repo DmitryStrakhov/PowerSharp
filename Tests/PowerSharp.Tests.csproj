@@ -413,8 +413,12 @@
     <Compile Include="PowerSharpTestsAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\Data\CreateInstanceFixTests.cs" />
+    <None Include="Test\Data\CreateInstanceFix\Test04.cs.gold" />
+    <None Include="Test\Data\CreateInstanceFix\Test03.cs.gold" />
     <None Include="Test\Data\CreateInstanceFix\Test02.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test01.cs" />
+    <None Include="Test\Data\CreateInstanceFix\Test03.cs" />
+    <None Include="Test\Data\CreateInstanceFix\Test04.cs" />
     <Compile Include="ZoneMarker.cs" />
     <None Include="Test\Data\CreateInstanceFix\Simple.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test01.cs.gold" />
