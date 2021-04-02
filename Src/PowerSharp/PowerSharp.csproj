@@ -372,6 +372,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\CodeBuilder.cs" />
+    <Compile Include="Builders\ConstructorBuilder.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="QuickFixes\Components\CreateInstanceServiceBase.cs" />
@@ -383,6 +385,7 @@
     <Compile Include="QuickFixes\Services\ICreateInstanceServiceFactory.cs" />
     <Compile Include="QuickFixes\Components\InstanceMemberCreateInstanceService.cs" />
     <Compile Include="QuickFixes\Components\StaticMemberCreateInstanceService.cs" />
+    <Compile Include="Builders\ClassBuilder.cs" />
     <Compile Include="ZoneMarker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

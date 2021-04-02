@@ -1,8 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
-using JetBrains.Diagnostics;
+using PowerSharp.Builders;
 using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 
@@ -12,26 +11,17 @@ namespace PowerSharp.QuickFixes.Components {
             : base(memberDeclaration) {
         }
 
-        protected override void SetAssignmentStatement(IConstructorDeclaration constructor) {
-            CSharpElementFactory factory = CSharpElementFactory.GetInstance(constructor);
-
-            IType type = ((ITypeOwner)MemberDeclaration.DeclaredElement).NotNull().Type;
-            string memberName = MemberDeclaration.DeclaredElement.NotNull().ShortName;
-
-            ICSharpStatement assignment = factory.CreateStatement("$0 = $1;", memberName, factory.CreateExpression("new $0()", type));
-            constructor.Body.AddStatementAfter(assignment, null);
+        protected override void AddObjectInstantiationStatement(IConstructorDeclaration constructor, string memberName, IType type) {
+            new ConstructorBuilder(constructor)
+                .WithBody(codeBuilder => codeBuilder.CreateObjectInstantiationStatement(memberName, type, false));
+        }
+        protected override IConstructorDeclaration AddDefaultConstructor(IClassLikeDeclaration classDeclaration) {
+            return new ClassBuilder(classDeclaration)
+                .AddConstructor(AccessRights.NONE)
+                .SetStatic().Unwrap();
         }
         protected override bool IsAppropriateConstructor(IConstructorDeclaration constructor) {
             return constructor.IsStatic;
-        }
-        protected override IConstructorDeclaration CreateDefaultConstructor(IClassLikeDeclaration classDeclaration) {
-            IConstructorDeclaration decl = CSharpElementFactory.GetInstance(classDeclaration).CreateConstructorDeclaration();
-            IConstructorDeclaration ctor = classDeclaration.AddClassMemberDeclaration(decl);
-
-            ctor.SetStatic(true);
-            ctor.SetName(classDeclaration.DeclaredName);
-            ctor.SetAccessRights(AccessRights.NONE);
-            return ctor;
         }
     }
 }
