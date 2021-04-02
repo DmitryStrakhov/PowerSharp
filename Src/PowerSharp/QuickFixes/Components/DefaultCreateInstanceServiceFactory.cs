@@ -11,8 +11,8 @@ namespace PowerSharp.QuickFixes.Components {
         public ICreateInstanceService GetService(ITypeMemberDeclaration memberDeclaration) {
             if(memberDeclaration is IFieldDeclaration || memberDeclaration is IPropertyDeclaration) {
                 return ((IModifiersOwner)memberDeclaration).IsStatic
-                    ? (ICreateInstanceService)new StaticMemberCreateInstanceService(memberDeclaration)
-                    : new InstanceMemberCreateInstanceService(memberDeclaration);
+                    ? (ICreateInstanceService)new CreateInstanceOfStaticMemberService(memberDeclaration)
+                    : new CreateInstanceOfInstanceMemberService(memberDeclaration);
             }
             return new NullCreateInstanceService();
         }

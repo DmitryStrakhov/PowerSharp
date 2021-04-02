@@ -383,8 +383,8 @@
     <Compile Include="QuickFixes\Components\DefaultCreateInstanceServiceFactory.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceService.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceServiceFactory.cs" />
-    <Compile Include="QuickFixes\Components\InstanceMemberCreateInstanceService.cs" />
-    <Compile Include="QuickFixes\Components\StaticMemberCreateInstanceService.cs" />
+    <Compile Include="QuickFixes\Components\CreateInstanceOfInstanceMemberService.cs" />
+    <Compile Include="QuickFixes\Components\CreateInstanceOfStaticMemberService.cs" />
     <Compile Include="Builders\ClassBuilder.cs" />
     <Compile Include="ZoneMarker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
