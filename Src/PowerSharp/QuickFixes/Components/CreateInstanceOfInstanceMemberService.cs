@@ -11,12 +11,13 @@ namespace PowerSharp.QuickFixes.Components {
             : base(memberDeclaration) {
         }
 
-        protected override void AddObjectInstantiationStatement(IConstructorDeclaration constructor, string memberName, IType type) {
+        protected override void AddObjectInstantiationStatement(IConstructorDeclaration constructor, string memberName, IType memberType) {
             new ConstructorBuilder(constructor)
-                .WithBody(codeBuilder => codeBuilder.CreateObjectInstantiationStatement(memberName, type, true));
+                .WithBody(codeBuilder => codeBuilder.CreateObjectInstantiationStatement(memberName, memberType, true));
         }
         protected override IConstructorDeclaration AddDefaultConstructor(IClassLikeDeclaration classDeclaration) {
-            return new ClassBuilder(classDeclaration).AddConstructor().Unwrap();
+            return new ClassBuilder(classDeclaration)
+                .AddConstructor().Unwrap();
         }
         protected override bool IsAppropriateConstructor(IConstructorDeclaration constructor) {
             return true;

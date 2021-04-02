@@ -5,9 +5,9 @@ using JetBrains.TextControl;
 using JetBrains.Util;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Application.Progress;
+using PowerSharp.QuickFixes.Services;
 using JetBrains.ReSharper.Daemon.UsageChecking;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
-using PowerSharp.QuickFixes.Services;
 
 namespace PowerSharp.QuickFixes {
     [QuickFix]

@@ -38,7 +38,7 @@ namespace PowerSharp.QuickFixes.Components {
         public bool IsAvailable(IUserDataHolder cache) {
             return true;
         }
-        protected abstract void AddObjectInstantiationStatement([NotNull] IConstructorDeclaration constructor, [NotNull] string memberName, [NotNull] IType type);
+        protected abstract void AddObjectInstantiationStatement([NotNull] IConstructorDeclaration constructor, [NotNull] string memberName, [NotNull] IType memberType);
         protected abstract bool IsAppropriateConstructor([NotNull] IConstructorDeclaration constructor);
         [NotNull] protected abstract IConstructorDeclaration AddDefaultConstructor([NotNull] IClassLikeDeclaration classDeclaration);
     }

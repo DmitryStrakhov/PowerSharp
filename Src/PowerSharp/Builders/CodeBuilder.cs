@@ -13,14 +13,14 @@ namespace PowerSharp.Builders {
             this.factory = CSharpElementFactory.GetInstance(node);
         }
         [NotNull]
-        public ICSharpStatement CreateObjectInstantiationStatement([NotNull] string memberName, [NotNull] IType type, bool useThisQualifier) {
+        public ICSharpStatement CreateObjectInstantiationStatement([NotNull] string memberName, [NotNull] IType memberType, bool useThisQualifier) {
             StringBuilder statementPatternBuilder = new StringBuilder(32);
             if(useThisQualifier) {
                 statementPatternBuilder.Append("this.");
             }
             statementPatternBuilder.Append("$0 = $1;");
 
-            ICSharpExpression rightExp = factory.CreateExpression("new $0()", type);
+            ICSharpExpression rightExp = factory.CreateExpression("new $0()", memberType);
             return factory.CreateStatement(statementPatternBuilder.ToString(), memberName, rightExp);
         }
     }

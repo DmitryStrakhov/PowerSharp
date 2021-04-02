@@ -1,0 +1,18 @@
+﻿using System;
+
+namespace ClassLibrary
+{
+  public class OneClass
+  {
+    static OneClass()
+    {
+      Property = new AnotherClass();
+    }
+
+    public static AnotherClass Property{caret} { get; set }
+  }
+
+  public class AnotherClass
+  {
+  }
+}

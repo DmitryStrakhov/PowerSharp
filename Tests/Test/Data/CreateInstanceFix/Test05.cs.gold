@@ -1,0 +1,18 @@
+﻿using System;
+
+namespace ClassLibrary
+{
+  public class OneClass
+  {
+    public OneClass()
+    {
+      this.Property = new AnotherClass();
+    }
+
+    public AnotherClass Property{caret} { get; }
+  }
+
+  public class AnotherClass
+  {
+  }
+}
