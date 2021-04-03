@@ -8,6 +8,7 @@ using JetBrains.Application.Progress;
 using PowerSharp.QuickFixes.Services;
 using JetBrains.ReSharper.Daemon.UsageChecking;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
+using PowerSharp.Utils;
 
 namespace PowerSharp.QuickFixes {
     [QuickFix]
@@ -46,6 +47,7 @@ namespace PowerSharp.QuickFixes {
         public override string Text { get { return "Create Instance"; } }
 
         public override bool IsAvailable(IUserDataHolder cache) {
+            if(!IntentionUtils.IsValid(memberDeclaration)) return false;
             return Service.IsAvailable(cache);
         }
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress) {

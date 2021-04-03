@@ -375,6 +375,7 @@
     <Compile Include="Builders\CodeBuilder.cs" />
     <Compile Include="Builders\ConstructorBuilder.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
     <Compile Include="Extensions\TypeMemberDeclarationExtensions.cs" />
     <Compile Include="Extensions\TypeMemberExtensions.cs" />
     <Compile Include="Guard.cs" />
@@ -383,6 +384,7 @@
     <Compile Include="QuickFixes\CreateInstanceFix.cs" />
     <Compile Include="ContextActions\CreateTestFixtureContextAction.cs" />
     <Compile Include="QuickFixes\Components\DefaultCreateInstanceServiceFactory.cs" />
+    <Compile Include="Utils\IntentionUtils.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceService.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceServiceFactory.cs" />
     <Compile Include="QuickFixes\Components\CreateInstanceOfInstanceMemberService.cs" />

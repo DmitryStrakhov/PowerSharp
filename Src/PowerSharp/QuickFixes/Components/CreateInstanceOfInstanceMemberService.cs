@@ -4,6 +4,7 @@ using JetBrains.ReSharper.Psi;
 using PowerSharp.Builders;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
+using PowerSharp.Extensions;
 
 namespace PowerSharp.QuickFixes.Components {
     public sealed class CreateInstanceOfInstanceMemberService : CreateInstanceServiceBase {
@@ -20,6 +21,7 @@ namespace PowerSharp.QuickFixes.Components {
                 .AddConstructor().Unwrap();
         }
         protected override bool IsAppropriateConstructor(IConstructorDeclaration constructor) {
+            if(constructor.HasChainedCall()) return false;
             return true;
         }
     }
