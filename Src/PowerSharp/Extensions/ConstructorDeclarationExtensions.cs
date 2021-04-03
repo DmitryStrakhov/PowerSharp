@@ -5,7 +5,7 @@ namespace PowerSharp.Extensions {
     public static class ConstructorDeclarationExtensions {
         public static bool HasChainedCall(this IConstructorDeclaration @this) {
             return @this.Initializer != null
-                   && @this.Initializer?.Kind == ConstructorInitializerKind.THIS;
+                   && @this.Initializer.Kind == ConstructorInitializerKind.THIS;
         }
     }
 }
