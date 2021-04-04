@@ -412,7 +412,7 @@
   <ItemGroup>
     <Compile Include="PowerSharpTestsAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\Data\CreateInstanceFixTests.cs" />
+    <Compile Include="CreateInstanceFixTests.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test11.cs.gold" />
     <None Include="Test\Data\CreateInstanceFix\Test12.cs.gold" />
     <None Include="Test\Data\CreateInstanceFix\Test10.cs.gold" />
