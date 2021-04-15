@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -382,8 +384,13 @@
     <Compile Include="QuickFixes\Components\CreateInstanceServiceBase.cs" />
     <Compile Include="QuickFixes\Components\NullCreateInstanceService.cs" />
     <Compile Include="QuickFixes\CreateInstanceFix.cs" />
-    <Compile Include="ContextActions\CreateTestFixtureContextAction.cs" />
+    <Compile Include="ContextActions\CreateTestsContextAction.cs" />
     <Compile Include="QuickFixes\Components\DefaultCreateInstanceServiceFactory.cs" />
+    <Compile Include="Refactorings\CreateTests\CreateTestsHelper.cs" />
+    <Compile Include="Refactorings\CreateTests\CreateTestsPageStartPage.cs" />
+    <Compile Include="Refactorings\CreateTests\CreateTestsRefactoring.cs" />
+    <Compile Include="Refactorings\CreateTests\CreateTestsWorkflow.cs" />
+    <Compile Include="Refactorings\CreateTests\CreateTestsWorkflowProvider.cs" />
     <Compile Include="Utils\IntentionUtils.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceService.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceServiceFactory.cs" />

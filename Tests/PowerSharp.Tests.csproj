@@ -410,6 +410,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateTestsTests.cs" />
     <Compile Include="PowerSharpTestsAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CreateInstanceFixTests.cs" />
