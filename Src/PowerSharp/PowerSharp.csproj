@@ -376,8 +376,10 @@
   <ItemGroup>
     <Compile Include="Builders\CodeBuilder.cs" />
     <Compile Include="Builders\ConstructorBuilder.cs" />
+    <Compile Include="Builders\PageBuilder.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
+    <Compile Include="Extensions\SingleBeRefactoringPageExtensions.cs" />
     <Compile Include="Extensions\TypeMemberDeclarationExtensions.cs" />
     <Compile Include="Extensions\TypeMemberExtensions.cs" />
     <Compile Include="Guard.cs" />
@@ -386,6 +388,7 @@
     <Compile Include="QuickFixes\CreateInstanceFix.cs" />
     <Compile Include="ContextActions\CreateTestsContextAction.cs" />
     <Compile Include="QuickFixes\Components\DefaultCreateInstanceServiceFactory.cs" />
+    <Compile Include="Refactorings\CreateTests\CreateTestsDataModel.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsHelper.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsPageStartPage.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsRefactoring.cs" />

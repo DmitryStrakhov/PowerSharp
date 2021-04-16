@@ -17,7 +17,7 @@ using JetBrains.ReSharper.Feature.Services.CSharp.Analyses.Bulbs;
 
 namespace PowerSharp.ContextActions {
     [ContextAction(Name = "Create Tests", Description = "Creates a test fixture for a class", Group = "C#")]
-    public class CreateTestsContextAction : ContextActionBase {
+    public sealed class CreateTestsContextAction : ContextActionBase {
         [NotNull]
         readonly ICSharpContextActionDataProvider dataProvider;
 
@@ -32,11 +32,11 @@ namespace PowerSharp.ContextActions {
             return declaration is IClassDeclaration || declaration is IStructDeclaration;
         }
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress) {
-            return textControl => {
+            return _ => {
                 using(LifetimeDefinition lifetimeDefinition = Lifetime.Define(Lifetime.Eternal))
                     RefactoringActionUtil.ExecuteRefactoring(
                         solution.GetComponent<IActionManager>().DataContexts.CreateOnActiveControl(lifetimeDefinition.Lifetime),
-                        new CreateTestsWorkflow(solution, null));
+                        new CreateTestsWorkflow(solution));
             };
         }
 

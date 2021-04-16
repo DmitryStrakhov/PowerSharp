@@ -2,15 +2,26 @@
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.Application.DataContext;
-using PowerSharp.ContextActions;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
 
 namespace PowerSharp.Refactorings.CreateTests {
     public sealed class CreateTestsWorkflow : DrivenRefactoringWorkflow2<CreateTestsHelper> {
-        public CreateTestsWorkflow([NotNull] ISolution solution, string actionId)
+        CreateTestsDataModel model;
+
+        public CreateTestsWorkflow([NotNull] ISolution solution, string actionId = null)
             : base(solution, actionId) {
         }
+
+        public CreateTestsDataModel Model { get { return model; } }
+
         public override bool Initialize(IDataContext context) {
+            this.model = new CreateTestsDataModel {
+                TestClassName = "ClassName",
+                AddSetUpMethod = true,
+                AddTearDownMethod = true,
+                AddNUnitPackage = true,
+                AddFluentAssertionsPackage = true
+            };
             return true;
         }
         public override bool IsAvailable(IDataContext context) {
