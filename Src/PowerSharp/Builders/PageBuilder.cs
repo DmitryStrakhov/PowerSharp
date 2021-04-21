@@ -6,7 +6,7 @@ using JetBrains.IDE.UI.Extensions;
 using JetBrains.Rider.Model.UIAutomation;
 
 namespace PowerSharp.Builders {
-    public sealed class PageBuilder {
+    public class PageBuilder {
         readonly Lifetime lifetime;
         [NotNull] readonly BeGrid content;
         [CanBeNull] PageBuilder owner;
@@ -31,10 +31,11 @@ namespace PowerSharp.Builders {
             content.AddElement(property.GetBeCheckBox(lifetime, description));
             return this;
         }
+        [Pure]
+        [NotNull]
         public PageBuilder StartGroupBox() {
             return new PageBuilder(lifetime, this);
         }
-        [Pure]
         [NotNull]
         public PageBuilder EndGroupBox([NotNull] string title) {
             if(owner == null)

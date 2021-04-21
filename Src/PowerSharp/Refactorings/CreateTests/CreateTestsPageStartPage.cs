@@ -23,11 +23,11 @@ namespace PowerSharp.Refactorings.CreateTests {
             this.model = workflow.Model;
             this.pageBuilder = new PageBuilder(Lifetime);
 
-            this.TestClassName = this.NewProperty("CreateTests.ClassName", model.TestClassName);
-            this.AddSetUpMethod = this.NewProperty("CreateTests.SetUp", model.AddSetUpMethod);
-            this.AddTearDownMethod = this.NewProperty("CreateTests.TearDown", model.AddTearDownMethod);
-            this.AddNUnitPackage = this.NewProperty("CreateTests.NUnit", model.AddNUnitPackage);
-            this.AddFluentAssertionsPackage = this.NewProperty("CreateTests.FluentAssertions", model.AddFluentAssertionsPackage);
+            this.TestClassName = this.Property("CreateTests.ClassName", model.TestClassName);
+            this.AddSetUpMethod = this.Property("CreateTests.SetUp", model.AddSetUpMethod);
+            this.AddTearDownMethod = this.Property("CreateTests.TearDown", model.AddTearDownMethod);
+            this.AddNUnitPackage = this.Property("CreateTests.NUnit", model.AddNUnitPackage);
+            this.AddFluentAssertionsPackage = this.Property("CreateTests.FluentAssertions", model.AddFluentAssertionsPackage);
         }
         public override BeControl GetPageContent() {
             return pageBuilder.TextBox(TestClassName, "N_ame:")
@@ -38,7 +38,7 @@ namespace PowerSharp.Refactorings.CreateTests {
                 .StartGroupBox()
                 .CheckBox(AddNUnitPackage, "NUnit")
                 .CheckBox(AddFluentAssertionsPackage, "Fluent.Assertions")
-                .EndGroupBox("Packages")
+                .EndGroupBox("NuGet Packages")
                 .Content();
         }
         public override void Commit() {
@@ -50,6 +50,5 @@ namespace PowerSharp.Refactorings.CreateTests {
         }
         public override string Title { get { return "Customize your tests-class"; } }
         public override string Description { get { return "Specify options you want to see"; } }
-        public override string PageDescription { get { return "PageDescription"; } }
     }
 }

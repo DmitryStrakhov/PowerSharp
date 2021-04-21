@@ -374,9 +374,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\AnnotationBuilder.cs" />
     <Compile Include="Builders\CodeBuilder.cs" />
     <Compile Include="Builders\ConstructorBuilder.cs" />
     <Compile Include="Builders\PageBuilder.cs" />
+    <Compile Include="Builders\PsiFileBuilder.cs" />
+    <Compile Include="Builders\TypeHolderBuilder.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
     <Compile Include="Extensions\SingleBeRefactoringPageExtensions.cs" />
@@ -394,12 +397,13 @@
     <Compile Include="Refactorings\CreateTests\CreateTestsRefactoring.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsWorkflow.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsWorkflowProvider.cs" />
+    <Compile Include="Utils\NavigationUtil.cs" />
     <Compile Include="Utils\IntentionUtils.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceService.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceServiceFactory.cs" />
     <Compile Include="QuickFixes\Components\CreateInstanceOfInstanceMemberService.cs" />
     <Compile Include="QuickFixes\Components\CreateInstanceOfStaticMemberService.cs" />
-    <Compile Include="Builders\ClassBuilder.cs" />
+    <Compile Include="Builders\MembersBuilder.cs" />
     <Compile Include="ZoneMarker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
