@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PowerSharp {
+namespace PowerSharp.Extensions {
     public static class ClassExtensions {
         public static T With<T>(this T @this, Action<T> action)
             where T : class {

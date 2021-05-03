@@ -380,7 +380,7 @@
     <Compile Include="Builders\PageBuilder.cs" />
     <Compile Include="Builders\PsiFileBuilder.cs" />
     <Compile Include="Builders\TypeHolderBuilder.cs" />
-    <Compile Include="Extensions.cs" />
+    <Compile Include="Extensions\Generic.cs" />
     <Compile Include="Extensions\BeControlExtensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
     <Compile Include="Extensions\SingleBeRefactoringPageExtensions.cs" />
