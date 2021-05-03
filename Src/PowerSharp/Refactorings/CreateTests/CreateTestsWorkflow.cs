@@ -8,8 +8,8 @@ using PowerSharp.Utils;
 using PowerSharp.Builders;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
-using JetBrains.ReSharper.Psi.Transactions;
 using JetBrains.Application.DataContext;
+using JetBrains.ReSharper.Psi.Transactions;
 using JetBrains.Application.Progress;
 using JetBrains.DocumentManagers.Transactions;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
@@ -28,14 +28,17 @@ namespace PowerSharp.Refactorings.CreateTests {
             IDeclaration declaration = IsAvailableCore(context);
             if(declaration == null) return false;
 
-            model = new CreateTestsDataModel();
-            model.Declaration = declaration;
-            model.TestClassName = declaration.DeclaredElement.NotNull().ShortName + "Tests";
-            model.AddSetUpMethod = true;
-            model.AddTearDownMethod = true;
-            model.AddNUnitPackage = true;
-            model.AddFluentAssertionsPackage = true;
+            model = CreateTestsDataModel(declaration);
             return true;
+        }
+        static CreateTestsDataModel CreateTestsDataModel(IDeclaration declaration) {
+            CreateTestsDataModel model = new CreateTestsDataModel();
+
+            model.Declaration = declaration;
+            model.SetUpMethod = true;
+            model.TearDownMethod = true;
+            model.TestClassName = declaration.DeclaredElement.NotNull().ShortName + "Tests";
+            return model;
         }
         public override bool IsAvailable(IDataContext context) {
             return IsAvailableCore(context) != null;
@@ -50,7 +53,7 @@ namespace PowerSharp.Refactorings.CreateTests {
             return new CreateTestsRefactoring(this, Solution, driver);
         }
         protected override CreateTestsHelper CreateUnsupportedHelper() {
-            throw new NotImplementedException();
+            return new CreateTestsHelper();
         }
         protected override CreateTestsHelper CreateHelper(IRefactoringLanguageService service) {
             return new CreateTestsHelper();
@@ -65,25 +68,43 @@ namespace PowerSharp.Refactorings.CreateTests {
             using(IProjectModelTransactionCookie transactionCookie = Solution.CreateTransactionCookie(DefaultAction.Commit, "Create Tests", NullProgressIndicator.Create())) {
                 try {
                     FileSystemPath path = projectFolder.Location.Combine(Model.TestClassName + ".cs");
-                    model.TestClassFile = transactionCookie.AddFile(projectFolder, path);
+                    if(transactionCookie.CanAddFile(projectFolder, path, out string _)) {
+                        model.TestClassFile = transactionCookie.AddFile(projectFolder, path);
+                    }
                     
-                    if (Solution.GetComponent<IPsiTransactions>().Execute("Create Tests", () => {
+                    if(Solution.GetComponent<IPsiTransactions>().Execute("Create Tests", () => {
                         ICSharpFile primaryPsiFile = (ICSharpFile)model.TestClassFile.GetPrimaryPsiFile().NotNull();
 
                         MembersBuilder membersBuilder = new PsiFileBuilder(primaryPsiFile)
                             .AddUsingDirective("NUnit.Framework")
-                            .AddUsingDirective("FluentAssertions")
                             .AddExpectedNamespace()
                             .AddClass(model.TestClassName, AccessRights.PUBLIC)
                             .WithAttribute("NUnit.Framework.TestFixtureAttribute")
                             .WithMembers();
 
-                        membersBuilder
-                            .AddVoidMethod("SetUp", AccessRights.PUBLIC)
-                            .WithAttribute("NUnit.Framework.SetUpAttribute");
-                        membersBuilder
-                            .AddVoidMethod("TearDown", AccessRights.PUBLIC)
-                            .WithAttribute("NUnit.Framework.TearDownAttribute");
+                        if(Model.OneTimeSetUpMethod) {
+                            membersBuilder
+                                .AddVoidMethod("OneTimeSetUp", AccessRights.PUBLIC)
+                                .WithAttribute("NUnit.Framework.OneTimeSetUpAttribute");
+                        }
+
+                        if(Model.OneTimeTearDownMethod) {
+                            membersBuilder
+                                .AddVoidMethod("OneTimeTearDown", AccessRights.PUBLIC)
+                                .WithAttribute("NUnit.Framework.OneTimeTearDownAttribute");
+                        }
+
+                        if(Model.SetUpMethod) {
+                            membersBuilder
+                                .AddVoidMethod("SetUp", AccessRights.PUBLIC)
+                                .WithAttribute("NUnit.Framework.SetUpAttribute");
+                        }
+
+                        if(Model.TearDownMethod) {
+                            membersBuilder
+                                .AddVoidMethod("TearDown", AccessRights.PUBLIC)
+                                .WithAttribute("NUnit.Framework.TearDownAttribute");
+                        }
 
                     }).Succeded)
                         transactionCookie.Commit(NullProgressIndicator.Create());
@@ -99,9 +120,7 @@ namespace PowerSharp.Refactorings.CreateTests {
             return true;
         }
         public override void SuccessfulFinish(IProgressIndicator pi) {
-            if(model.TestClassFile != null) {
-                NavigationUtil.NavigateTo(Solution, model.TestClassFile);
-            }
+            if(model.TestClassFile != null) NavigationUtil.NavigateTo(Solution, model.TestClassFile);
             base.SuccessfulFinish(pi);
         }
         public override string Title { get { return "Create Tests"; } }

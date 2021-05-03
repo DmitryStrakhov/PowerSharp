@@ -6,12 +6,11 @@ namespace PowerSharp.Refactorings.CreateTests {
         public CreateTestsDataModel() {
         }
         public string TestClassName { get; set; }
+        public bool SetUpMethod { get; set; }
+        public bool TearDownMethod { get; set; }
+        public bool OneTimeSetUpMethod { get; set; }
+        public bool OneTimeTearDownMethod { get; set; }
 
-        public bool AddSetUpMethod { get; set; }
-        public bool AddTearDownMethod { get; set; }
-
-        public bool AddNUnitPackage { get; set; }
-        public bool AddFluentAssertionsPackage { get; set; }
         public IDeclaration Declaration { get; set; }
         public IProjectFile TestClassFile { get; set; }
     }

@@ -1,0 +1,13 @@
+﻿using NUnit.Framework;
+
+namespace ClassLibrary
+{
+  [TestFixture]
+  public class MyPoint5Tests
+  {
+    [OneTimeSetUp]
+    public void OneTimeSetUp()
+    {
+    }
+  }
+}

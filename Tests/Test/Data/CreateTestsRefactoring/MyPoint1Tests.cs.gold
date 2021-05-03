@@ -1,0 +1,28 @@
+﻿using NUnit.Framework;
+
+namespace ClassLibrary
+{
+  [TestFixture]
+  public class MyPoint1Tests
+  {
+    [OneTimeSetUp]
+    public void OneTimeSetUp()
+    {
+    }
+
+    [OneTimeTearDown]
+    public void OneTimeTearDown()
+    {
+    }
+
+    [SetUp]
+    public void SetUp()
+    {
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+    }
+  }
+}

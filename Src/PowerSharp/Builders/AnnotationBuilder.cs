@@ -20,8 +20,8 @@ namespace PowerSharp.Builders {
                 throw new ArgumentException(nameof(attributeClassName));
             }
             
-            ITypeElement attributeTypeElement = CreateAttributeTypeElement(attributeClassName);
-            owner.AddAttributeAfter(factory.CreateAttribute(attributeTypeElement), null);
+            ITypeElement typeElement = CreateAttributeTypeElement(attributeClassName);
+            owner.AddAttributeAfter(factory.CreateAttribute(typeElement), null);
             return this;
         }
         [NotNull]
@@ -33,11 +33,7 @@ namespace PowerSharp.Builders {
         [NotNull]
         public MembersBuilder WithMembers() {
             IClassLikeDeclaration classDeclaration = owner as IClassLikeDeclaration;
-            if(classDeclaration == null) {
-                throw new InvalidOperationException();
-            }
-
-            return new MembersBuilder(classDeclaration);
+            return classDeclaration != null ? new MembersBuilder(classDeclaration) : throw new InvalidOperationException();
         }
     }
 }

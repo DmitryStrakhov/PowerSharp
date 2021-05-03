@@ -1,0 +1,9 @@
+﻿using NUnit.Framework;
+
+namespace ClassLibrary
+{
+  [TestFixture]
+  public class MyPoint2Tests
+  {
+  }
+}

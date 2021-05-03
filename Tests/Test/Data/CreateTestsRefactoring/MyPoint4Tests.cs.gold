@@ -1,0 +1,13 @@
+﻿using NUnit.Framework;
+
+namespace ClassLibrary
+{
+  [TestFixture]
+  public class MyPoint4Tests
+  {
+    [TearDown]
+    public void TearDown()
+    {
+    }
+  }
+}

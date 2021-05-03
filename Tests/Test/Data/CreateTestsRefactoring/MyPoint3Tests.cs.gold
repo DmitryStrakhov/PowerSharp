@@ -1,0 +1,13 @@
+﻿using NUnit.Framework;
+
+namespace ClassLibrary
+{
+  [TestFixture]
+  public class MyPoint3Tests
+  {
+    [SetUp]
+    public void SetUp()
+    {
+    }
+  }
+}

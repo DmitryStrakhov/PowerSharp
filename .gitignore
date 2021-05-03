@@ -5,6 +5,7 @@
 
 # Temp files
 *.bak
+*.tmp
 
 # Build results
 bin/
