@@ -383,7 +383,10 @@
     <Compile Include="Extensions\Generic.cs" />
     <Compile Include="Extensions\BeControlExtensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
+    <Compile Include="Extensions\ProjectFileExtensions.cs" />
     <Compile Include="Extensions\SingleBeRefactoringPageExtensions.cs" />
+    <Compile Include="Extensions\SolutionExtensions.cs" />
+    <Compile Include="Extensions\TransactionCookieExtensions.cs" />
     <Compile Include="Extensions\TypeMemberDeclarationExtensions.cs" />
     <Compile Include="Extensions\TypeMemberExtensions.cs" />
     <Compile Include="Guard.cs" />
@@ -398,6 +401,8 @@
     <Compile Include="Refactorings\CreateTests\CreateTestsRefactoring.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsWorkflow.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsWorkflowProvider.cs" />
+    <Compile Include="Refactorings\CreateTests\FileCannotBeCreatedRule.cs" />
+    <Compile Include="Refactorings\CreateTests\FileAlreadyExistsRule.cs" />
     <Compile Include="Utils\NavigationUtil.cs" />
     <Compile Include="Utils\IntentionUtils.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceService.cs" />
@@ -405,6 +410,7 @@
     <Compile Include="QuickFixes\Components\CreateInstanceOfInstanceMemberService.cs" />
     <Compile Include="QuickFixes\Components\CreateInstanceOfStaticMemberService.cs" />
     <Compile Include="Builders\MembersBuilder.cs" />
+    <Compile Include="Utils\ProjectModelUtil.cs" />
     <Compile Include="ZoneMarker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

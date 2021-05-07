@@ -21,14 +21,18 @@ namespace PowerSharp.Builders {
         }
         [Pure]
         [NotNull]
-        public PageBuilder TextBox([NotNull] IProperty<string> property, [NotNull] string description) {
-            content.AddElement(property.GetBeTextBox(lifetime).WithDescription(description, lifetime));
+        public PageBuilder TextBox([NotNull] IProperty<string> property, [NotNull] string description, [CanBeNull] Action<BeTextBox> initializer = null) {
+            BeTextBox textBox = property.GetBeTextBox(lifetime);
+            initializer?.Invoke(textBox);
+            content.AddElement(textBox.WithDescription(description, lifetime));
             return this;
         }
         [Pure]
         [NotNull]
-        public PageBuilder CheckBox([NotNull] IProperty<bool> property, [NotNull] string description) {
-            content.AddElement(property.GetBeCheckBox(lifetime, description));
+        public PageBuilder CheckBox([NotNull] IProperty<bool> property, [NotNull] string description, [CanBeNull] Action<BeCheckbox> initializer = null) {
+            BeCheckbox checkBox = property.GetBeCheckBox(lifetime, description);
+            initializer?.Invoke(checkBox);
+            content.AddElement(checkBox);
             return this;
         }
         [Pure]
