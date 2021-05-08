@@ -4,6 +4,8 @@ using JetBrains.ProjectModel;
 using JetBrains.Util;
 using JetBrains.TextControl;
 using PowerSharp.Utils;
+using PowerSharp.Extensions;
+using PowerSharp.Services;
 using JetBrains.Lifetimes;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
@@ -20,13 +22,19 @@ namespace PowerSharp.ContextActions {
     public sealed class CreateTestsContextAction : ContextActionBase {
         [NotNull]
         readonly ICSharpContextActionDataProvider dataProvider;
+        [NotNull] readonly ISolution solution;
 
         public CreateTestsContextAction([NotNull] ICSharpContextActionDataProvider dataProvider) {
             this.dataProvider = dataProvider;
+            this.solution = dataProvider.Solution;
         }
         public override string Text { get { return "Create tests"; } }
 
         public override bool IsAvailable(IUserDataHolder cache) {
+            ITypeElementResolutionService service = solution.GetComponent<ITypeElementResolutionService>();
+            if(!solution.ContainsProject(x => service.ContainsClrType(x, NUnitUtil.TestFixtureAttributeClrName)))
+                return false;
+
             IClassLikeDeclaration declaration = GetClassLikeDeclaration();
             if(!IntentionUtils.IsValid(declaration)) return false;
             return declaration is IClassDeclaration || declaration is IStructDeclaration;

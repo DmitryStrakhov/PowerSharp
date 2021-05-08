@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;JET_MODE_ASSERT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>latest</LangVersion>
@@ -380,6 +380,7 @@
     <Compile Include="Builders\PageBuilder.cs" />
     <Compile Include="Builders\PsiFileBuilder.cs" />
     <Compile Include="Builders\TypeHolderBuilder.cs" />
+    <Compile Include="Components\DefaultTypeElementResolutionService.cs" />
     <Compile Include="Extensions\Generic.cs" />
     <Compile Include="Extensions\BeControlExtensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
@@ -403,6 +404,9 @@
     <Compile Include="Refactorings\CreateTests\CreateTestsWorkflowProvider.cs" />
     <Compile Include="Refactorings\CreateTests\FileCannotBeCreatedRule.cs" />
     <Compile Include="Refactorings\CreateTests\FileAlreadyExistsRule.cs" />
+    <Compile Include="Components\DefaultPathsService.cs" />
+    <Compile Include="Services\IPathService.cs" />
+    <Compile Include="Services\ITypeElementResolutionService.cs" />
     <Compile Include="Utils\NavigationUtil.cs" />
     <Compile Include="Utils\IntentionUtils.cs" />
     <Compile Include="QuickFixes\Services\ICreateInstanceService.cs" />
@@ -410,6 +414,7 @@
     <Compile Include="QuickFixes\Components\CreateInstanceOfInstanceMemberService.cs" />
     <Compile Include="QuickFixes\Components\CreateInstanceOfStaticMemberService.cs" />
     <Compile Include="Builders\MembersBuilder.cs" />
+    <Compile Include="Utils\NUnitUtil.cs" />
     <Compile Include="Utils\ProjectModelUtil.cs" />
     <Compile Include="ZoneMarker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

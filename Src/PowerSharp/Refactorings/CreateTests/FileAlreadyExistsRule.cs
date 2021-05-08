@@ -1,19 +1,20 @@
-﻿using JetBrains.ProjectModel;
+﻿using PowerSharp.Utils;
+using JetBrains.Annotations;
+using JetBrains.ProjectModel;
+using PowerSharp.Extensions;
 using JetBrains.Collections.Viewable;
-using JetBrains.Rider.Model.UIAutomation;
 using JetBrains.IDE.UI.Extensions.Validation;
 
 namespace PowerSharp.Refactorings.CreateTests {
     public class FileAlreadyExistsRule : SimpleValidationRuleOnProperty<string> {
+        [NotNull] readonly CreateTestsDataModel model;
+
         public FileAlreadyExistsRule(IViewableProperty<string> propertyToValidate, ISolution solution, CreateTestsDataModel model)
-            : base(propertyToValidate, solution.Locks, ValidationStates.validationWarning) {
+            : base(propertyToValidate, solution.Locks) {
+            this.model = model;
 
             Message = "File already exists";
-            ValidateAction = s => {
-                //IProjectFile selectedFile = solution.GetComponent<Type2PartialManager>().GetSelectedFile(model, s);
-                //return selectedFile == null || selectedFile.IsGeneratedFile();
-                return true;
-            };
+            ValidateAction = x => !this.model.GetSolution().ContainsFile(this.model.SelectionScope, x, this.model.DefaultTargetProject);
         }
     }
 }

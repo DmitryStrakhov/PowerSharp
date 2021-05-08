@@ -410,6 +410,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateTestsActionTests.cs" />
     <Compile Include="CreateTestsTests.cs" />
     <Compile Include="PowerSharpTestsAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -436,6 +437,7 @@
     <None Include="Test\Data\CreateInstanceFix\Test10.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test11.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test12.cs" />
+    <None Include="Test\Data\CreateTestsAction\Test01.cs.gold" />
     <None Include="Test\Data\CreateTestsRefactoring\MyPoint7Tests.cs.gold" />
     <None Include="Test\Data\CreateTestsRefactoring\MyPoint6Tests.cs.gold" />
     <None Include="Test\Data\CreateTestsRefactoring\MyPoint5Tests.cs.gold" />
@@ -449,6 +451,7 @@
     <None Include="Test\Data\CreateTestsRefactoring\Test05.cs" />
     <None Include="Test\Data\CreateTestsRefactoring\Test06.cs" />
     <None Include="Test\Data\CreateTestsRefactoring\Test07.cs" />
+    <None Include="Test\Data\CreateTestsAction\Test01.cs" />
     <Compile Include="ZoneMarker.cs" />
     <None Include="Test\Data\CreateInstanceFix\Simple.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test01.cs.gold" />

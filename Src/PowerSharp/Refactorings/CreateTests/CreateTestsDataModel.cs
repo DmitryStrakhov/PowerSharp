@@ -1,6 +1,7 @@
 ﻿using System;
 using JetBrains.ProjectModel;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using JetBrains.ReSharper.Psi.Tree;
 
 namespace PowerSharp.Refactorings.CreateTests {
@@ -13,12 +14,23 @@ namespace PowerSharp.Refactorings.CreateTests {
         public bool OneTimeTearDownMethod { get; set; }
 
         public string TargetFilePath { get; set; }
-        public string TestClassName { get; set; }
         public IProjectFile TestClassFile { get; set; }
-        public IDeclaration Declaration { get; set; }
-        public IProjectFile SourceFile { get; set; }
 
+        [NotNull]
+        public IDeclaration Declaration { get; set; }
+        [NotNull]
+        public IProjectFile SourceFile { get; set; }
+        [NotNull]
+        public IProjectFolder DefaultTargetProject { get; set; }
+
+        [NotNull]
         public IList<IProjectFolder> SelectionScope { get; set; }
+        [NotNull]
         public Func<IProjectFile, bool> SuggestFilter{ get; set; }
+
+        [NotNull]
+        public ISolution GetSolution() {
+            return SourceFile.GetSolution();
+        }
     }
 }

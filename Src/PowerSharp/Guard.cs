@@ -16,5 +16,11 @@ namespace PowerSharp {
             if(value == null)
                 throw new ArgumentNullException(argument);
         }
+        public static void IsNotEmpty([AssertionCondition(AssertionConditionType.IS_NOT_NULL)] string value, [NotNull] string argumentName) {
+            if(value == null)
+                throw new ArgumentNullException(argumentName);
+            if(string.IsNullOrEmpty(value))
+                throw new ArgumentException(argumentName);
+        }
     }
 }

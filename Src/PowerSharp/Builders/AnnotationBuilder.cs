@@ -1,9 +1,11 @@
 ﻿using System;
 using JetBrains.Annotations;
-using JetBrains.Diagnostics;
+using JetBrains.ProjectModel;
+using PowerSharp.Services;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
+using JetBrains.ReSharper.Psi.Tree;
 
 namespace PowerSharp.Builders {
     public class AnnotationBuilder {
@@ -26,8 +28,12 @@ namespace PowerSharp.Builders {
         }
         [NotNull]
         private ITypeElement CreateAttributeTypeElement(string attributeClassName) {
-            IDeclaredType declaredType = TypeFactory.CreateTypeByCLRName(attributeClassName, owner.GetPsiModule());
-            return declaredType.GetTypeElement().NotNull();
+            IProject project = owner.GetProject();
+            if(project == null) throw new InvalidOperationException();
+
+            ITypeElementResolutionService service = owner.GetSolution().GetComponent<ITypeElementResolutionService>();
+            ITypeElement typeElement = service.Resolve(project, attributeClassName);
+            return typeElement ?? throw new InvalidOperationException();
         }
 
         [NotNull]
