@@ -9,6 +9,7 @@ namespace PowerSharp.Utils {
     public static class ContextActionUtil {
         [CanBeNull]
         public static IClassLikeDeclaration GetClassLikeDeclaration([NotNull] ICSharpContextActionDataProvider dataProvider) {
+            Guard.IsNotNull(dataProvider, nameof(dataProvider));
             ICSharpIdentifier selectedElement = dataProvider.GetSelectedElement<ICSharpIdentifier>();
             if(selectedElement == null) return null;
 

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using PowerSharp.ContextActions;
-using JetBrains.Application.DataContext;
 using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
+using System.Collections.Generic;
 using JetBrains.ProjectModel.DataContext;
+using JetBrains.Application.DataContext;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
 
 namespace PowerSharp.Refactorings.CreateTests {

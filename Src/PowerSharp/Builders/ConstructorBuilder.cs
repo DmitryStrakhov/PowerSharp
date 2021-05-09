@@ -3,6 +3,12 @@ using JetBrains.Annotations;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 
 namespace PowerSharp.Builders {
+    /// <summary>
+    /// 
+    /// Generates constructors and provides entry point for code-generation inside them.
+    /// API is designed in a fluent style
+    /// 
+    /// </summary>
     public class ConstructorBuilder {
         readonly IConstructorDeclaration constructor;
 
@@ -12,6 +18,7 @@ namespace PowerSharp.Builders {
         }
         [NotNull]
         public ConstructorBuilder WithBody([NotNull] Func<CodeBuilder, ICSharpStatement> getStatement) {
+            Guard.IsNotNull(getStatement, nameof(getStatement));
             constructor.Body.AddStatementAfter(getStatement(new CodeBuilder(constructor)), null);
             return this;
         }

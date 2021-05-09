@@ -44,7 +44,7 @@ namespace PowerSharp.QuickFixes {
         public CreateInstanceFix([NotNull] UnassignedGetOnlyAutoPropertyWarning warning)
             : this(warning.Declaration) {
         }
-        public override string Text { get { return "Create Instance"; } }
+        public override string Text { get { return "Create instance"; } }
 
         public override bool IsAvailable(IUserDataHolder cache) {
             if(!IntentionUtils.IsValid(memberDeclaration)) return false;

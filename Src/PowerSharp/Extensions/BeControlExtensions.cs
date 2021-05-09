@@ -6,11 +6,18 @@ using JetBrains.Diagnostics;
 using JetBrains.Rider.Model.UIAutomation;
 
 namespace PowerSharp.Extensions {
+    /// <summary>
+    /// 
+    /// Extension-methods for BeControl class.
+    /// 
+    /// </summary>
     public static class BeControlExtensions {
         [NotNull]
         [Pure]
         public static T GetBeControlByIdBfs<T>(this BeControl @this, [NotNull] string id, int? maxLevelOfDepth = null)
             where T : BeControl {
+            Guard.IsNotEmpty(id, nameof(id));
+
             int maxDepth = maxLevelOfDepth.GetValueOrDefault(int.MaxValue);
             int level = 0;
 

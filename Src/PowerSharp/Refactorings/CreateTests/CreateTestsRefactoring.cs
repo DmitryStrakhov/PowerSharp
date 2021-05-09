@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.Application.Progress;
 using JetBrains.ReSharper.Refactorings.Workflow;

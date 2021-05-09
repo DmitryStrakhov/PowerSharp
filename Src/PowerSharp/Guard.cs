@@ -16,6 +16,11 @@ namespace PowerSharp {
             if(value == null)
                 throw new ArgumentNullException(argument);
         }
+        [
+            MethodImpl(MethodImplOptions.AggressiveInlining),
+            Conditional("DEBUG"),
+            AssertionMethod
+        ]
         public static void IsNotEmpty([AssertionCondition(AssertionConditionType.IS_NOT_NULL)] string value, [NotNull] string argumentName) {
             if(value == null)
                 throw new ArgumentNullException(argumentName);

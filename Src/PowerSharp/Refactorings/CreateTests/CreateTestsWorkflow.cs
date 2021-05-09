@@ -38,16 +38,16 @@ namespace PowerSharp.Refactorings.CreateTests {
             Assertion.Assert(sourceFile != null, "sourceFile != null");
 
             ITypeElementResolutionService service = Solution.GetComponent<ITypeElementResolutionService>();
-            IProject testProjectCandidate =  Solution.FindProject(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName));
-            Assertion.Assert(testProjectCandidate != null, "testProjectCandidate != null");
+            IProject defaultTestProject = Solution.FindProject(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName));
+            Assertion.Assert(defaultTestProject != null, "defaultTestProject != null");
 
             model = new CreateTestsDataModel {SetUpMethod = true, TearDownMethod = true};
             model.Declaration = declaration;
             model.SourceFile = sourceFile;
-            model.DefaultTargetProject = testProjectCandidate;
+            model.DefaultTargetProject = defaultTestProject;
             
-            string fileName = pathsService.GetUniqueFileName(testProjectCandidate, declaredElement.ShortName + "Tests.cs");
-            model.TargetFilePath = pathsService.Combine(testProjectCandidate, fileName);
+            string defaultFileName = pathsService.GetUniqueFileName(defaultTestProject, declaredElement.ShortName + "Tests.cs");
+            model.TargetFilePath = pathsService.Combine(defaultTestProject, defaultFileName);
             model.SelectionScope = Solution.GetAllRegularProjectsWhere(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName)).ToList(x => (IProjectFolder)x);
             model.SuggestFilter = Helper[declaredElement.PresentationLanguage].CanSuggestProjectFile;
             return true;
@@ -56,6 +56,7 @@ namespace PowerSharp.Refactorings.CreateTests {
             (IDeclaration declaration, IDeclaredElement _) = IsAvailableCore(context);
             return declaration != null;
         }
+
         private (IDeclaration, IDeclaredElement) IsAvailableCore([NotNull] IDataContext context) {
             IDeclaredElement declaredElement = context.GetData(RefactoringDataConstants.DeclaredElementWithoutSelection);
             if(declaredElement == null) return (null, null);
@@ -76,23 +77,32 @@ namespace PowerSharp.Refactorings.CreateTests {
         public override bool PreExecute(IProgressIndicator pi) {
             using(IProjectModelTransactionCookie transactionCookie = Solution.CreateTransactionCookie(DefaultAction.Commit, "Create Tests", NullProgressIndicator.Create())) {
                 try {
-                    IProjectFolder projectFolder = ProjectModelUtil.MapPathToFolder(Solution, model.SelectionScope, out string actualFolderPath, model.TargetFilePath, model.DefaultTargetProject);
+                    IProjectFolder projectFolder = ProjectModelUtil.MapPathToProjectFolder(Solution, model.SelectionScope, out string actualFolderPath, model.TargetFilePath, model.DefaultTargetProject);
+                    Assertion.Assert(projectFolder != null, "projectFolder != null");
 
+                    // parse path specified
+                    //
                     string[] pathParts = model.TargetFilePath.SubstringAfter(actualFolderPath).TrimStart('\\', '/').Split('\\', '/');
                     string fileName = pathParts[pathParts.Length - 1];
 
+                    // create folders if required
+                    //
                     for(int n = 0; n < pathParts.Length - 1; n++)
                         projectFolder = transactionCookie.AddFolder(projectFolder, pathParts[n]);
 
+                    // add target file
+                    //
                     FileSystemPath path = projectFolder.Location.Combine(fileName);
-                    if(!transactionCookie.CanAddFile(projectFolder, path, out string _)) return false;
-
                     model.TestClassFile = transactionCookie.AddFile(projectFolder, path);
 
+                    // start code generation
+                    //
                     if(Solution.GetComponent<IPsiTransactions>().Execute("Create Tests", () => {
                         ICSharpFile primaryPsiFile = (ICSharpFile)model.TestClassFile.GetPrimaryPsiFile().NotNull();
                         string className = pathsService.GetExpectedClassName(model.TargetFilePath);
 
+                        // add test class declaration
+                        //
                         MembersBuilder membersBuilder = new PsiFileBuilder(primaryPsiFile)
                             .AddUsingDirective(NUnitUtil.NUnitRootNamespace)
                             .AddExpectedNamespace()
@@ -100,30 +110,40 @@ namespace PowerSharp.Refactorings.CreateTests {
                             .WithAttribute(NUnitUtil.TestFixtureAttributeClrName)
                             .WithMembers();
 
+                        // OneTimeSetUp method
+                        //
                         if(Model.OneTimeSetUpMethod) {
                             membersBuilder
                                 .AddVoidMethod("OneTimeSetUp", AccessRights.PUBLIC)
                                 .WithAttribute(NUnitUtil.OneTimeSetUpAttributeClrName);
                         }
 
+                        // OneTimeTearDown method
+                        //
                         if(Model.OneTimeTearDownMethod) {
                             membersBuilder
                                 .AddVoidMethod("OneTimeTearDown", AccessRights.PUBLIC)
                                 .WithAttribute(NUnitUtil.OneTimeTearDownAttributeClrName);
                         }
 
+                        // SetUp method
+                        //
                         if(Model.SetUpMethod) {
                             membersBuilder
                                 .AddVoidMethod("SetUp", AccessRights.PUBLIC)
                                 .WithAttribute(NUnitUtil.SetUpAttributeClrName);
                         }
 
+                        // TearDown method
+                        //
                         if(Model.TearDownMethod) {
                             membersBuilder
                                 .AddVoidMethod("TearDown", AccessRights.PUBLIC)
                                 .WithAttribute(NUnitUtil.TearDownAttributeClrName);
                         }
 
+                        // add reference to source project if required
+                        // 
                         IProject targetProject = model.TestClassFile.GetProject().NotNull();
                         IProject sourceProject = model.SourceFile.GetProject().NotNull();
                         transactionCookie.AddProjectReference(targetProject, sourceProject);

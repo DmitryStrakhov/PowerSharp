@@ -6,14 +6,24 @@ using JetBrains.Util.Extension;
 using JetBrains.ReSharper.Feature.Services.UI;
 
 namespace PowerSharp.Utils {
+    /// <summary>
+    ///
+    /// Utils methods which are mostly used to map
+    /// paths like ProjectName\Folder1\Folder2\FileName into elements of project model.
+    /// 
+    /// </summary>
     public static class ProjectModelUtil {
         [CanBeNull]
-        public static IProjectFolder MapPathToFolder(
+        public static IProjectFolder MapPathToProjectFolder(
             [NotNull] ISolution solution,
             [NotNull] IEnumerable<IProjectFolder> selectionScope,
             [NotNull] out string folderPath,
-            string filePath,
+            [NotNull] string filePath,
             [CanBeNull] IProjectFolder defaultFolder = null) {
+
+            Guard.IsNotNull(solution, nameof(solution));
+            Guard.IsNotNull(selectionScope, nameof(selectionScope));
+            Guard.IsNotEmpty(filePath, nameof(filePath));
 
             IProjectFolder projectFolder;
             folderPath = filePath.TrimEnd('\\', '/');
@@ -48,7 +58,11 @@ namespace PowerSharp.Utils {
             string filePath,
             IProjectFolder defaultFolder = null) {
 
-            IProjectFolder projectFolder = MapPathToFolder(solution, selectionScope, out string folderPath, filePath, defaultFolder);
+            Guard.IsNotNull(solution, nameof(solution));
+            Guard.IsNotNull(selectionScope, nameof(selectionScope));
+            Guard.IsNotEmpty(filePath, nameof(filePath));
+
+            IProjectFolder projectFolder = MapPathToProjectFolder(solution, selectionScope, out string folderPath, filePath, defaultFolder);
             if(projectFolder == null) return null;
             string unknownPart = filePath.SubstringAfter(folderPath).TrimStart('\\', '/');
             return projectFolder.GetSubItems().OfType<IProjectFile>().FirstOrDefault(x => x.Name == unknownPart);
@@ -59,6 +73,9 @@ namespace PowerSharp.Utils {
             string filePath,
             IProjectFolder defaultFolder = null) {
 
+            Guard.IsNotNull(solution, nameof(solution));
+            Guard.IsNotNull(selectionScope, nameof(selectionScope));
+            Guard.IsNotEmpty(filePath, nameof(filePath));
             return GetSelectedFile(solution, selectionScope, filePath, defaultFolder) != null;
         }
     }

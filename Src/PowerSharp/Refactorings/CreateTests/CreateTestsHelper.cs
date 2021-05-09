@@ -1,7 +1,7 @@
-﻿using JetBrains.ReSharper.Psi;
+﻿using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Application.DataContext;
-using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Refactorings.Workflow;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
 

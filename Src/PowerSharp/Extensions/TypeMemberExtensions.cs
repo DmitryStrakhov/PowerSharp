@@ -2,6 +2,11 @@
 using JetBrains.ReSharper.Psi;
 
 namespace PowerSharp.Extensions {
+    /// <summary>
+    ///
+    /// Extension-methods for ITypeMember interface.
+    /// 
+    /// </summary>
     public static class TypeMemberExtensions {
         [NotNull]
         public static IType MemberType(this ITypeMember @this) {

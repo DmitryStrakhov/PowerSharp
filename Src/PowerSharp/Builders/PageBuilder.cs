@@ -6,6 +6,12 @@ using JetBrains.IDE.UI.Extensions;
 using JetBrains.Rider.Model.UIAutomation;
 
 namespace PowerSharp.Builders {
+    /// <summary>
+    /// 
+    /// Helps building UIs. Mostly used in refactorings.
+    /// API is designed in a fluent style
+    /// 
+    /// </summary>
     public class PageBuilder {
         readonly Lifetime lifetime;
         [NotNull] readonly BeGrid content;
@@ -22,6 +28,9 @@ namespace PowerSharp.Builders {
         [Pure]
         [NotNull]
         public PageBuilder TextBox([NotNull] IProperty<string> property, [NotNull] string description, [CanBeNull] Action<BeTextBox> initializer = null) {
+            Guard.IsNotNull(property, nameof(property));
+            Guard.IsNotEmpty(description, nameof(description));
+
             BeTextBox textBox = property.GetBeTextBox(lifetime);
             initializer?.Invoke(textBox);
             content.AddElement(textBox.WithDescription(description, lifetime));
@@ -30,6 +39,9 @@ namespace PowerSharp.Builders {
         [Pure]
         [NotNull]
         public PageBuilder CheckBox([NotNull] IProperty<bool> property, [NotNull] string description, bool? isEnabled = null, [CanBeNull] Action<BeCheckbox> initializer = null) {
+            Guard.IsNotNull(property, nameof(property));
+            Guard.IsNotEmpty(description, nameof(description));
+
             BeCheckbox checkBox = property.GetBeCheckBox(lifetime, description, isEnabled.GetValueOrDefault(true));
             initializer?.Invoke(checkBox);
             content.AddElement(checkBox);
@@ -42,6 +54,8 @@ namespace PowerSharp.Builders {
         }
         [NotNull]
         public PageBuilder EndGroupBox([NotNull] string title) {
+            Guard.IsNotEmpty(title, nameof(title));
+
             if(owner == null)
                 throw new InvalidOperationException(nameof(owner));
             owner.content.AddElement(content.InGroupBox(title));

@@ -72,7 +72,7 @@ namespace PowerSharp.Tests {
         }
         protected override IEnumerable<string> GetReferencedAssemblies(TargetFrameworkId frameworkId) {
             IEnumerable<string> assemblies = base.GetReferencedAssemblies(frameworkId);
-            return CollectionUtil.Concat(assemblies, RequiredAssemblies());
+            return assemblies.Concat(RequiredAssemblies());
         }
         private string[] RequiredAssemblies() {
             return new[] {

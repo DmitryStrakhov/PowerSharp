@@ -15,8 +15,8 @@ namespace PowerSharp.Refactorings.CreateTests {
             : base(propertyToValidate, solution.Locks) {
             this.model = model;
 
-            ValidateAction = s => {
-                if(CanCreateProjectFile(out string rejectReason, s)) return true;
+            ValidateAction = x => {
+                if(CanCreateProjectFile(out string rejectReason, x)) return true;
 
                 Message = "File cannot be created: " + rejectReason;
                 return false;
@@ -32,7 +32,9 @@ namespace PowerSharp.Refactorings.CreateTests {
                 return false;
             }
             
-            IProject project = ProjectModelUtil.MapPathToFolder(model.GetSolution(), model.SelectionScope, out string _, filePath, model.DefaultTargetProject)?.GetProject();
+            // check if target project has NUnit dependency
+            //
+            IProject project = ProjectModelUtil.MapPathToProjectFolder(model.GetSolution(), model.SelectionScope, out string _, filePath, model.DefaultTargetProject)?.GetProject();
             if(project != null) {
                 ITypeElementResolutionService service = model.GetSolution().GetComponent<ITypeElementResolutionService>();
                 if(!service.ContainsClrType(project, NUnitUtil.MarkerClrName)) {

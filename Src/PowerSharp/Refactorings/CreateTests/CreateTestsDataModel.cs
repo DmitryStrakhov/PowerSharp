@@ -16,16 +16,11 @@ namespace PowerSharp.Refactorings.CreateTests {
         public string TargetFilePath { get; set; }
         public IProjectFile TestClassFile { get; set; }
 
-        [NotNull]
         public IDeclaration Declaration { get; set; }
-        [NotNull]
         public IProjectFile SourceFile { get; set; }
-        [NotNull]
         public IProjectFolder DefaultTargetProject { get; set; }
 
-        [NotNull]
         public IList<IProjectFolder> SelectionScope { get; set; }
-        [NotNull]
         public Func<IProjectFile, bool> SuggestFilter{ get; set; }
 
         [NotNull]

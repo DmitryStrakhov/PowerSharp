@@ -1,5 +1,4 @@
-﻿using PowerSharp.Utils;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using PowerSharp.Extensions;
 using JetBrains.Collections.Viewable;

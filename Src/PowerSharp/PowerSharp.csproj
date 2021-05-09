@@ -385,7 +385,6 @@
     <Compile Include="Utils\FluentAssertionsUtil.cs" />
     <Compile Include="ContextActions\AddFavoriteDependencyAction.cs" />
     <Compile Include="Utils\ContextActionUtil.cs" />
-    <Compile Include="Extensions\Generic.cs" />
     <Compile Include="Extensions\BeControlExtensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
     <Compile Include="Extensions\ProjectFileExtensions.cs" />

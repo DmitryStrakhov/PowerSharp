@@ -5,6 +5,12 @@ using PowerSharp.Services;
 using JetBrains.ProjectModel;
 
 namespace PowerSharp.Components {
+    /// <summary>
+    /// 
+    /// Default implementation of IPathsService service. Helps to process paths
+    /// like ProjectName\Folder1\Folder2\FileName.
+    /// 
+    /// </summary>
     [SolutionComponent]
     public class DefaultPathsService : IPathsService {
         public DefaultPathsService() {
@@ -31,6 +37,8 @@ namespace PowerSharp.Components {
             return Path.GetFileNameWithoutExtension(filePath);
         }
         string IPathsService.Combine(IProject project, string fileName) {
+            Guard.IsNotNull(project, nameof(project));
+            Guard.IsNotEmpty(fileName, nameof(fileName));
             return project.Name + "\\" + fileName;
         }
 

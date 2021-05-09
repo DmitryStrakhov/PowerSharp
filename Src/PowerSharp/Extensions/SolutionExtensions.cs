@@ -6,6 +6,11 @@ using JetBrains.ProjectModel;
 using System.Collections.Generic;
 
 namespace PowerSharp.Extensions {
+    /// <summary>
+    ///
+    /// Extension-methods for ISolution class.
+    /// 
+    /// </summary>
     public static class SolutionExtensions {
         public static IReadOnlyCollection<IProject> GetAllRegularProjects(this ISolution @this) {
             ICollection<IProject> allProjectList = @this.GetAllProjects();
@@ -32,7 +37,6 @@ namespace PowerSharp.Extensions {
 
             return @this.GetAllRegularProjects().FirstOrDefault(predicate);
         }
-        [CanBeNull]
         public static bool ContainsProject(this ISolution @this, [NotNull] Func<IProject, bool> predicate) {
             Guard.IsNotNull(predicate, nameof(predicate));
 
@@ -40,8 +44,9 @@ namespace PowerSharp.Extensions {
         }
         public static bool ContainsFile(this ISolution @this,
             [ItemNotNull] IEnumerable<IProjectFolder> selectionScope,
-            string filePath,
+            [NotNull] string filePath,
             [CanBeNull] IProjectFolder defaultFolder) {
+            Guard.IsNotEmpty(filePath, nameof(filePath));
 
             return ProjectModelUtil.ContainsFile(@this, selectionScope, filePath, defaultFolder);
         }

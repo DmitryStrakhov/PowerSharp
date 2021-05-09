@@ -5,6 +5,12 @@ using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 
 namespace PowerSharp.Builders {
+    /// <summary>
+    /// 
+    /// Generates class-like declaration.
+    /// API is designed in a fluent style
+    /// 
+    /// </summary>
     public class TypeHolderBuilder {
         [NotNull] readonly ICSharpTypeAndNamespaceHolderDeclaration typeHolder;
         [NotNull] readonly CSharpElementFactory factory;
@@ -16,11 +22,8 @@ namespace PowerSharp.Builders {
         }
 
         [NotNull]
-        public AnnotationBuilder AddClass(string className, AccessRights accessRights) {
-            if(string.IsNullOrEmpty(className)) {
-                throw new ArgumentException(nameof(className));
-            }
-
+        public AnnotationBuilder AddClass([NotNull] string className, AccessRights accessRights) {
+            Guard.IsNotEmpty(className, nameof(className));
             ICSharpTypeDeclaration declaration = (IClassLikeDeclaration)factory.CreateTypeMemberDeclaration("class $0 {}", className);
             declaration.SetAccessRights(accessRights);
             return new AnnotationBuilder((IClassLikeDeclaration)typeHolder.AddTypeDeclarationAfter(declaration, null));

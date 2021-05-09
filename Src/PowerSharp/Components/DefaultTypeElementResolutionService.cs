@@ -6,6 +6,12 @@ using PowerSharp.Services;
 using JetBrains.ReSharper.Psi.Modules;
 
 namespace PowerSharp.Components {
+    /// <summary>
+    /// 
+    /// Default implementation of ITypeElementResolutionService service. Resolves
+    /// types for specified projects. It is very need for code-generation purposes.
+    /// 
+    /// </summary>
     [SolutionComponent]
     public class DefaultTypeElementResolutionService : ITypeElementResolutionService {
 
@@ -23,6 +29,9 @@ namespace PowerSharp.Components {
                 .GetTypeElementByCLRName(clrTypeName);
         }
         bool ITypeElementResolutionService.ContainsClrType(IProject project, string clrTypeName) {
+            Guard.IsNotNull(project, nameof(project));
+            Guard.IsNotEmpty(clrTypeName, nameof(clrTypeName));
+
             ITypeElementResolutionService @this = this;
             return @this.Resolve(project, clrTypeName) != null;
         }

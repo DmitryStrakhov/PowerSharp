@@ -1,12 +1,16 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using JetBrains.ReSharper.Psi;
 using PowerSharp.Builders;
+using PowerSharp.Extensions;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
-using PowerSharp.Extensions;
 
 namespace PowerSharp.QuickFixes.Components {
+    /// <summary>
+    ///
+    /// This service is used to generate instances of non-static entities.
+    /// 
+    /// </summary>
     public sealed class CreateInstanceOfInstanceMemberService : CreateInstanceServiceBase {
         public CreateInstanceOfInstanceMemberService([NotNull] ITypeMemberDeclaration memberDeclaration)
             : base(memberDeclaration) {
