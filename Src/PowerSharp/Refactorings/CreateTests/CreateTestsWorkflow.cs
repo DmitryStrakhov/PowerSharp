@@ -38,6 +38,9 @@ namespace PowerSharp.Refactorings.CreateTests {
             Assertion.Assert(sourceFile != null, "sourceFile != null");
 
             ITypeElementResolutionService service = Solution.GetComponent<ITypeElementResolutionService>();
+            
+            // get default test-project
+            //
             IProject defaultTestProject = Solution.FindProject(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName));
             Assertion.Assert(defaultTestProject != null, "defaultTestProject != null");
 
@@ -46,8 +49,13 @@ namespace PowerSharp.Refactorings.CreateTests {
             model.SourceFile = sourceFile;
             model.DefaultTargetProject = defaultTestProject;
             
+            // build default file name
+            //
             string defaultFileName = pathsService.GetUniqueFileName(defaultTestProject, declaredElement.ShortName + "Tests.cs");
             model.TargetFilePath = pathsService.Combine(defaultTestProject, defaultFileName);
+            
+            // selection scope contains all projects which have NUnit dependency installed
+            //
             model.SelectionScope = Solution.GetAllRegularProjectsWhere(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName)).ToList(x => (IProjectFolder)x);
             model.SuggestFilter = Helper[declaredElement.PresentationLanguage].CanSuggestProjectFile;
             return true;
