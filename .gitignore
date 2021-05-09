@@ -12,7 +12,6 @@ bin/
 obj/
 
 # Nuget packages
-*.nupkg
 packages/
 
 # Resharper
