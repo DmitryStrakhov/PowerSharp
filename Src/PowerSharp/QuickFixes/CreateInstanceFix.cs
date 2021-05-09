@@ -48,10 +48,10 @@ namespace PowerSharp.QuickFixes {
 
         public override bool IsAvailable(IUserDataHolder cache) {
             if(!IntentionUtils.IsValid(memberDeclaration)) return false;
-            return Service.IsAvailable(cache);
+            return Service.IsAvailable();
         }
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress) {
-            Service.Execute(solution, progress);
+            Service.Execute();
             return null;
         }
         private ICreateInstanceService Service {

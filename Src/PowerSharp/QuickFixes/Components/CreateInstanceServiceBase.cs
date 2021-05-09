@@ -1,13 +1,10 @@
 ﻿using System;
-using JetBrains.Util;
 using JetBrains.Annotations;
 using JetBrains.Diagnostics;
-using JetBrains.ProjectModel;
 using PowerSharp.Extensions;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using PowerSharp.QuickFixes.Services;
-using JetBrains.Application.Progress;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 
 namespace PowerSharp.QuickFixes.Components {
@@ -27,28 +24,25 @@ namespace PowerSharp.QuickFixes.Components {
             this.memberElement = memberDeclaration.DeclaredElement.NotNull();
         }
 
-        public void Execute(ISolution solution, IProgressIndicator progress) {
-            Guard.IsNotNull(solution, nameof(solution));
-            Guard.IsNotNull(progress, nameof(progress));
-
-            IClassLikeDeclaration classDeclaration = (IClassLikeDeclaration)memberDeclaration.GetContainingTypeDeclaration().NotNull();
+        public void Execute() {
+            IClassLikeDeclaration @class = (IClassLikeDeclaration)memberDeclaration.GetContainingTypeDeclaration().NotNull();
 
             IType memberType = memberElement.MemberType();
             string memberName = memberElement.MemberName();
             bool shouldCreateDefaultCtor = true;
 
-            foreach(IConstructorDeclaration constructor in classDeclaration.ConstructorDeclarations) {
+            foreach(IConstructorDeclaration constructor in @class.ConstructorDeclarations) {
                 if(IsAppropriateConstructor(constructor)) {
                     AddObjectInstantiationStatement(constructor, memberName, memberType);
                     shouldCreateDefaultCtor = false;
                 }
             }
             if(shouldCreateDefaultCtor) {
-                IConstructorDeclaration defaultCtor = AddDefaultConstructor(classDeclaration);
+                IConstructorDeclaration defaultCtor = AddDefaultConstructor(@class);
                 AddObjectInstantiationStatement(defaultCtor, memberName, memberType);
             }
         }
-        public bool IsAvailable(IUserDataHolder cache) {
+        public bool IsAvailable() {
             IModifiersOwner modifiers = memberDeclaration.TypeModifiers();
             if(modifiers == null || modifiers.IsAbstract) return false;
             return true;
