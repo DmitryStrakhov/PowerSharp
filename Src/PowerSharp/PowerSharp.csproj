@@ -435,9 +435,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
-  <PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <HostFullIdentifier>ReSharperPlatformVs15_3bfbc7c7PluginDebug</HostFullIdentifier>
   </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release and Pack Nuget|AnyCPU'">
     <OutputPath>bin\Release and Pack Nuget\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>

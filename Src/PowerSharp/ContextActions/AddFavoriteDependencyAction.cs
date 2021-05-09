@@ -19,7 +19,7 @@ using JetBrains.ReSharper.Feature.Services.CSharp.Analyses.Bulbs;
 
 namespace PowerSharp.ContextActions {
     [ContextAction(Name = "Add Favorite Dependency", Description = "Add your favorite dependency into a project", Group = "C#")]
-    public class AddFavoriteDependencyAction: ContextActionBase {
+    public sealed class AddFavoriteDependencyAction: ContextActionBase {
         [NotNull]
         readonly ICSharpContextActionDataProvider dataProvider;
         [NotNull] readonly ISolution solution;
