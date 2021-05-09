@@ -29,8 +29,8 @@ namespace PowerSharp.Builders {
         }
         [Pure]
         [NotNull]
-        public PageBuilder CheckBox([NotNull] IProperty<bool> property, [NotNull] string description, [CanBeNull] Action<BeCheckbox> initializer = null) {
-            BeCheckbox checkBox = property.GetBeCheckBox(lifetime, description);
+        public PageBuilder CheckBox([NotNull] IProperty<bool> property, [NotNull] string description, bool? isEnabled = null, [CanBeNull] Action<BeCheckbox> initializer = null) {
+            BeCheckbox checkBox = property.GetBeCheckBox(lifetime, description, isEnabled.GetValueOrDefault(true));
             initializer?.Invoke(checkBox);
             content.AddElement(checkBox);
             return this;

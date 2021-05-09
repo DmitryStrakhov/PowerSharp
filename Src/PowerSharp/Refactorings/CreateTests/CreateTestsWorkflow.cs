@@ -38,7 +38,7 @@ namespace PowerSharp.Refactorings.CreateTests {
             Assertion.Assert(sourceFile != null, "sourceFile != null");
 
             ITypeElementResolutionService service = Solution.GetComponent<ITypeElementResolutionService>();
-            IProject testProjectCandidate =  Solution.FindProject(x => service.ContainsClrType(x, NUnitUtil.TestFixtureAttributeClrName));
+            IProject testProjectCandidate =  Solution.FindProject(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName));
             Assertion.Assert(testProjectCandidate != null, "testProjectCandidate != null");
 
             model = new CreateTestsDataModel {SetUpMethod = true, TearDownMethod = true};
@@ -48,7 +48,7 @@ namespace PowerSharp.Refactorings.CreateTests {
             
             string fileName = pathsService.GetUniqueFileName(testProjectCandidate, declaredElement.ShortName + "Tests.cs");
             model.TargetFilePath = pathsService.Combine(testProjectCandidate, fileName);
-            model.SelectionScope = Solution.GetAllRegularProjectsWhere(x => service.ContainsClrType(x, NUnitUtil.TestFixtureAttributeClrName)).ToList(x => (IProjectFolder)x);
+            model.SelectionScope = Solution.GetAllRegularProjectsWhere(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName)).ToList(x => (IProjectFolder)x);
             model.SuggestFilter = Helper[declaredElement.PresentationLanguage].CanSuggestProjectFile;
             return true;
         }

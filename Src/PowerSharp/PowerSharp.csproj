@@ -380,7 +380,11 @@
     <Compile Include="Builders\PageBuilder.cs" />
     <Compile Include="Builders\PsiFileBuilder.cs" />
     <Compile Include="Builders\TypeHolderBuilder.cs" />
+    <Compile Include="Components\DefaultFavoriteDependencyStorage.cs" />
     <Compile Include="Components\DefaultTypeElementResolutionService.cs" />
+    <Compile Include="Utils\FluentAssertionsUtil.cs" />
+    <Compile Include="ContextActions\AddFavoriteDependencyAction.cs" />
+    <Compile Include="Utils\ContextActionUtil.cs" />
     <Compile Include="Extensions\Generic.cs" />
     <Compile Include="Extensions\BeControlExtensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
@@ -396,6 +400,13 @@
     <Compile Include="QuickFixes\CreateInstanceFix.cs" />
     <Compile Include="ContextActions\CreateTestsContextAction.cs" />
     <Compile Include="QuickFixes\Components\DefaultCreateInstanceServiceFactory.cs" />
+    <Compile Include="Refactorings\AddFavoriteDependency\AddFavoriteDependencyDataModel.cs" />
+    <Compile Include="Refactorings\AddFavoriteDependency\AddFavoriteDependencyHelper.cs" />
+    <Compile Include="Refactorings\AddFavoriteDependency\AddFavoriteDependencyPageStartPage.cs" />
+    <Compile Include="Refactorings\AddFavoriteDependency\AddFavoriteDependencyRefactoring.cs" />
+    <Compile Include="Refactorings\AddFavoriteDependency\AddFavoriteDependencyWorkflow.cs" />
+    <Compile Include="Refactorings\AddFavoriteDependency\AddFavoriteDependencyWorkflowProvider.cs" />
+    <Compile Include="Refactorings\AddFavoriteDependency\FavoriteDependency.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsDataModel.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsHelper.cs" />
     <Compile Include="Refactorings\CreateTests\CreateTestsPageStartPage.cs" />
@@ -405,6 +416,7 @@
     <Compile Include="Refactorings\CreateTests\FileCannotBeCreatedRule.cs" />
     <Compile Include="Refactorings\CreateTests\FileAlreadyExistsRule.cs" />
     <Compile Include="Components\DefaultPathsService.cs" />
+    <Compile Include="Services\IFavoriteDependencyStorage.cs" />
     <Compile Include="Services\IPathService.cs" />
     <Compile Include="Services\ITypeElementResolutionService.cs" />
     <Compile Include="Utils\NavigationUtil.cs" />

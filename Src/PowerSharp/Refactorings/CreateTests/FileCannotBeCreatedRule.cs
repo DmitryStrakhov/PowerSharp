@@ -35,7 +35,7 @@ namespace PowerSharp.Refactorings.CreateTests {
             IProject project = ProjectModelUtil.MapPathToFolder(model.GetSolution(), model.SelectionScope, out string _, filePath, model.DefaultTargetProject)?.GetProject();
             if(project != null) {
                 ITypeElementResolutionService service = model.GetSolution().GetComponent<ITypeElementResolutionService>();
-                if(!service.ContainsClrType(project, NUnitUtil.TestFixtureAttributeClrName)) {
+                if(!service.ContainsClrType(project, NUnitUtil.MarkerClrName)) {
                     rejectReason = "project doesn't have NUnit framework as a dependency";
                     return false;
                 }
