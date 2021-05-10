@@ -16,7 +16,7 @@ Sometimes you have a field or a property in your class and you just want to init
 
 Instance and static fields and properties are supported.
 
-### 2. 'Add favorite dependency' action.
+### 2. 'Add favorite dependency' action
 
 I guess every developer has its own set of favorite dependencies he uses very often. My absolute favorites are NUnit and Fluent.Assertions. A quick action 'Add favorite dependency' allows to add your favorite dependencies in the project in two clicks. Look at the picture below.
 
@@ -24,9 +24,9 @@ I guess every developer has its own set of favorite dependencies he uses very of
 
 In this version however, the set of dependencies is fixed and contains only NUnit and Fluent.Assertions. I'm going to make the dependency set customizable through a settings page in the future.
 
-### 3. 'Create tests' action.
+### 3. 'Create tests' action
 
-Let's imagine you decided to develop some tests for you class (really?!). You have a Tests-project in your solution. Next, you usually need to add some unit-testing framework dependency in your test-project, then add into your test-project a reference to the project which contains a class you want to test, and finally write some boiler-plate code which looks like this:
+Let's imagine you decided to develop some tests for you class (really?!). You have a Tests-project in your solution. Next, you usually need to add some unit-testing framework dependency in your test-project, then setup required dependencies between your projects (test-project must reference under-the-test-project), and finally write some boiler-plate code which looks like this:
 
 ```csharp
 using NUnit.Framework;
@@ -49,9 +49,10 @@ The 'Create tests' quick fix allows finishing it in a few clicks. Look at the pi
 
 ![Create-Tests](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Tests.png)
 
-So, the action generates a boiler-plate code for you and automatically adds required project-dependencies.
+So, the action generates a boiler-plate code for you and sets up required between-project dependencies.
 
 Please note however, that we support NUnit framework only at the moment.
 The quick fix is only available if the test-project already has NUnit-dependency. You can add it through 'Add favorite dependency' action by the way.
 
-New ideas and proposal are very welcome!
+--
+#### New ideas and proposal are very welcome!
