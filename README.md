@@ -26,7 +26,7 @@ In this version however, the set of dependencies is fixed and contains only NUni
 
 ### 3. 'Create tests' action
 
-Let's imagine you decided to develop some tests for you class (really?!). You have a tests-project in your solution. Next, you usually need to add some unit-testing framework dependency into your test-project, then setup required dependencies between your projects (the test-project must reference under-the-test project), and, finally, write some boiler-plate code which looks like this:
+Let's imagine you decided to develop some tests for you class (really?!). You have a test-project in your solution. Next, you usually need to add some unit-testing framework dependency into your test-project, then setup required dependencies between your projects (the test-project must reference under-the-test project), and, finally, write some boiler-plate code which looks like this:
 
 ```csharp
 using NUnit.Framework;
