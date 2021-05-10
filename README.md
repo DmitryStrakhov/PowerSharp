@@ -1,6 +1,6 @@
 # PowerSharp
 
-PowerSharp is a Resharper plugin which provides nice features I miss in out of the box. I started this project to make my own experience with R# even more better, but, I'd be happy if the plugin becomes useful for the others in community.
+PowerSharp is a Resharper plugin which provides nice features I miss out of the box. I started this project to make my own experience with R# even more better, but, I'd be happy if the plugin becomes useful for the others in a community.
 
 You can find a ready-to-install plugin package here: [PowerSharp->NuGet](https://github.com/DmitryStrakhov/PowerSharp/tree/main/Nuget)
 
@@ -14,7 +14,7 @@ Sometimes you have a field or a property in you class and you just want to insta
 ![Create-Instance-01](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Instance-01.png)
 ![Create-Instance-02](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Instance-02.png)
 
-We support instance and static fields and properties.
+Instance and static fields and properties are supported.
 
 ### 2. 'Add favorite dependency' action.
 
@@ -26,7 +26,7 @@ In this version however, the set of dependencies is fixed and contains only NUni
 
 ### 3. 'Create tests' action.
 
-Let's imagine you decided to develop some tests for you class (really?!). You have a Tests-project in your solution. Next, you usually need to add some unit-testing framework dependency in your test-project, then add a reference to the project which contains a class you want to test into the test-project, and write some boiler-plate code which looks like this:
+Let's imagine you decided to develop some tests for you class (really?!). You have a Tests-project in your solution. Next, you usually need to add some unit-testing framework dependency in your test-project, then add into your test-project a reference to the project which contains a class you want to test, and finally write some boiler-plate code which looks like this:
 
 ```csharp
 using NUnit.Framework;
