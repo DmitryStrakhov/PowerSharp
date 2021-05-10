@@ -49,10 +49,10 @@ The 'Create tests' quick fix allows finishing it in a few clicks. Look at the pi
 
 ![Create-Tests](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Tests.png)
 
-So, the action generates a boiler-plate code for you and sets up required between-project dependencies.
+So, the action generates a boiler-plate code for you and sets up required between-projects dependencies.
 
 Please note however, that we support NUnit framework only at the moment.
-The quick fix is only available if the test-project already has NUnit-dependency. You can add it through 'Add favorite dependency' action by the way.
+The quick fix is available if the test-project already has NUnit-dependency. You can add it through 'Add favorite dependency' action by the way.
 
 --
 #### New ideas and proposal are very welcome!
