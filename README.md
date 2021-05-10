@@ -18,7 +18,7 @@ Instance and static fields and properties are supported.
 
 ### 2. 'Add favorite dependency' action
 
-I guess every developer has its own set of favorite dependencies he or she uses very often. My absolute favorites are NUnit and Fluent.Assertions. A quick action 'Add favorite dependency' allows to add your favorite dependencies in the project in two clicks. Look at the picture below.
+I guess every developer has its own set of favorite dependencies he or she uses very often. My absolute favorites are NUnit and Fluent.Assertions. A quick action 'Add favorite dependency' allows to add your favorite dependencies into the project in two clicks. Look at the picture below.
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Add-Favorite-Dependency.png)
 
