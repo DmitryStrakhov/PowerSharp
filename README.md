@@ -52,7 +52,9 @@ The 'Create tests' action allows finishing it in a few clicks. Look at the pictu
 So, the action generates a boiler-plate code for you and sets up required between-projects dependencies.
 
 Please note however, we support NUnit framework only at the moment.
+
 The action is available if the test-project already has NUnit-dependency. You can add it through 'Add favorite dependency' action by the way.
+
 
 --
 #### New ideas and proposal are very welcome!
