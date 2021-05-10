@@ -13,7 +13,7 @@ using PowerSharp.Refactorings.CreateTests;
 using JetBrains.Application.UI.Actions.ActionManager;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
 using JetBrains.ReSharper.Feature.Services.ContextActions;
-using JetBrains.ReSharper.Feature.Services.CSharp.Analyses.Bulbs;
+using JetBrains.ReSharper.Feature.Services.CSharp.ContextActions;
 
 namespace PowerSharp.ContextActions {
     [ContextAction(Name = "Create Tests", Description = "Creates a test fixture for a class", Group = "C#")]

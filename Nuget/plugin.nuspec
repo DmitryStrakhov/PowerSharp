@@ -3,7 +3,7 @@
     
     <metadata>        
         <id>ResharperPlugin.PowerSharp</id>
-        <version>2020.3.0</version>
+        <version>2021.1.0</version>
         <title>PowerSharp</title>
         <authors>Strakhov Dmitry</authors>
         <owners>Strakhov Dmitry</owners>
@@ -15,7 +15,7 @@
                        
         <dependencies>
             <group targetFramework=".NETFramework4.6.1">
-                <dependency id="Wave" version="[203.0.0]" />
+                <dependency id="Wave" version="[211.0.0]" />
             </group>
         </dependencies>
 

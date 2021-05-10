@@ -15,7 +15,7 @@ using PowerSharp.Refactorings.AddFavoriteDependency;
 using JetBrains.Application.UI.Actions.ActionManager;
 using JetBrains.ReSharper.Feature.Services.ContextActions;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
-using JetBrains.ReSharper.Feature.Services.CSharp.Analyses.Bulbs;
+using JetBrains.ReSharper.Feature.Services.CSharp.ContextActions;
 
 namespace PowerSharp.ContextActions {
     [ContextAction(Name = "Add Favorite Dependency", Description = "Add your favorite dependency into a project", Group = "C#")]
