@@ -9,7 +9,7 @@ You can find a ready-to-install plugin package here: [PowerSharp->NuGet](https:/
 
 ### 1. 'Create instance' quick fix
 
-Sometimes you have a field or a property in you class and you just want to instantiate it in the class' constructor (means aggregation relationship between two classes). For this purpose, a quick fix 'Create instance' was introduced. Look at the pictures below:
+Sometimes you have a field or a property in your class and you just want to initialize it in the class' constructor (that means aggregation relationships between two classes). For this purpose, a quick fix 'Create instance' was introduced. Look at the pictures below:
 
 ![Create-Instance-01](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Instance-01.png)
 ![Create-Instance-02](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Instance-02.png)
