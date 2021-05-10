@@ -18,7 +18,7 @@ Instance and static fields and properties are supported.
 
 ### 2. 'Add favorite dependency' action
 
-I guess every developer has its own set of favorite dependencies he or she uses very often. My absolute favorites are NUnit and Fluent.Assertions. A quick action 'Add favorite dependency' allows to add your favorite dependencies into the project in two clicks. Look at the picture below.
+I guess every developer has its own set of favorite dependencies he or she uses very often. My absolute favorites are NUnit and Fluent.Assertions. An action 'Add favorite dependency' allows to add your favorite dependencies into the project in two clicks. Look at the picture below.
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Add-Favorite-Dependency.png)
 
@@ -45,14 +45,14 @@ namespace Project.Tests {
 ```
 Very boring!
 
-The 'Create tests' quick fix allows finishing it in a few clicks. Look at the picture:
+The 'Create tests' action allows finishing it in a few clicks. Look at the picture:
 
 ![Create-Tests](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Tests.png)
 
 So, the action generates a boiler-plate code for you and sets up required between-projects dependencies.
 
 Please note however, that we support NUnit framework only at the moment.
-The quick fix is available if the test-project already has NUnit-dependency. You can add it through 'Add favorite dependency' action by the way.
+The action is available if the test-project already has NUnit-dependency. You can add it through 'Add favorite dependency' action by the way.
 
 --
 #### New ideas and proposal are very welcome!
