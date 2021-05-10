@@ -57,4 +57,4 @@ The action is available if the test-project already has NUnit-dependency. You ca
 
 
 --
-#### New ideas and proposal are very welcome!
+#### New ideas and proposals are very welcome!
