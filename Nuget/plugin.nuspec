@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">   
-    
-    <metadata>        
-        <id>ResharperPlugin.PowerSharp</id>
-        <version>2021.1.0</version>
-        <title>PowerSharp</title>
-        <authors>Strakhov Dmitry</authors>
-        <owners>Strakhov Dmitry</owners>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <projectUrl>https://github.com/DmitryStrakhov/PowerSharp</projectUrl>
-        <description>PowerSharp extends R# by a few nice features. Please follow project's github repository for more details.</description>
-        <copyright>Copyright</copyright>
-	<tags></tags>
-                       
-        <dependencies>
-            <group targetFramework=".NETFramework4.6.1">
-                <dependency id="Wave" version="[211.0.0]" />
-            </group>
-        </dependencies>
 
-    </metadata>      
-    <files>
-        <file src="..\Src\PowerSharp\bin\Release and Pack Nuget\PowerSharp.dll" target="dotFiles\" />
-        <file src="..\Src\PowerSharp\bin\Release and Pack Nuget\PowerSharp.pdb" target="dotFiles\" />
-    </files>
-         
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ResharperPlugin.PowerSharp</id>
+    <version>2021.2.0</version>
+    <title>PowerSharp</title>
+    <authors>Strakhov Dmitry</authors>
+    <owners>Strakhov Dmitry</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/DmitryStrakhov/PowerSharp</projectUrl>
+    <description>PowerSharp extends R# by a few nice features. Please follow project's github repository for more details.</description>
+    <copyright>Copyright</copyright>
+    <tags></tags>
+
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Wave" version="[212.0.0]" />
+      </group>
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="..\Src\PowerSharp\bin\Release and Pack Nuget\PowerSharp.dll" target="dotFiles\" />
+    <file src="..\Src\PowerSharp\bin\Release and Pack Nuget\PowerSharp.pdb" target="dotFiles\" />
+  </files>
+
 </package>
