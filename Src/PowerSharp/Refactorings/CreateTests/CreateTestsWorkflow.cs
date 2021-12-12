@@ -100,7 +100,7 @@ namespace PowerSharp.Refactorings.CreateTests {
 
                     // add target file
                     //
-                    FileSystemPath path = projectFolder.Location.Combine(fileName);
+                    VirtualFileSystemPath path = projectFolder.Location.Combine(fileName);
                     model.TestClassFile = transactionCookie.AddFile(projectFolder, path);
 
                     // start code generation

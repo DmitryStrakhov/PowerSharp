@@ -36,7 +36,7 @@ namespace PowerSharp.Builders {
         [NotNull]
         public TypeHolderBuilder AddExpectedNamespace() {
             string @namespace = CalculateExpectedNamespace();
-            ICSharpNamespaceDeclaration declaration = factory.CreateNamespaceDeclaration(@namespace);
+            ICSharpNamespaceDeclaration declaration = factory.CreateNamespaceDeclaration(@namespace, false);
             ICSharpNamespaceDeclaration typeHolder = psiFile.AddNamespaceDeclarationAfter(declaration, null);
             return new TypeHolderBuilder(typeHolder);
         }
