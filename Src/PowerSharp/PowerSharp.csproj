@@ -535,9 +535,14 @@
     <Compile Include="Builders\TypeHolderBuilder.cs" />
     <Compile Include="Components\DefaultFavoriteDependencyStorage.cs" />
     <Compile Include="Components\DefaultTypeElementResolutionService.cs" />
+    <Compile Include="ContextActions\EditContextActionBase.cs" />
+    <Compile Include="ContextActions\EditMethodContextAction.cs" />
+    <Compile Include="ContextActions\EditPropertyContextActionBase.cs" />
+    <Compile Include="ContextActions\EditPropertyGetterContextAction.cs" />
+    <Compile Include="ContextActions\EditPropertySetterContextAction.cs" />
     <Compile Include="Utils\FluentAssertionsUtil.cs" />
     <Compile Include="ContextActions\AddFavoriteDependencyAction.cs" />
-    <Compile Include="Utils\ContextActionUtil.cs" />
+    <Compile Include="Utils\ContextActionDataProviderExtensions.cs" />
     <Compile Include="Extensions\BeControlExtensions.cs" />
     <Compile Include="Extensions\ConstructorDeclarationExtensions.cs" />
     <Compile Include="Extensions\ProjectFileExtensions.cs" />
@@ -598,7 +603,7 @@
     </None>
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <HostFullIdentifier>ReSharperPlatformVs15_3bfbc7c7PluginDebug</HostFullIdentifier>
+    <HostFullIdentifier>ReSharperPlatformVs15_f63c42adPluginDebug</HostFullIdentifier>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

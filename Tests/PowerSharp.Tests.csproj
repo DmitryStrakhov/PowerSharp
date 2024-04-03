@@ -513,6 +513,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditPropertySetterActionTests.cs" />
+    <Compile Include="EditPropertyGetterActionTests.cs" />
+    <Compile Include="EditMethodActionTests.cs" />
     <Compile Include="CreateTestsActionTests.cs" />
     <Compile Include="CreateTestsTests.cs" />
     <Compile Include="PowerSharpTestsAssembly.cs" />
@@ -541,6 +544,27 @@
     <None Include="Test\Data\CreateInstanceFix\Test10.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test11.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test12.cs" />
+    <None Include="Test\Data\EditMethodAction\Test02.cs.gold" />
+    <None Include="Test\Data\EditMethodAction\Test05.cs.gold" />
+    <None Include="Test\Data\EditMethodAction\Test06.cs.gold" />
+    <None Include="Test\Data\EditMethodAction\Test07.cs.gold" />
+    <None Include="Test\Data\EditMethodAction\Test08.cs.gold" />
+    <None Include="Test\Data\EditMethodAction\Test04.cs.gold" />
+    <None Include="Test\Data\EditMethodAction\Test03.cs.gold" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test06.cs.gold" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test07.cs.gold" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test04.cs.gold" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test05.cs.gold" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test03.cs.gold" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test02.cs.gold" />
+    <None Include="Test\Data\EditPropertySetterAction\Test02.cs.gold" />
+    <None Include="Test\Data\EditPropertySetterAction\Test03.cs.gold" />
+    <None Include="Test\Data\EditPropertySetterAction\Test04.cs.gold" />
+    <None Include="Test\Data\EditPropertySetterAction\Test05.cs.gold" />
+    <None Include="Test\Data\EditPropertySetterAction\Test06.cs.gold" />
+    <None Include="Test\Data\EditPropertySetterAction\Test01.cs.gold" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test01.cs.gold" />
+    <None Include="Test\Data\EditMethodAction\Test01.cs.gold" />
     <None Include="Test\Data\CreateTestsAction\Test01.cs.gold" />
     <None Include="Test\Data\CreateTestsRefactoring\MyPoint7Tests.cs.gold" />
     <None Include="Test\Data\CreateTestsRefactoring\MyPoint6Tests.cs.gold" />
@@ -556,6 +580,27 @@
     <None Include="Test\Data\CreateTestsRefactoring\Test06.cs" />
     <None Include="Test\Data\CreateTestsRefactoring\Test07.cs" />
     <None Include="Test\Data\CreateTestsAction\Test01.cs" />
+    <None Include="Test\Data\EditMethodAction\Test01.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test01.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test01.cs" />
+    <None Include="Test\Data\EditMethodAction\Test02.cs" />
+    <None Include="Test\Data\EditMethodAction\Test03.cs" />
+    <None Include="Test\Data\EditMethodAction\Test04.cs" />
+    <None Include="Test\Data\EditMethodAction\Test05.cs" />
+    <None Include="Test\Data\EditMethodAction\Test06.cs" />
+    <None Include="Test\Data\EditMethodAction\Test07.cs" />
+    <None Include="Test\Data\EditMethodAction\Test08.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test02.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test03.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test04.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test05.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test06.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test07.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test02.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test04.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test05.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test06.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test03.cs" />
     <Compile Include="ZoneMarker.cs" />
     <None Include="Test\Data\CreateInstanceFix\Simple.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test01.cs.gold" />

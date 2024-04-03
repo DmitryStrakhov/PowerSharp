@@ -31,7 +31,7 @@ namespace PowerSharp.ContextActions {
         public override string Text { get { return "Add favorite dependencies"; } }
 
         public override bool IsAvailable(IUserDataHolder cache) {
-            IClassLikeDeclaration declaration = ContextActionUtil.GetClassLikeDeclaration(dataProvider);
+            IClassLikeDeclaration declaration = dataProvider.GetClassLikeDeclaration();
             if(!IntentionUtils.IsValid(declaration)) return false;
             Assertion.Assert(declaration != null, "declaration != null");
 
