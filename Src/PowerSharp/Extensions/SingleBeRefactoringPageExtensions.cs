@@ -13,7 +13,7 @@ namespace PowerSharp.Extensions {
         [NotNull]
         public static IProperty<T> Property<T>(this SingleBeRefactoringPage @this, [NotNull] string id, T value) {
             Guard.IsNotEmpty(id, nameof(id));
-            return new Property<T>(@this.Lifetime, id, value);
+            return new Property<T>(id, value);
         }
     }
 }
