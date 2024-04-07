@@ -2,7 +2,7 @@
 
 PowerSharp is a Resharper plugin which provides nice features I miss out-of-the box. I started this project to make my own experience with Resharper even more better, but, I'd be happy if the plugin becomes useful for the others in a community.
 
-You can find a ready-to-install plugin package here: [PowerSharp->NuGet](https://github.com/DmitryStrakhov/PowerSharp/tree/main/Nuget)
+You can find a ready-to-install plugin package here: [PowerSharp->Plugins](https://github.com/DmitryStrakhov/PowerSharp/tree/main/Plugins)
 
 
 ## Feature List
