@@ -12,8 +12,6 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,7 +43,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
-    <PostBuildEvent>nuget pack "..\..\..\..\Nuget\plugin.nuspec" -OutputDirectory "..\..\..\..\Nuget"</PostBuildEvent>
+    <PostBuildEvent>nuget pack "..\..\..\..\Plugins\plugin.nuspec" -OutputDirectory "..\..\..\..\Plugins"</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
