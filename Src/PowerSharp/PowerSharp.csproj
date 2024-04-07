@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release and Pack Nuget|AnyCPU'">
-    <OutputPath>bin\Release and Pack Nuget\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
+    <OutputPath>bin\Release and Deployment\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -44,7 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release and Pack Nuget|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
     <PostBuildEvent>nuget pack "..\..\..\..\Nuget\plugin.nuspec" -OutputDirectory "..\..\..\..\Nuget"</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
@@ -138,7 +138,6 @@
     <PackageReference Include="JetBrains.HabitatDetector">
       <Version>1.0.2</Version>
     </PackageReference>
-
     <PackageReference Include="JetBrains.ReSharper.SDK">
       <Version>2023.3.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
