@@ -6,7 +6,6 @@
     <AssemblyName>PowerSharp</AssemblyName>
     <IsPackable>False</IsPackable>
     <DefineConstants>$(DefineConstants);RESHARPER</DefineConstants>
-    <IncludeBuildOutput>false</IncludeBuildOutput>
     <LangVersion>latest</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
