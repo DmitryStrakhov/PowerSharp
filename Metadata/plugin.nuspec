@@ -5,11 +5,11 @@
     <id>ResharperPlugin.PowerSharp</id>
     <version>2023.3.0</version>
     <title>PowerSharp</title>
-    <authors>Strakhov Dmitry</authors>
-    <owners>Strakhov Dmitry</owners>
+    <authors>Dmitry Strakhov</authors>
+    <owners>Dmitry Strakhov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/DmitryStrakhov/PowerSharp</projectUrl>
-    <description>PowerSharp extends R# by a few nice features. Please follow project's github repository for more details.</description>
+    <description>PowerSharp extends Resharper by a few nice features like 'Create Instance', 'Create Tests', 'Edit Method' and more. Please follow project's github repository for more details.</description>
     <copyright>Copyright</copyright>
     <tags></tags>
 

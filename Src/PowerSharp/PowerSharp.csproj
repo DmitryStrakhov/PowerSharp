@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
-    <Exec Command="nuget pack &quot;$(SolutionDir)Plugins\plugin.nuspec&quot; -OutputDirectory &quot;$(SolutionDir)Plugins&quot;" />
+    <Exec Command="nuget pack &quot;$(SolutionDir)Metadata\plugin.nuspec&quot; -OutputDirectory &quot;$(SolutionDir)Plugins&quot;" />
   </Target>
 
 </Project>

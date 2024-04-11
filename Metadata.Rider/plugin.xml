@@ -1,0 +1,10 @@
+<idea-plugin require-restart="true">
+  <change-notes>Initial version</change-notes>
+  <id>com.jetbrains.rider.plugins.powersharp</id>
+  <name>PowerSharp</name>
+  <version>2023.3.0</version>
+  <vendor url="https://github.com/DmitryStrakhov/PowerSharp">Dmitry Strakhov</vendor>
+  <idea-version since-build="233.11799" until-build="233.*" />
+  <depends>com.intellij.modules.rider</depends>
+  <description><![CDATA[<p>PowerSharp extends Rider by a few nice features like 'Create Instance', 'Create Tests', 'Edit Method' and more. Please follow project's github repository for more details.</p>]]></description>
+</idea-plugin>

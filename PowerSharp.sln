@@ -5,11 +5,22 @@ VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerSharp", "Src\PowerSharp\PowerSharp.csproj", "{6AE16E19-E4AA-41D6-B06F-A306AF8AA20E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerSharp.Tests", "Tests\PowerSharp.Tests.csproj", "{52423502-A9A3-4D31-97CB-F5BDA3533283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerSharp.Tests", "Tests\PowerSharp.Tests.csproj", "{52423502-A9A3-4D31-97CB-F5BDA3533283}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64BD1684-61A3-4608-AA5C-8DC5E32D8738}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerSharp.Rider", "Src\PowerSharp\PowerSharp.Rider.csproj", "{D17177C6-6380-4AC4-B295-73920A0F38E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{E0EC359A-6F2B-4F23-82BF-9E5A5E6CBDAE}"
 	ProjectSection(SolutionItems) = preProject
-		Plugins\plugin.nuspec = Plugins\plugin.nuspec
+		Metadata\plugin.nuspec = Metadata\plugin.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata.Rider", "Metadata.Rider", "{394698ED-E702-49AA-99E7-EDCD96CBE94A}"
+	ProjectSection(SolutionItems) = preProject
+		Metadata.Rider\dependencies.json = Metadata.Rider\dependencies.json
+		Metadata.Rider\MANIFEST.MF = Metadata.Rider\MANIFEST.MF
+		Metadata.Rider\plugin.xml = Metadata.Rider\plugin.xml
 	EndProjectSection
 EndProject
 Global
@@ -30,9 +41,19 @@ Global
 		{52423502-A9A3-4D31-97CB-F5BDA3533283}.Release and Deployment|Any CPU.ActiveCfg = Release|Any CPU
 		{52423502-A9A3-4D31-97CB-F5BDA3533283}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52423502-A9A3-4D31-97CB-F5BDA3533283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D17177C6-6380-4AC4-B295-73920A0F38E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D17177C6-6380-4AC4-B295-73920A0F38E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D17177C6-6380-4AC4-B295-73920A0F38E5}.Release and Deployment|Any CPU.ActiveCfg = Release and Deployment|Any CPU
+		{D17177C6-6380-4AC4-B295-73920A0F38E5}.Release and Deployment|Any CPU.Build.0 = Release and Deployment|Any CPU
+		{D17177C6-6380-4AC4-B295-73920A0F38E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D17177C6-6380-4AC4-B295-73920A0F38E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0EC359A-6F2B-4F23-82BF-9E5A5E6CBDAE} = {64BD1684-61A3-4608-AA5C-8DC5E32D8738}
+		{394698ED-E702-49AA-99E7-EDCD96CBE94A} = {64BD1684-61A3-4608-AA5C-8DC5E32D8738}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C309A8C2-B693-4EC9-9C0A-9ACBF221B788}
