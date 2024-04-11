@@ -27,19 +27,27 @@
     <PackageReference Include="JetBrains.Rider.SDK" Version="2023.3.0" />
   </ItemGroup>
 
-  <Target Name="BuildPluginDirectoryDeploymentTask" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
+
+  <!--Plugin Descriptor-->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
+    <PluginDirectory>$(OutputPath)\$(PluginName)</PluginDirectory>
+    <JarDirectory>$(PluginDirectory)\$(PluginName)\lib\$(PluginName)</JarDirectory>
+    <DotnetDir>$(PluginDirectory)\$(PluginName)\dotnet</DotnetDir>
+  </PropertyGroup>
+
+  <Target Name="PluginBuildTask" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
     <ItemGroup>
-      <MetadataDir Include="$(SolutionDir)Metadata.Rider\**\*.*" />
+      <MetadataDirMask Include="$(SolutionDir)Metadata.Rider\**\*.*" />
     </ItemGroup>
     
-    <Copy SourceFiles="@(MetadataDir)" DestinationFolder="$(OutputPath)\$(PluginName)\$(PluginName)\lib\$(PluginName)\META-INF\%(RecursiveDir)" />
-    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(OutputPath)\$(PluginName)\$(PluginName)\dotnet\" />
-    <Copy SourceFiles="$(OutputPath)$(AssemblyName).pdb" DestinationFolder="$(OutputPath)\$(PluginName)\$(PluginName)\dotnet\" />
-    <ZipDirectory SourceDirectory="$(OutputPath)\$(PluginName)\$(PluginName)\lib\$(PluginName)\" DestinationFile="$(OutputPath)\$(PluginName)\$(PluginName)\lib\$(PluginName).jar" Overwrite="True" />
-    <RemoveDir Directories="$(OutputPath)\$(PluginName)\$(PluginName)\lib\$(PluginName)\" />
-    <ZipDirectory SourceDirectory="$(OutputPath)\$(PluginName)\" DestinationFile="$(OutputPath)\$(PluginName).zip" Overwrite="True" />
-    <RemoveDir Directories="$(OutputPath)\$(PluginName)\" />
-    <Copy SourceFiles="$(OutputPath)\$(PluginName).zip" DestinationFolder="$(SolutionDir)\Plugins" OverwriteReadOnlyFiles="True" />
+    <Copy SourceFiles="@(MetadataDirMask)" DestinationFolder="$(JarDirectory)\META-INF\%(RecursiveDir)" />
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(DotnetDir)" />
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).pdb" DestinationFolder="$(DotnetDir)" />
+    <ZipDirectory SourceDirectory="$(JarDirectory)" DestinationFile="$(JarDirectory).jar" Overwrite="True" />
+    <RemoveDir Directories="$(JarDirectory)" />
+    <ZipDirectory SourceDirectory="$(PluginDirectory)" DestinationFile="$(PluginDirectory).zip" Overwrite="True" />
+    <RemoveDir Directories="$(PluginDirectory)" />
+    <Copy SourceFiles="$(PluginDirectory).zip" DestinationFolder="$(SolutionDir)\Plugins" OverwriteReadOnlyFiles="True" />
   </Target>
 
 </Project>
