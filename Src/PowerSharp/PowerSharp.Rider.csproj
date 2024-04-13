@@ -27,27 +27,26 @@
     <PackageReference Include="JetBrains.Rider.SDK" Version="2023.3.0" />
   </ItemGroup>
 
-
-  <!--Plugin Descriptor-->
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
-    <PluginDirectory>$(OutputPath)\$(PluginName)</PluginDirectory>
-    <JarDirectory>$(PluginDirectory)\$(PluginName)\lib\$(PluginName)</JarDirectory>
-    <DotnetDir>$(PluginDirectory)\$(PluginName)\dotnet</DotnetDir>
-  </PropertyGroup>
-
   <Target Name="PluginBuildTask" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
+    <PropertyGroup>
+      <PluginDirectory>$(TargetDir)$(PluginName)</PluginDirectory>
+      <PluginFile>$(PluginDirectory).zip</PluginFile>
+      <JarFile>$(PluginDirectory)\lib\$(PluginName).jar</JarFile>
+      <MetaInfDirectory>$(PluginDirectory)\lib\META-INF</MetaInfDirectory>
+      <DotnetDirectory>$(PluginDirectory)\dotnet</DotnetDirectory>
+      <Archiver>&quot;$(ProjectDir)Build\7z.exe&quot;</Archiver>
+    </PropertyGroup>
+    
     <ItemGroup>
       <MetadataDirMask Include="$(SolutionDir)Metadata.Rider\**\*.*" />
     </ItemGroup>
     
-    <Copy SourceFiles="@(MetadataDirMask)" DestinationFolder="$(JarDirectory)\META-INF\%(RecursiveDir)" />
-    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(DotnetDir)" />
-    <Copy SourceFiles="$(OutputPath)$(AssemblyName).pdb" DestinationFolder="$(DotnetDir)" />
-    <ZipDirectory SourceDirectory="$(JarDirectory)" DestinationFile="$(JarDirectory).jar" Overwrite="True" />
-    <RemoveDir Directories="$(JarDirectory)" />
-    <ZipDirectory SourceDirectory="$(PluginDirectory)" DestinationFile="$(PluginDirectory).zip" Overwrite="True" />
-    <RemoveDir Directories="$(PluginDirectory)" />
-    <Copy SourceFiles="$(PluginDirectory).zip" DestinationFolder="$(SolutionDir)\Plugins" OverwriteReadOnlyFiles="True" />
+    <Copy SourceFiles="@(MetadataDirMask)" DestinationFolder="$(MetaInfDirectory)\%(RecursiveDir)" />
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(DotnetDirectory)" />
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).pdb" DestinationFolder="$(DotnetDirectory)" />
+    <Exec Command="$(Archiver) a -sdel &quot;$(JarFile)&quot; &quot;$(MetaInfDirectory)&quot; "/>
+    <Exec Command="$(Archiver) a -sdel &quot;$(PluginFile)&quot; &quot;$(PluginDirectory)&quot; "/>
+    <Copy SourceFiles="$(PluginFile)" DestinationFolder="$(SolutionDir)\Plugins" OverwriteReadOnlyFiles="True" />
   </Target>
 
 </Project>
