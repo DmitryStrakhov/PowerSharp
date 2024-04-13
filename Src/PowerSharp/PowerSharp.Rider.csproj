@@ -12,7 +12,7 @@
     <OutputPath>bin.Rider\$(Configuration)\</OutputPath>
     <Configurations>Debug;Release;Release and Deployment</Configurations>
     
-    <PluginName>ResharperPlugin.PowerSharp.2023.3.0</PluginName>
+    <PluginName>RiderPlugin.PowerSharp.2023.3.0</PluginName>
   </PropertyGroup>
 
   <ItemGroup>
