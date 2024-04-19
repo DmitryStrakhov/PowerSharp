@@ -33,7 +33,7 @@ namespace PowerSharp.ContextActions {
             if(!solution.ContainsProject(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName)))
                 return false;
 
-            IClassLikeDeclaration declaration = dataProvider.GetClassLikeDeclaration();
+            IClassLikeDeclaration declaration = dataProvider.TryGetClassLikeDeclaration();
             if(!IntentionUtils.IsValid(declaration)) return false;
             return declaration is IClassDeclaration || declaration is IStructDeclaration;
         }
