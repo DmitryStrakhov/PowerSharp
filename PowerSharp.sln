@@ -18,9 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{E0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata.Rider", "Metadata.Rider", "{394698ED-E702-49AA-99E7-EDCD96CBE94A}"
 	ProjectSection(SolutionItems) = preProject
-		Metadata.Rider\dependencies.json = Metadata.Rider\dependencies.json
-		Metadata.Rider\MANIFEST.MF = Metadata.Rider\MANIFEST.MF
-		Metadata.Rider\plugin.xml = Metadata.Rider\plugin.xml
+		Metadata.Rider\META-INF\dependencies.json = Metadata.Rider\META-INF\dependencies.json
+		Metadata.Rider\PowerSharp\EditMethodAction.java = Metadata.Rider\PowerSharp\EditMethodAction.java
+		Metadata.Rider\PowerSharp\EditPropertyGetterAction.java = Metadata.Rider\PowerSharp\EditPropertyGetterAction.java
+		Metadata.Rider\PowerSharp\EditPropertySetterAction.java = Metadata.Rider\PowerSharp\EditPropertySetterAction.java
+		Metadata.Rider\META-INF\MANIFEST.MF = Metadata.Rider\META-INF\MANIFEST.MF
+		Metadata.Rider\META-INF\plugin.xml = Metadata.Rider\META-INF\plugin.xml
 	EndProjectSection
 EndProject
 Global

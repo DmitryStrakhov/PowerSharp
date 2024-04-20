@@ -17,8 +17,14 @@
 
   <ItemGroup>
     <!--clean 'obj' folder-->
+    <Compile Remove="bin.Rider\**" />
+    <Compile Remove="Build\**" />
     <Compile Remove="obj\**\*" />
+    <None Remove="bin.Rider\**" />
+    <None Remove="Build\**" />
     <None Remove="obj\**\*" />
+    <EmbeddedResource Remove="bin.Rider\**" />
+    <EmbeddedResource Remove="Build\**" />
     <EmbeddedResource Remove="obj\**\*" />
     <Content Remove="obj\**\*" />
   </ItemGroup>
@@ -27,25 +33,49 @@
     <PackageReference Include="JetBrains.Rider.SDK" Version="2023.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Properties\PowerSharpResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PowerSharpResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\PowerSharpResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PowerSharpResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <Target Name="PluginBuildTask" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
     <PropertyGroup>
       <PluginDirectory>$(TargetDir)$(PluginName)</PluginDirectory>
       <PluginFile>$(PluginDirectory).zip</PluginFile>
-      <JarFile>$(PluginDirectory)\lib\$(PluginName).jar</JarFile>
-      <MetaInfDirectory>$(PluginDirectory)\lib\META-INF</MetaInfDirectory>
+      <LibDirectory>$(PluginDirectory)\lib</LibDirectory>
+      <JarFile>$(LibDirectory)\$(PluginName).jar</JarFile>
+      <ActionsDir>$(LibDirectory)\PowerSharp</ActionsDir>
       <DotnetDirectory>$(PluginDirectory)\dotnet</DotnetDirectory>
-      <Archiver>&quot;$(ProjectDir)Build\7z.exe&quot;</Archiver>
+      <Archiver>"$(ProjectDir)Build\7z.exe"</Archiver>
+      <RiderJDK>%LOCALAPPDATA%\JetBrains\Installations\Rider233\lib</RiderJDK>
+      <JavaCompiler>%LOCALAPPDATA%\JetBrains\Installations\Rider233\jbr\bin\javac.exe</JavaCompiler>
     </PropertyGroup>
     
     <ItemGroup>
       <MetadataDirMask Include="$(SolutionDir)Metadata.Rider\**\*.*" />
     </ItemGroup>
-    
-    <Copy SourceFiles="@(MetadataDirMask)" DestinationFolder="$(MetaInfDirectory)\%(RecursiveDir)" />
+
+    <!--Build plugin's file & folder structure-->
+    <Copy SourceFiles="@(MetadataDirMask)" DestinationFolder="$(LibDirectory)\%(RecursiveDir)" />
     <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(DotnetDirectory)" />
     <Copy SourceFiles="$(OutputPath)$(AssemblyName).pdb" DestinationFolder="$(DotnetDirectory)" />
-    <Exec Command="$(Archiver) a -sdel &quot;$(JarFile)&quot; &quot;$(MetaInfDirectory)&quot; "/>
-    <Exec Command="$(Archiver) a -sdel &quot;$(PluginFile)&quot; &quot;$(PluginDirectory)&quot; "/>
+    
+    <!--Compile Java-actions & clean-->
+    <Exec Command="pushd &quot;$(ActionsDir)&quot; &amp; &quot;$(JavaCompiler)&quot; -cp .;&quot;$(RiderJDK)\*&quot; *.java &amp; del *.java &amp; popd" />
+    
+    <!--Pack and Copy-->
+    <Exec Command="$(Archiver) a -sdel &quot;$(JarFile)&quot; &quot;$(LibDirectory)\*&quot; " />
+    <Exec Command="$(Archiver) a -sdel &quot;$(PluginFile)&quot; &quot;$(PluginDirectory)&quot; " />
     <Copy SourceFiles="$(PluginFile)" DestinationFolder="$(SolutionDir)\Plugins" OverwriteReadOnlyFiles="True" />
   </Target>
 
