@@ -1,15 +1,16 @@
 ﻿using System;
 using NUnit.Framework;
-using PowerSharp.ContextActions;
-using JetBrains.ReSharper.FeaturesTestFramework.Intentions;
+using JetBrains.ReSharper.TestFramework;
 
 namespace PowerSharp.Tests {
      [TestFixture]
-     public class EditPropertySetterActionTests : CSharpContextActionExecuteTestBase<EditPropertySetterContextAction> {
+     public class EditPropertySetterActionTests : ExecuteActionTestBase {
+         protected override string ActionId {
+             get { return "EditPropertySetter"; }
+         }
          protected override string RelativeTestDataPath {
              get { return "EditPropertySetterAction"; }
          }
-         protected override string ExtraPath { get { return string.Empty; } }
 
          [Test] public void Test01() { DoNamedTest(); }
          [Test] public void Test02() { DoNamedTest(); }
