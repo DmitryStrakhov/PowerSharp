@@ -55,6 +55,32 @@ Please note however, we support NUnit framework only at the moment.
 
 The action is available if the test-project already has NUnit-dependency. You can add it through 'Add favorite dependency' action by the way.
 
+### 4. Edit actions
+
+Let me describe an use case. You have some interface you need to implement. You created an class which implements it and ask R# (or Rider) to generate boilerplate code for you. Usually it creates something like this:
+
+![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-General.png)
+
+Now you need to navigate through you code and implement those members. But there is a problem (at least for me)): most navigation features move your caret position at the name of target member. That means that to start writing a code, you need to move cursor down, delete generated stub-code (e.g. throw new NotImplementedException()) and (3 or 4 actions!) only after that to start coding. All of that made me nervous. I want to start code immediatelly (maximum what I' ready to do before is to run one action, but not 3 or 4).
+
+So, let me introduce
+
+##### 'Edit Method' action
+
+If your caret is on the method name, the 'Edit Method' action is available. When it runs, you get the following result:
+
+![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Method.png)
+
+
+##### 'Edit Property Getter' and 'Edit Property Setter' actions
+
+If the caret is on the property name, the 'Edit Property Getter' and 'Edit Property Setter' actions are available. The result is the following:
+
+![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Getter.png)
+
+![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Setter.png)
+
+Of course, you can bind those actions to your favorite shortcuts to get maximum efficiency.
 
 --
 #### New ideas and proposals are very welcome!
