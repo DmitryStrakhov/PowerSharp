@@ -49,7 +49,7 @@ The 'Create tests' action allows to do this much faster. Look at the picture:
 
 ![Create-Tests](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Create-Tests.png)
 
-The action generates a boiler-plate code for you and sets up required between-projects dependencies that it hasn't been done already.
+The action generates a boiler-plate code for you and sets up required between-projects dependencies if that hasn't been done already.
 
 Please note, however, that only NUnit framework is supported at the moment.
 
