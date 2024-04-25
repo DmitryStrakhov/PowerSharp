@@ -49,16 +49,16 @@ namespace PowerSharp.Builders {
         }
         [Pure]
         [NotNull]
-        public PageBuilder StartGroupBox() {
+        public PageBuilder StartCollapsiblePanel() {
             return new PageBuilder(lifetime, this);
         }
         [NotNull]
-        public PageBuilder EndGroupBox([NotNull] string title) {
+        public PageBuilder EndCollapsiblePanel([NotNull] string title) {
             Guard.IsNotEmpty(title, nameof(title));
 
             if(owner == null)
                 throw new InvalidOperationException(nameof(owner));
-            owner.content.AddElement(content.InGroupBox(title));
+            owner.content.AddElement(content.InCollapsiblePanel(title));
             return owner;
         }
         [Pure]

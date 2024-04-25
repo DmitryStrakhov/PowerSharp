@@ -12,24 +12,27 @@ using JetBrains.ReSharper.Feature.Services.Refactorings;
 
 namespace PowerSharp.Refactorings.AddFavoriteDependency {
     public class AddFavoriteDependencyWorkflow : DrivenRefactoringWorkflow2<AddFavoriteDependencyHelper> {
-        AddFavoriteDependencyDataModel model;
+        public AddFavoriteDependencyWorkflow(ISolution solution, [NotNull] IProject project)
+            : this(solution) {
+            Model.Project = project;
+        }
 
         public AddFavoriteDependencyWorkflow([NotNull] ISolution solution, [CanBeNull] string actionId = null)
             : base(solution, actionId) {
+            Model = new AddFavoriteDependencyDataModel();
         }
 
-        public AddFavoriteDependencyDataModel Model { get { return model; } }
+        public AddFavoriteDependencyDataModel Model { get; }
 
         public override bool Initialize(IDataContext context) {
             IProject project = IsAvailableCore(context)?.GetProject();
             Assertion.Assert(project != null, "project != null");
-            
-            IFavoriteDependencyStorage dependencyStorage = Solution.GetComponent<IFavoriteDependencyStorage>();
-            model = new AddFavoriteDependencyDataModel();
-            model.Project = project;
 
-            model.DependencyList = dependencyStorage.GetDependencies();
-            return model.DependencyList.Count != 0;
+            if(project != null)
+                Model.Project = project;
+
+            Model.DependencyList = Solution.GetComponent<IFavoriteDependencyStorage>().GetDependencies();
+            return Model.DependencyList.Count != 0;
         }
         public override bool IsAvailable(IDataContext context) {
             IDeclaration declaration = IsAvailableCore(context);
@@ -54,13 +57,13 @@ namespace PowerSharp.Refactorings.AddFavoriteDependency {
             get { return new AddFavoriteDependencyPageStartPage(this); }
         }
         public override bool PreExecute(IProgressIndicator pi) {
-            List<FavoriteDependency> installList = model.NeedToInstallList;
+            List<FavoriteDependency> installList = Model.NeedToInstallList;
             if(installList.Count == 0) return true;
 
             NuGetNativePackageManager packageManager = Solution.GetComponent<NuGetNativePackageManager>();
 
             foreach(FavoriteDependency dependency in installList) {
-                packageManager.InstallLatestPackage(model.Project, dependency.Id);
+                packageManager.InstallLatestPackage(Model.Project, dependency.Id);
             }
             return true;
         }

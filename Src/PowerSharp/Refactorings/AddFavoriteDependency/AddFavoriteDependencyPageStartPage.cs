@@ -20,7 +20,7 @@ namespace PowerSharp.Refactorings.AddFavoriteDependency {
         }
 
         public override BeControl GetPageContent() {
-            PageBuilder builder = pageBuilder.StartGroupBox();
+            PageBuilder builder = pageBuilder.StartCollapsiblePanel();
 
             foreach(FavoriteDependency dependency in model.DependencyList) {
                 bool isInstalled = dependency.IsInstalled(model.Project);
@@ -29,7 +29,7 @@ namespace PowerSharp.Refactorings.AddFavoriteDependency {
                 dependencyViewList.Add(new FavoriteDependencyViewModel(dependency, isInstalled, property));
                 builder = builder.CheckBox(property, dependency.Id, !isInstalled);
             }
-            return builder.EndGroupBox("NUnit Packages").Content();
+            return builder.EndCollapsiblePanel("NUnit Packages").Content();
         }
         public override void Commit() {
             foreach(FavoriteDependencyViewModel dependencyView in dependencyViewList) {

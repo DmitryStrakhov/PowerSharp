@@ -59,6 +59,9 @@ namespace PowerSharp.Extensions {
                 case BeGroupBox groupBox:
                     yield return groupBox.Content;
                     break;
+                case BeCollapsiblePanel panel:
+                    yield return panel.Content;
+                    break;
             }
         }
     }

@@ -44,12 +44,12 @@ namespace PowerSharp.Refactorings.CreateTests {
                     .WithValidationRule(Lifetime, p => new FileCannotBeCreatedRule(p, solution, model))
                     .WithProjectItemCompletion(solution, Lifetime, model.Declaration?.Language ?? KnownLanguage.ANY, model.SelectionScope.ToList(p => (IProjectModelElement)p), model.SuggestFilter);
                 })
-                .StartGroupBox()
+                .StartCollapsiblePanel()
                 .CheckBox(SetUpMethod, "SetUp")
                 .CheckBox(TearDownMethod, "TearDown")
                 .CheckBox(OneTimeSetUpMethod, "OneTimeSetUp")
                 .CheckBox(OneTimeTearDownMethod, "OneTimeTearDown")
-                .EndGroupBox("Methods")
+                .EndCollapsiblePanel("Methods")
                 .Content();
         }
         public override void Commit() {
