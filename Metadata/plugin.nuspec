@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ResharperPlugin.PowerSharp</id>
-    <version>2024.1.0</version>
+    <version>2024.2.0</version>
     <title>PowerSharp</title>
     <authors>Dmitry Strakhov</authors>
     <owners>Dmitry Strakhov</owners>
@@ -15,7 +15,7 @@
 
     <dependencies>
       <group targetFramework=".NETFramework4.7.2">
-        <dependency id="Wave" version="[241.0.0]" />
+        <dependency id="Wave" version="[242.0.0]" />
       </group>
     </dependencies>
   </metadata>
