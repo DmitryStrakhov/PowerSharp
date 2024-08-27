@@ -7,6 +7,7 @@ using JetBrains.Diagnostics;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Application.Progress;
 using JetBrains.Application.DataContext;
+using JetBrains.Application.Help;
 using JetBrains.ProjectModel.NuGet.PackageManagement;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
 
@@ -68,7 +69,7 @@ namespace PowerSharp.Refactorings.AddFavoriteDependency {
             return true;
         }
         public override string Title { get { return "Add Favorite Dependency"; } }
-        public override string HelpKeyword { get { return "Refactorings__Add_Favorite_Dependency"; } }
+        public override HelpId HelpKeyword { get { return HelpId.None; } }
         public override bool MightModifyManyDocuments { get { return true; } }
         public override RefactoringActionGroup ActionGroup { get { return RefactoringActionGroup.Blessed; } }
     }
