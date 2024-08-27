@@ -8,7 +8,7 @@
   <depends>com.intellij.modules.rider</depends>
   <description><![CDATA[<p>PowerSharp extends Rider by a few nice features like 'Create Instance', 'Create Tests', 'Edit Method' and more. Please follow project's github repository for more details.</p>]]></description>
   
-  <actions resource-bundle="messages.RiderPluginActionsBundle">
+  <actions>
     <action id="PowerSharp.EditMethod" class="PowerSharp.EditMethodAction" />
     <action id="PowerSharp.EditPropertyGetter" class="PowerSharp.EditPropertyGetterAction" />
     <action id="PowerSharp.EditPropertySetter" class="PowerSharp.EditPropertySetterAction" />
