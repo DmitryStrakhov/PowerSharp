@@ -13,6 +13,7 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Application.Progress;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.Application.DataContext;
+using JetBrains.Application.Help;
 using JetBrains.ReSharper.Psi.Transactions;
 using JetBrains.DocumentManagers.Transactions;
 using JetBrains.ReSharper.Feature.Services.Refactorings;
@@ -175,7 +176,7 @@ namespace PowerSharp.Refactorings.CreateTests {
             base.SuccessfulFinish(pi);
         }
         public override string Title { get { return "Create Tests"; } }
-        public override string HelpKeyword { get { return "Refactorings__Create_Tests"; } }
+        public override HelpId HelpKeyword { get { return HelpId.None; } }
         public override bool MightModifyManyDocuments { get { return true; } }
         public override RefactoringActionGroup ActionGroup { get { return RefactoringActionGroup.Blessed; } }
     }
