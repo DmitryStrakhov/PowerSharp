@@ -10,61 +10,46 @@ using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
 namespace PowerSharp.Utils {
     public static class ActionDataProviderExtensions {
         public static IClassLikeDeclaration TryGetClassLikeDeclaration([NotNull] this IContextActionDataProvider @this) {
-            return TryGetTreeNodeBySelectedIdentifier(@this, identifier => ClassLikeDeclarationNavigator.GetByNameIdentifier(identifier));
+            return TryGetSelectedDeclaration(() => @this.GetSelectedElement<ICSharpIdentifier>(), () => @this.SelectedTreeRange, identifier => ClassLikeDeclarationNavigator.GetByNameIdentifier(identifier));
         }
-        [CanBeNull]
-        public static IMethodDeclaration TryGetMethodDeclaration([NotNull] this IContextActionDataProvider @this) {
-            return TryGetTreeNodeBySelectedIdentifier(@this, identifier => MethodDeclarationNavigator.GetByNameIdentifier(identifier));
-        }
-        [CanBeNull]
-        public static IPropertyDeclaration TryGetPropertyDeclaration([NotNull] this IContextActionDataProvider @this) {
-            return TryGetTreeNodeBySelectedIdentifier(@this, identifier => PropertyDeclarationNavigator.GetByNameIdentifier(identifier));
+        public static IClassLikeDeclaration TryGetClassLikeDeclaration([NotNull] this IDataContext @this) {
+            return TryGetSelectedDeclaration(() => @this.GetSelectedTreeNode<ICSharpIdentifier>(), null, identifier => ClassLikeDeclarationNavigator.GetByNameIdentifier(identifier));
         }
 
-        public static IClassLikeDeclaration TryGetClassLikeDeclaration([NotNull] this IDataContext @this) {
-            return TryGetTreeNodeBySelectedIdentifier(@this, identifier => ClassLikeDeclarationNavigator.GetByNameIdentifier(identifier));
-        }
         [CanBeNull]
         public static IMethodDeclaration TryGetMethodDeclaration([NotNull] this IDataContext @this) {
-            return TryGetTreeNodeBySelectedIdentifier(@this, identifier => MethodDeclarationNavigator.GetByNameIdentifier(identifier));
+            return TryGetSelectedDeclaration(() => @this.GetSelectedTreeNode<ICSharpTreeNode>(), null, csharpTreeNode => csharpTreeNode.GetContainingNode<IMethodDeclaration>(true));
         }
         [CanBeNull]
         public static IPropertyDeclaration TryGetPropertyDeclaration([NotNull] this IDataContext @this) {
-            return TryGetTreeNodeBySelectedIdentifier(@this, identifier => PropertyDeclarationNavigator.GetByNameIdentifier(identifier));
-        }
-
-
-        [CanBeNull]
-        static T TryGetTreeNodeBySelectedIdentifier<T>(IContextActionDataProvider dataProvider, Func<ICSharpIdentifier, T> getNode)
-            where T : class, ITreeNode {
-            return TryGetSelectedDeclaration(() => dataProvider.GetSelectedElement<ICSharpIdentifier>(), () => dataProvider.SelectedTreeRange, getNode);
+            return TryGetSelectedDeclaration(() => @this.GetSelectedTreeNode<ICSharpTreeNode>(), null, csharpTreeNode => csharpTreeNode.GetContainingNode<IPropertyDeclaration>());
         }
         [CanBeNull]
-        static T TryGetTreeNodeBySelectedIdentifier<T>(IDataContext context, Func<ICSharpIdentifier, T> getNode)
-            where T : class, ITreeNode {
-            return TryGetSelectedDeclaration(() => context.GetSelectedTreeNode<ICSharpIdentifier>(), null, getNode);
+        public static IAccessorDeclaration TryGetAccessorDeclaration([NotNull] this IDataContext @this) {
+            return TryGetSelectedDeclaration(() => @this.GetSelectedTreeNode<ICSharpTreeNode>(), null, csharpTreeNode => csharpTreeNode.GetContainingNode<IAccessorDeclaration>());
         }
 
         [CanBeNull]
-        static T TryGetSelectedDeclaration<T>(
-            [NotNull] Func<ICSharpIdentifier> getSelectedIdentifier,
+        static TOutputNode TryGetSelectedDeclaration<TSelectedNode, TOutputNode>(
+            [NotNull] Func<TSelectedNode> getSelectedNode,
             [CanBeNull] Func<TreeTextRange> getSelectedTextRange,
-            [NotNull] Func<ICSharpIdentifier, T> getNode
+            [NotNull] Func<TSelectedNode, TOutputNode> getOutputNode
         )
-            where T : class, ITreeNode {
+            where TSelectedNode : class, ITreeNode
+            where TOutputNode : class, ITreeNode {
 
-            var selectedId = getSelectedIdentifier();
-            if(selectedId == null) return null;
-
-            TreeTextRange textRange = selectedId.GetTreeTextRange();
+            TSelectedNode selectedNode = getSelectedNode();
+            if(selectedNode == null)
+                return null;
 
             if(getSelectedTextRange == null)
-                return getNode(selectedId);
+                return getOutputNode(selectedNode);
 
-            var selectedTreeRange = getSelectedTextRange();
+            TreeTextRange textRange = selectedNode.GetTreeTextRange();
+            TreeTextRange selectedTreeRange = getSelectedTextRange();
             ref TreeTextRange local2 = ref selectedTreeRange;
             ref TreeTextRange local1 = ref textRange;
-            return local1.Contains(in local2) ? getNode(selectedId) : null;
+            return local1.Contains(in local2) ? getOutputNode(selectedNode) : null;
         }
     }
 }

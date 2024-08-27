@@ -1,32 +1,33 @@
 ﻿using System;
-using JetBrains.TextControl;
 using JetBrains.Annotations;
 using JetBrains.DocumentModel;
+using JetBrains.Diagnostics;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.TextControl.DataContext;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.Application.UI.ActionsRevised.Menu;
+using JetBrains.TextControl;
+using JetBrains.TextControl.DataContext;
 
 namespace PowerSharp.Actions {
     public abstract class EditActionBase : IExecutableAction {
+        ICSharpFunctionDeclaration targetMethod;
+
         #region IExecutableAction
 
         bool IExecutableAction.Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate) {
-            return IsAvailable(context);
+            return (targetMethod = GetTargetFunction(context)) != null;
         }
 
         void IExecutableAction.Execute(IDataContext context, DelegateExecute nextExecute) {
+            targetMethod.NotNull();
+
             ITextControl editor = context.GetData(TextControlDataConstants.TEXT_CONTROL);
             if(editor == null)
                 return;
 
-            ICSharpFunctionDeclaration function = GetTargetFunction(context);
-            if(function == null)
-                return;
-
-            DocumentRange range = CalculateSelectionRange(function);
+            DocumentRange range = CalculateSelectionRange(targetMethod);
 
             if(range.IsValid())
                 editor.Selection.SetRange(range);
@@ -50,8 +51,6 @@ namespace PowerSharp.Actions {
             }
             return DocumentRange.InvalidRange;
         }
-        protected abstract bool IsAvailable(IDataContext context);
-
         [CanBeNull]
         protected abstract ICSharpFunctionDeclaration GetTargetFunction(IDataContext context);
     }

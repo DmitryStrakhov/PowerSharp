@@ -9,12 +9,9 @@ using JetBrains.Application.Shortcuts.ShortcutManager;
 namespace PowerSharp.Actions {
     [Action(typeof(PowerSharpResource), nameof(PowerSharpResource.EditMethodActionText), ShortcutScope = ShortcutScope.TextEditor, Id = 1552586)]
     public sealed class EditMethodAction : EditActionBase {
-        protected override bool IsAvailable(IDataContext context) {
-            IMethodDeclaration method = context.TryGetMethodDeclaration();
-            return IntentionUtils.IsValid(method) && method.HasCodeBody();
-        }
         protected override ICSharpFunctionDeclaration GetTargetFunction(IDataContext context) {
-            return context.TryGetMethodDeclaration();
+            IMethodDeclaration method = context.TryGetMethodDeclaration();
+            return IntentionUtils.IsValid(method) && method.HasCodeBody() ? method : null;
         }
     }
 }
