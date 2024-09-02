@@ -93,6 +93,8 @@
     <Compile Remove="Test\Data\NewMemberAction\Test15.cs" />
     <Compile Remove="Test\Data\NewMemberAction\Test16.cs" />
     <Compile Remove="Test\Data\NewMemberAction\Test17.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test18.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test19.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -167,6 +169,8 @@
     <None Include="Test\Data\NewMemberAction\Test14.cs" />
     <None Include="Test\Data\NewMemberAction\Test15.cs" />
     <None Include="Test\Data\NewMemberAction\Test16.cs" />
+    <None Include="Test\Data\NewMemberAction\Test18.cs" />
+    <None Include="Test\Data\NewMemberAction\Test19.cs" />
     <None Include="Test\Data\NewMemberAction\Test17.cs" />
   </ItemGroup>
 

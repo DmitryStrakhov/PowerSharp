@@ -70,6 +70,8 @@ namespace PowerSharp.Actions {
 
             for(TreeElement e = treeElement; e != null; e = e is ISandBox holder ? (TreeElement) holder.GetParentNode() : e.parent) {
                 switch (e) {
+                    case IAccessorDeclaration _:
+                        break;
                     case ICSharpFunctionDeclaration function:
                         if(function.HasCodeBody())
                             return function.Body.RBrace;
