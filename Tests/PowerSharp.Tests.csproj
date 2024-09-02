@@ -76,6 +76,23 @@
     <Compile Remove="Test\Data\EditPropertySetterAction\Test07.cs" />
     <Compile Remove="Test\Data\EditPropertySetterAction\Test08.cs" />
     <Compile Remove="Test\Data\EditPropertySetterAction\Test09.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test01.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test02.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test03.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test04.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test05.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test06.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test07.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test08.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test09.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test10.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test11.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test12.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test13.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test14.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test15.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test16.cs" />
+    <Compile Remove="Test\Data\NewMemberAction\Test17.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -107,6 +124,9 @@
     <None Include="Test\Data\EditMethodAction\Test05.cs" />
     <None Include="Test\Data\EditMethodAction\Test06.cs" />
     <None Include="Test\Data\EditMethodAction\Test07.cs" />
+    <None Include="Test\Data\EditMethodAction\Test15.cs" />
+    <None Include="Test\Data\EditMethodAction\Test14.cs" />
+    <None Include="Test\Data\EditMethodAction\Test13.cs" />
     <None Include="Test\Data\EditMethodAction\Test12.cs" />
     <None Include="Test\Data\EditMethodAction\Test11.cs" />
     <None Include="Test\Data\EditMethodAction\Test10.cs" />
@@ -131,6 +151,23 @@
     <None Include="Test\Data\EditPropertySetterAction\Test08.cs" />
     <None Include="Test\Data\EditPropertySetterAction\Test07.cs" />
     <None Include="Test\Data\EditPropertySetterAction\Test06.cs" />
+    <None Include="Test\Data\NewMemberAction\Test01.cs" />
+    <None Include="Test\Data\NewMemberAction\Test02.cs" />
+    <None Include="Test\Data\NewMemberAction\Test03.cs" />
+    <None Include="Test\Data\NewMemberAction\Test04.cs" />
+    <None Include="Test\Data\NewMemberAction\Test05.cs" />
+    <None Include="Test\Data\NewMemberAction\Test06.cs" />
+    <None Include="Test\Data\NewMemberAction\Test07.cs" />
+    <None Include="Test\Data\NewMemberAction\Test08.cs" />
+    <None Include="Test\Data\NewMemberAction\Test09.cs" />
+    <None Include="Test\Data\NewMemberAction\Test10.cs" />
+    <None Include="Test\Data\NewMemberAction\Test11.cs" />
+    <None Include="Test\Data\NewMemberAction\Test12.cs" />
+    <None Include="Test\Data\NewMemberAction\Test13.cs" />
+    <None Include="Test\Data\NewMemberAction\Test14.cs" />
+    <None Include="Test\Data\NewMemberAction\Test15.cs" />
+    <None Include="Test\Data\NewMemberAction\Test16.cs" />
+    <None Include="Test\Data\NewMemberAction\Test17.cs" />
   </ItemGroup>
 
   <ItemGroup>

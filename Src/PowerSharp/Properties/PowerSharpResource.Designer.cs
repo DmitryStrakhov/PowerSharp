@@ -86,5 +86,14 @@ namespace PowerSharp.Properties {
                 return ResourceManager.GetString("EditPropertySetterActionText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Member Line.
+        /// </summary>
+        public static string NewMemberLineActionText {
+            get {
+                return ResourceManager.GetString("NewMemberLineActionText", resourceCulture);
+            }
+        }
     }
 }
