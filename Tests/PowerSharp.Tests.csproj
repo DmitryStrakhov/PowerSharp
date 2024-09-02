@@ -54,6 +54,9 @@
     <Compile Remove="Test\Data\EditMethodAction\Test10.cs" />
     <Compile Remove="Test\Data\EditMethodAction\Test11.cs" />
     <Compile Remove="Test\Data\EditMethodAction\Test12.cs" />
+    <Compile Remove="Test\Data\EditMethodAction\Test13.cs" />
+    <Compile Remove="Test\Data\EditMethodAction\Test14.cs" />
+    <Compile Remove="Test\Data\EditMethodAction\Test15.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test01.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test02.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test03.cs" />

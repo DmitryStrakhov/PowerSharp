@@ -1,0 +1,19 @@
+﻿using System;
+
+namespace PluginTests {
+    class MyClass {
+        int x;
+        int y;
+        int z;
+
+        public MyClass(int x, int y, int z) {
+            {selstart}this.x = x;
+            this.y = y;
+            this.z = z;{selend}
+        }
+
+        public void Method() {
+            throw new NotImplementedException();
+        }
+    }
+}

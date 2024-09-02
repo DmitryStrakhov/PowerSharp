@@ -1,33 +1,33 @@
 ﻿using System;
 using JetBrains.Annotations;
-using JetBrains.DocumentModel;
-using JetBrains.Diagnostics;
-using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
-using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.Application.UI.ActionsRevised.Menu;
+using JetBrains.Diagnostics;
+using JetBrains.DocumentModel;
+using JetBrains.ReSharper.Psi.CSharp.Tree;
+using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.TextControl.DataContext;
 
 namespace PowerSharp.Actions {
     public abstract class EditActionBase : IExecutableAction {
-        ICSharpFunctionDeclaration targetMethod;
+        ICSharpFunctionDeclaration targetFunction;
 
         #region IExecutableAction
 
         bool IExecutableAction.Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate) {
-            return (targetMethod = GetTargetFunction(context)) != null;
+            return (targetFunction = GetTargetFunction(context)) != null;
         }
 
         void IExecutableAction.Execute(IDataContext context, DelegateExecute nextExecute) {
-            targetMethod.NotNull();
+            targetFunction.NotNull();
 
             ITextControl editor = context.GetData(TextControlDataConstants.TEXT_CONTROL);
             if(editor == null)
                 return;
 
-            DocumentRange range = CalculateSelectionRange(targetMethod);
+            DocumentRange range = CalculateSelectionRange(targetFunction);
 
             if(range.IsValid())
                 editor.Selection.SetRange(range);

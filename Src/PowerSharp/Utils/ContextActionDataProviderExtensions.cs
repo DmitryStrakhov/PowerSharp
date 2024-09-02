@@ -17,8 +17,8 @@ namespace PowerSharp.Utils {
         }
 
         [CanBeNull]
-        public static IMethodDeclaration TryGetMethodDeclaration([NotNull] this IDataContext @this) {
-            return TryGetSelectedDeclaration(() => @this.GetSelectedTreeNode<ICSharpTreeNode>(), null, csharpTreeNode => csharpTreeNode.GetContainingNode<IMethodDeclaration>(true));
+        public static ICSharpFunctionDeclaration TryGetFunctionDeclaration([NotNull] this IDataContext @this) {
+            return TryGetSelectedDeclaration(() => @this.GetSelectedTreeNode<ICSharpTreeNode>(), null, csharpTreeNode => csharpTreeNode.GetContainingNode<ICSharpFunctionDeclaration>(true));
         }
         [CanBeNull]
         public static IPropertyDeclaration TryGetPropertyDeclaration([NotNull] this IDataContext @this) {

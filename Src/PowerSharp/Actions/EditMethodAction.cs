@@ -10,8 +10,8 @@ namespace PowerSharp.Actions {
     [Action(typeof(PowerSharpResource), nameof(PowerSharpResource.EditMethodActionText), ShortcutScope = ShortcutScope.TextEditor, Id = 1552586)]
     public sealed class EditMethodAction : EditActionBase {
         protected override ICSharpFunctionDeclaration GetTargetFunction(IDataContext context) {
-            IMethodDeclaration method = context.TryGetMethodDeclaration();
-            return IntentionUtils.IsValid(method) && method.HasCodeBody() ? method : null;
+            ICSharpFunctionDeclaration function = context.TryGetFunctionDeclaration();
+            return IntentionUtils.IsValid(function) && function.HasCodeBody() ? function : null;
         }
     }
 }
