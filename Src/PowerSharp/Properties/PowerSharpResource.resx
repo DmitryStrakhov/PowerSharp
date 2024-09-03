@@ -126,6 +126,9 @@
   <data name="EditPropertySetterActionText" xml:space="preserve">
     <value>Edit Property Setter</value>
   </data>
+  <data name="ForceMethodCallActionText" xml:space="preserve">
+    <value>Force Method Call</value>
+  </data>
   <data name="NewMemberLineActionText" xml:space="preserve">
     <value>New Member Line</value>
   </data>

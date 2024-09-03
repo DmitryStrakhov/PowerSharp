@@ -88,6 +88,15 @@ namespace PowerSharp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Force Method Call.
+        /// </summary>
+        public static string ForceMethodCallActionText {
+            get {
+                return ResourceManager.GetString("ForceMethodCallActionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Member Line.
         /// </summary>
         public static string NewMemberLineActionText {
