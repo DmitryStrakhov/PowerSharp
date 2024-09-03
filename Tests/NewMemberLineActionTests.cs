@@ -9,7 +9,7 @@ namespace PowerSharp.Tests {
              get { return "NewMemberLine"; }
          }
          protected override string RelativeTestDataPath {
-             get { return "NewMemberAction"; }
+             get { return "NewMemberLineAction"; }
          }
 
          [Test] public void Test01() { DoNamedTest(); }
