@@ -1,5 +1,4 @@
 ﻿using System;
-using Should;
 using JetBrains.Util;
 using JetBrains.Annotations;
 using JetBrains.Diagnostics;
@@ -22,38 +21,41 @@ using JetBrains.ReSharper.Feature.Services.CSharp.TypingAssist;
 using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
 
 namespace PowerSharp.Actions {
-    [Action(typeof(PowerSharpResource), nameof(PowerSharpResource.NewMemberLineActionText), ShortcutScope = ShortcutScope.TextEditor, Id = 1552586)]
+    [Action(typeof(PowerSharpResource), nameof(PowerSharpResource.NewMemberLineActionText), ShortcutScope = ShortcutScope.TextEditor, Id = 1412132)]
     public class NewMemberLineAction : IExecutableAction {
-        ITreeNode insertionPoint;
-        static readonly string NewLineString = Environment.NewLine + " ";
+        (ITreeNode node, DocumentOffset docOffset)? insertionPointNullable;
+        static readonly string NewLineString =
+#if RIDER
+            "\n ";
+#else
+            "\r\n ";
+#endif
 
         #region IExecutableAction
 
         bool IExecutableAction.Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate) {
-            return (insertionPoint = GetInsertionPoint(context)) != null;
+            return (insertionPointNullable = GetInsertionPoint(context)) != null;
         }
 
         void IExecutableAction.Execute(IDataContext context, DelegateExecute nextExecute) {
-            insertionPoint.NotNull();
-            DocumentOffset insertionPointOffset = insertionPoint.GetDocumentEndOffset();
-            insertionPointOffset.IsValid().ShouldBeTrue();
+            insertionPointNullable.NotNull();
+            (ITreeNode node, DocumentOffset docOffset) = insertionPointNullable.Value;
 
             ITextControl editor = context.GetData(TextControlDataConstants.TEXT_CONTROL);
             editor.NotNull();
             ISolution solution = context.GetData(ProjectModelDataConstants.SOLUTION);
             solution.NotNull();
-            IPsiServices psiServices = insertionPoint.GetPsiServices();
+            IPsiServices psiServices = node.GetPsiServices();
 
             using(psiServices.Solution.UsingCommand(nameof(NewMemberLineAction))) {
                 using(psiServices.Transactions.DocumentTransactionManager.CreateTransactionCookie(DefaultAction.Commit, nameof(NewMemberLineAction))) {
                     using(WriteLockCookie.Create()) {
-                        editor.Document.InsertText(insertionPoint.GetDocumentEndOffset(), NewLineString);
+                        editor.Document.InsertText(docOffset, NewLineString);
                     }
-
                     psiServices.Files.CommitAllDocuments();
                 }
             }
-            editor.Caret.MoveTo(insertionPointOffset + Environment.NewLine.Length, CaretVisualPlacement.DontScrollIfVisible);
+            editor.Caret.MoveTo(docOffset + NewLineString.Length, CaretVisualPlacement.DontScrollIfVisible);
             TypingHelper(solution).DoSmartIndentOnEnterImpl(editor);
         }
         [NotNull]
@@ -64,8 +66,17 @@ namespace PowerSharp.Actions {
 
         #endregion
 
+        static (ITreeNode node, DocumentOffset docOffset)? GetInsertionPoint([NotNull] IDataContext context) {
+            ITreeNode node = GetAnchorNode(context);
+            if(node != null) {
+                DocumentOffset docOffset = node.GetDocumentEndOffset();
+                if(docOffset.IsValid())
+                    return (node, docOffset);
+            }
+            return null;
+        }
         [CanBeNull]
-        static ITreeNode GetInsertionPoint([NotNull] IDataContext context) {
+        static ITreeNode GetAnchorNode([NotNull] IDataContext context) {
             TreeElement treeElement = context.GetSelectedTreeNode<TreeElement>();
 
             for(TreeElement e = treeElement; e != null; e = e is ISandBox holder ? (TreeElement) holder.GetParentNode() : e.parent) {

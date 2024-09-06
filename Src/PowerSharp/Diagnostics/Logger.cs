@@ -1,8 +1,7 @@
 ﻿using System.IO;
 
 namespace PowerSharp.Diagnostics {
-#if DEBUG
-    public class Logger {
+    class Logger {
         readonly StreamWriter writer;
 
         private Logger() {
@@ -15,5 +14,4 @@ namespace PowerSharp.Diagnostics {
             writer.Flush();
         }
     }
-#endif
 }

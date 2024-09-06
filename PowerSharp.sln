@@ -22,7 +22,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata.Rider", "Metadata.
 		Metadata.Rider\PowerSharp\EditMethodAction.java = Metadata.Rider\PowerSharp\EditMethodAction.java
 		Metadata.Rider\PowerSharp\EditPropertyGetterAction.java = Metadata.Rider\PowerSharp\EditPropertyGetterAction.java
 		Metadata.Rider\PowerSharp\EditPropertySetterAction.java = Metadata.Rider\PowerSharp\EditPropertySetterAction.java
+		Metadata.Rider\PowerSharp\ForceMethodCallAction.java = Metadata.Rider\PowerSharp\ForceMethodCallAction.java
 		Metadata.Rider\META-INF\MANIFEST.MF = Metadata.Rider\META-INF\MANIFEST.MF
+		Metadata.Rider\PowerSharp\NewMemberLineAction.java = Metadata.Rider\PowerSharp\NewMemberLineAction.java
 		Metadata.Rider\META-INF\plugin.xml = Metadata.Rider\META-INF\plugin.xml
 	EndProjectSection
 EndProject
