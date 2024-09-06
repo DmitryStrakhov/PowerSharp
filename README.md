@@ -111,13 +111,13 @@ Those actions select a code of a method or a property, so you can start typing i
 
 ### 5. 'New Member Line' action
 
-Let's image that you are typing a code or navigating through your codebase and you need to add some code to it. For this, you need to set caret at some point inside your type (usually after current-edited method or after a last member of type), add new empty line and start typing new code. This usually takes a few keyboard gestures. Considering that this is a very frequent scenario, it would be cool to make it faster. The action 'New Member Line' helps us here.
+Let's imagine you are typing a code or navigating through your code base and you need to add some code to it. For this, you usually need to set a caret at some point inside your type (usually after currently-edited method or after the last member of type), then add new empty line and start typing new code. This usually takes a few keyboard gestures. Considering that this is a very common scenario, it would be cool to make it faster. The action 'New Member Line' helps us here.
 
-If your caret is inside some member-code, then running the action adds new line below the member and navigate your caret to it considering IDE code-formatting rules. Look at the picture:
+If your caret is inside some type-member, then running the action adds new line below the type-member and navigate your caret to it considering IDE code-formatting rules. Look at the picture:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-01.png)
 
-If your caret is placed outside member-code (e.g. in the fields-section of type), new line is created after last member of type. Look at the picture:
+If your caret is placed outside a type-member (e.g. in the fields-section of type), new line is created after last type-member of type. Look at the picture:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-02.png)
 
@@ -125,12 +125,12 @@ As usual, assigning a shortcut for this action makes a maximum efficiency.
 
 ### 6. 'Force Method Call' action
 
-This action helps to solve one subtle issue related to the code completion feature of R#/Rider. When we are typing a code, a code-completion popup appears and suggests to use some members or action available in a current context. It is greatly useful but sometimes you don't need to use those suggestion, e.g. if the method you want to call doesn't exist at the moment. You type the method name, but then you have to close the code-completion popup (by pressing Esc key usually) before you can finish a method call statement because typing '(' symbol selects a node in the code-completion popup and that is not what you want. It would be better to cut this path.
+This action helps to solve one subtle issue related to the code completion feature of R#/Rider. When we are typing a code, a code-completion popup appears and suggests to use some type-members or actions available in a current context. It is greatly useful but sometimes you don't need to use those suggestion, e.g. if the method you want to call doesn't exist at the moment. You type the method name, but then you have to close the code-completion popup (by pressing Esc usually) before you can finish a method call statement because typing '(' symbol selects a node in the code-completion popup and that is not what you want. It would be better to cut this path.
 
 Look at the picture below:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Force-Method-Call.png)
 
-Running the 'Force Method Call' action cancels the code-completion popup, finishes method-call statement (it adds '(', ')', ';' symbols) and sets caret between '(' and ')' which allows you to pass some arguments to the method if required.
+Running the 'Force Method Call' action cancels the code-completion popup, finishes method-call statement (it adds '(', ')', ';' symbols) and sets caret between '(' and ')' symbols which allows to pass some arguments to the method if required.
 
-Note: of course, code-completion popup's behavior can be customized with IDE settings, but my experiments show that if one, for example, turns off automatic item selection in the code-completion popup (which solves the described issue at the first glance) actually makes general code-completion experience worse. So, I prefer to leave a default code-completion behavior as is and use the 'Force Method Call' action to solve the issue instead.
+Note: of course IDE allows to customize the code-completion popup's behavior, but my experiments show that if one, for example, turns off automatic item selection in the code-completion popup (which solves the described issue at the first glance) actually makes general code-completion experience worse. So, I prefer to leave a default code-completion behavior as is and use the 'Force Method Call' action to solve the issue instead.
