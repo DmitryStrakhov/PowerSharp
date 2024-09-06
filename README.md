@@ -94,14 +94,14 @@ Now you need to navigate through your code and implement the members. But there 
 
 ***'Edit Method' action***
 
-If your caret is set at the method, the 'Edit Method' action is available. When it runs, you get the following result:
+If your caret is set at a method, the 'Edit Method' action is available. When it runs, you get the following result:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Method.png)
 
 
 ***'Edit Property Getter' and 'Edit Property Setter' actions***
 
-If the caret is set at property, the 'Edit Property Getter' and 'Edit Property Setter' actions are available. This time the result is the following:
+If the caret is set at a property, the 'Edit Property Getter' and 'Edit Property Setter' actions are available. This time the result is the following:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Getter.png)
 
