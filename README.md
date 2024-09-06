@@ -18,7 +18,7 @@ Both instance and static fields and properties are supported.
 
 ### 2. 'Add favorite dependency' action
 
-I guess every developer has its own set of favorite dependencies they use often. My favorites are NUnit and Fluent.Assertions. An action 'Add favorite dependency' adds the dependencies into the project in two clicks. Look at the picture below.
+I guess every developer has its own set of favorite dependencies they use often. My favorites are NUnit and Fluent.Assertions. An action 'Add favorite dependency' will help you to add the dependencies into your project lightning fast. Look at the picture below.
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Add-Favorite-Dependency.png)
 
@@ -51,13 +51,13 @@ The 'Create tests' action allows to do this much faster. Look at the picture:
 
 The action generates a boiler-plate code for you and sets up required between-projects dependencies if that hasn't been done already.
 
-Please note, however, that only NUnit framework is supported at the moment.
-
-The action is available if the test-project already has NUnit-dependency. You can add the dependency with 'Add favorite dependency' action by the way.
+Notes:
+1. Only NUnit framework is supported at the moment;
+2. The action is available if the test-project already has NUnit-dependency. You can add the dependency with 'Add favorite dependency' action by the way.
 
 ### 4. 'Edit' action group
 
-Let's consider the following use case: you have some interface in you code you need to implement. You create a class which implements the interface and ask Resharper (or Rider) to generate a boilerplate code for you. After this, you usually see something like this:
+Let's consider the following use case: you have some interface in your code you need to implement. You create a class which implements the interface and ask Resharper (or Rider) to generate a boilerplate code for you. After this, you usually see something like this:
 
 ```csharp
 
@@ -108,3 +108,29 @@ If the caret is on the property name, the 'Edit Property Getter' and 'Edit Prope
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Setter.png)
 
 Those actions select a code of a method or a property, so you can start typing immediatelly in the correct position and replace old code at the same time. Of course, you can bind those actions to your favorite shortcuts to get a maximum efficiency.
+
+### 5. 'New Member Line' action
+
+Let's image that you are typing some code or navigating through your codebase and you need to add some code to it. In the former case you can, for example, to type a member name which doesn't exist yet and then to ask IDE to generate some boiler plate code for it. It is a nice feature but it doesn't cover all the scenarios. Sometimes I just need to add new member without use it immediatelly. For this, you need to navigate at some point inside your class, add new line and start typing. This usually takes a few keyboard gestures. Considering that this is a very frequent scenario, it would be cool to make it faster. The action 'New Member Line' helps us here.
+
+If your caret is inside some member-code, then running the action adds a new line below the member and navigate your caret to it. Look at the picture:
+
+![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-01.png)
+
+If your caret somewhere outside member-code (in the fields-section of class e.g.) then the new line is created after last member of type. Look at the picture:
+
+![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-02.png)
+
+As usual, assigning a shortcut for this action makes a maximum efficiency.
+
+### 6. 'Force Method Call' action
+
+This small action helps to solve one subtle issue related to using code completion feature of R#/Rider. When we are typing a code, a code-completion popup appears and suggests to use some members or action available in a current context. It is greatly useful but sometimes you don't need to use those suggestion, e.g. if the method you want to call doesn't exist at the moment. You type the method name, but then you have to close the code-completion popup before you can call your method because typing '(' symbol selects a node in the popup and that is not what you want. To close the popup you need to press Esc key and then finish a call statement. It would be better to cut this path.
+
+Look at the picture below:
+
+![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Force-Method-Call.png)
+
+If you run the 'Force Method Call' action, the code-completion popup is cancelled automatically and method-call statemement is added at the caret position and the caret position is placed between parentseses.
+
+Note: behavior of code-completion popup can be customized at the IDE settings of course, but my experiments show that if you, for example, turn off automatic item selection in the popup, which solves the described issue at the first glance, makes common code-completion experience worse. So, I prefer to leave a default behavior as is and use the 'Force Method Call' action to solve the issue instead.
