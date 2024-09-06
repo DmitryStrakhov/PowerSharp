@@ -111,13 +111,13 @@ Those actions select a code of a method or a property, so you can start typing i
 
 ### 5. 'New Member Line' action
 
-Let's imagine you are typing a code or navigating through your code base and you need to add some code to it. For this, you usually need to set a caret at some point inside your type (usually after currently-edited method or after the last member of type), then add new empty line and start typing new code. This usually takes a few keyboard gestures. Considering that this is a very common scenario, it would be cool to make it faster. The action 'New Member Line' helps us here.
+Let's imagine you are typing a code or navigating through your code base and you need to add new type-member to it. For this, you usually need to set a caret at some point inside your type (usually after currently-edited method or after the last member of type), then add new empty line and start typing new code. This usually takes a few keyboard gestures. Considering that this is a very common scenario, it would be cool to make it faster. The action 'New Member Line' helps us here.
 
-If your caret is inside some type-member, then running the action adds new line below the type-member and navigate your caret to it considering IDE code-formatting rules. Look at the picture:
+If your caret is placed inside some type-member, then running the action adds new line below the type-member and navigate your caret to it considering IDE code-formatting rules. Look at the picture:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-01.png)
 
-If your caret is placed outside a type-member (e.g. in the fields-section of type), new line is created after last type-member of type. Look at the picture:
+If your caret is placed outside a type-member (e.g. in the fields-section of type), new line is created after last type-member of type.
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-02.png)
 
@@ -131,6 +131,6 @@ Look at the picture below:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Force-Method-Call.png)
 
-Running the 'Force Method Call' action cancels the code-completion popup, finishes method-call statement (it adds '(', ')', ';' symbols) and sets caret between '(' and ')' symbols which allows to pass some arguments to the method if required.
+Running the 'Force Method Call' action cancels the code-completion popup, finishes method-call statement (by adding '(', ')', ';' symbols) and sets caret between '(' and ')' symbols which allows to pass arguments to the method if required.
 
 Note: of course IDE allows to customize the code-completion popup's behavior, but my experiments show that if one, for example, turns off automatic item selection in the code-completion popup (which solves the described issue at the first glance) actually makes general code-completion experience worse. So, I prefer to leave a default code-completion behavior as is and use the 'Force Method Call' action to solve the issue instead.
