@@ -113,7 +113,7 @@ Those actions select a code of a method or a property, so you can start typing i
 
 Let's imagine you are typing a code or navigating through your code base and you need to add new type-member to it. For this, you usually need to set a caret at some point inside your type (usually after currently-edited method or after the last member of type), then add new empty line and start typing new code. This usually takes a few keyboard gestures. Considering that this is a very common scenario, it would be cool to make it faster. The action 'New Member Line' helps us here.
 
-If your caret is placed inside some type-member, then running the action adds new line below the type-member and navigate your caret to it considering IDE code-formatting rules. Look at the picture:
+If your caret is placed inside some type-member, then running the action adds new line below the type-member and sets your caret to it considering IDE code-formatting rules. Look at the picture:
 
 ![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-01.png)
 
