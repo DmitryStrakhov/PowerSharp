@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using JetBrains.Application.Parts;
 using PowerSharp.Services;
 using JetBrains.ProjectModel;
 
@@ -11,7 +12,7 @@ namespace PowerSharp.Components {
     /// like ProjectName\Folder1\Folder2\FileName.
     /// 
     /// </summary>
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
     public class DefaultPathsService : IPathsService {
         public DefaultPathsService() {
         }

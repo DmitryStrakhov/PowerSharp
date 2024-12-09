@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Application.Parts;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
@@ -12,7 +13,7 @@ namespace PowerSharp.QuickFixes.Components {
     /// instantiate certain code-generation service.
     /// 
     /// </summary>
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
     public sealed class DefaultCreateInstanceServiceFactory : ICreateInstanceServiceFactory {
         public ICreateInstanceService GetService(ITypeMemberDeclaration memberDeclaration) {
             if(memberDeclaration is IFieldDeclaration || memberDeclaration is IPropertyDeclaration) {

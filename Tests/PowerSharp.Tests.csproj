@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2024.2.0" PrivateAssets="all" />
+    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2024.3.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
@@ -103,6 +103,10 @@
     <Compile Remove="Test\Data\NewMemberLineAction\Test17.cs" />
     <Compile Remove="Test\Data\NewMemberLineAction\Test18.cs" />
     <Compile Remove="Test\Data\NewMemberLineAction\Test19.cs" />
+    <Compile Remove="Test\Data\NewMemberLineAction\Test20.cs" />
+    <Compile Remove="Test\Data\NewMemberLineAction\Test21.cs" />
+    <Compile Remove="Test\Data\NewMemberLineAction\Test22.cs" />
+    <Compile Remove="Test\Data\NewMemberLineAction\Test23.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -186,6 +190,10 @@
     <None Include="Test\Data\NewMemberLineAction\Test15.cs" />
     <None Include="Test\Data\NewMemberLineAction\Test16.cs" />
     <None Include="Test\Data\NewMemberLineAction\Test18.cs" />
+    <None Include="Test\Data\NewMemberLineAction\Test22.cs" />
+    <None Include="Test\Data\NewMemberLineAction\Test23.cs" />
+    <None Include="Test\Data\NewMemberLineAction\Test21.cs" />
+    <None Include="Test\Data\NewMemberLineAction\Test20.cs" />
     <None Include="Test\Data\NewMemberLineAction\Test19.cs" />
     <None Include="Test\Data\NewMemberLineAction\Test17.cs" />
   </ItemGroup>

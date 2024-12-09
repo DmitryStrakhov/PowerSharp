@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using JetBrains.Application.Parts;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using PowerSharp.Services;
@@ -12,7 +13,7 @@ namespace PowerSharp.Components {
     /// types for specified projects. It is very need for code-generation purposes.
     /// 
     /// </summary>
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
     public class DefaultTypeElementResolutionService : ITypeElementResolutionService {
 
         #region ITypeElementResolutionService

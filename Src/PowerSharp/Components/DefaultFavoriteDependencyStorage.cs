@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using PowerSharp.Utils;
 using JetBrains.Annotations;
+using JetBrains.Application.Parts;
 using PowerSharp.Services;
 using JetBrains.ProjectModel;
 using PowerSharp.Refactorings.AddFavoriteDependency;
@@ -14,7 +15,7 @@ namespace PowerSharp.Components {
     /// through the settings somewhere in the future.
     /// 
     /// </summary>
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
     public class DefaultFavoriteDependencyStorage : IFavoriteDependencyStorage {
         [NotNull] readonly ISolution solution;
         [NotNull] readonly List<FavoriteDependency> dependencyList;
