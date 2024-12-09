@@ -1,0 +1,8 @@
+﻿using System;
+
+namespace PluginTests {
+    class MyClass(string name) {
+        public readonly string Name = name;
+        {caret}
+    }
+}

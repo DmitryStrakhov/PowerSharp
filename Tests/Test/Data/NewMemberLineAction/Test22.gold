@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace PluginTests {
+    class MyClass(string name) {
+        public readonly string Name = name;
+
+        public override string ToString() {
+            return Name;
+        }
+        {caret}
+    }
+}

@@ -66,39 +66,54 @@ namespace PowerSharp.Actions {
 
         #endregion
 
-        static (ITreeNode node, DocumentOffset docOffset)? GetInsertionPoint([NotNull] IDataContext context) {
-            ITreeNode node = GetAnchorNode(context);
-            if(node != null) {
-                DocumentOffset docOffset = node.GetDocumentEndOffset();
+        static (ITreeNode, DocumentOffset)? GetInsertionPoint([NotNull] IDataContext context) {
+            (ITreeNode, InsertionKind)? anchorNullable = GetAnchor(context);
+
+            if(anchorNullable != null) {
+                DocumentOffset docOffset;
+                (ITreeNode node, InsertionKind insertionKind) = anchorNullable.Value;
+
+                switch(insertionKind) {
+                    case InsertionKind.Before:
+                        docOffset = node.GetPreviousNonWhitespaceSibling().GetDocumentEndOffset();
+                        break;
+                    case InsertionKind.After:
+                        docOffset = node.GetDocumentEndOffset();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException($"InsertionKind={insertionKind} is not supported.");
+                }
                 if(docOffset.IsValid())
                     return (node, docOffset);
             }
             return null;
         }
         [CanBeNull]
-        static ITreeNode GetAnchorNode([NotNull] IDataContext context) {
+        static (ITreeNode, InsertionKind)? GetAnchor([NotNull] IDataContext context) {
             TreeElement treeElement = context.GetSelectedTreeNode<TreeElement>();
 
             for(TreeElement e = treeElement; e != null; e = e is ISandBox holder ? (TreeElement) holder.GetParentNode() : e.parent) {
-                switch (e) {
+                switch(e) {
                     case IAccessorDeclaration _:
                         break;
                     case ICSharpFunctionDeclaration function:
                         if(function.HasCodeBody())
-                            return function.Body.RBrace;
+                            return (function.Body.RBrace, InsertionKind.After);
                         break;
                     case IPropertyDeclaration property:
                         if(!property.IsAbstract)
-                            return property.RBrace;
+                            return (property.RBrace, InsertionKind.After);
                         break;
                     case IClassLikeDeclaration @class:
-                        if(@class.MethodDeclarations.Count != 0) {
-                            return @class.MemberDeclarations.Last();
-                        }
-                        break;
+                        return (@class.RBrace, InsertionKind.Before);
                 }
             }
             return null;
+        }
+
+        enum InsertionKind {
+            Before,
+            After
         }
     }
 }
