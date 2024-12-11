@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using JetBrains.Application.DataContext;
 using JetBrains.ReSharper.Psi;
@@ -6,6 +7,7 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Feature.Services.ContextActions;
 using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
+using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 
 namespace PowerSharp.Utils {
     public static class ActionDataProviderExtensions {
@@ -27,6 +29,13 @@ namespace PowerSharp.Utils {
         [CanBeNull]
         public static IAccessorDeclaration TryGetAccessorDeclaration([NotNull] this IDataContext @this) {
             return TryGetSelectedDeclaration(() => @this.GetSelectedTreeNode<ICSharpTreeNode>(), null, csharpTreeNode => csharpTreeNode.GetContainingNode<IAccessorDeclaration>());
+        }
+        [NotNull]
+        public static IEnumerable<TreeElement> EnumerateSelectedTreeElementAndAncestors([NotNull] this IDataContext context) {
+            TreeElement treeElement = context.GetSelectedTreeNode<TreeElement>();
+
+            for(TreeElement e = treeElement; e != null; e = e is ISandBox holder ? (TreeElement) holder.GetParentNode() : e.parent)
+                yield return e;
         }
 
         [CanBeNull]

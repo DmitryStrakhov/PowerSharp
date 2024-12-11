@@ -4,7 +4,7 @@ using JetBrains.Application.DataContext;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 
 namespace PowerSharp.Actions {
-    public abstract class EditPropertyActionBase : EditActionBase {
+    public abstract class EditPropertyActionBase : EditFunctionActionBase {
         readonly CSharpAccessorKind accessorKind;
 
         protected EditPropertyActionBase(CSharpAccessorKind accessorKind) {

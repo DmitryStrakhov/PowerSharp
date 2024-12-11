@@ -120,11 +120,17 @@
   <data name="EditMethodActionText" xml:space="preserve">
     <value>Edit Method</value>
   </data>
+  <data name="EditParametersActionText" xml:space="preserve">
+    <value>Edit Parameters</value>
+  </data>
   <data name="EditPropertyGetterActionText" xml:space="preserve">
     <value>Edit Property Getter</value>
   </data>
   <data name="EditPropertySetterActionText" xml:space="preserve">
     <value>Edit Property Setter</value>
+  </data>
+  <data name="EditReturnValueActionText" xml:space="preserve">
+    <value>Edit Return Value</value>
   </data>
   <data name="ForceMethodCallActionText" xml:space="preserve">
     <value>Force Method Call</value>

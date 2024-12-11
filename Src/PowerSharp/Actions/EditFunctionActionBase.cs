@@ -11,7 +11,7 @@ using JetBrains.TextControl;
 using JetBrains.TextControl.DataContext;
 
 namespace PowerSharp.Actions {
-    public abstract class EditActionBase : IExecutableAction {
+    public abstract class EditFunctionActionBase : IExecutableAction {
         ICSharpFunctionDeclaration targetFunction;
 
         #region IExecutableAction

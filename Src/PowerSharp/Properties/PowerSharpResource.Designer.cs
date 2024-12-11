@@ -70,6 +70,15 @@ namespace PowerSharp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Parameters.
+        /// </summary>
+        public static string EditParametersActionText {
+            get {
+                return ResourceManager.GetString("EditParametersActionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Property Getter.
         /// </summary>
         public static string EditPropertyGetterActionText {
@@ -84,6 +93,15 @@ namespace PowerSharp.Properties {
         public static string EditPropertySetterActionText {
             get {
                 return ResourceManager.GetString("EditPropertySetterActionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Return Value.
+        /// </summary>
+        public static string EditReturnValueActionText {
+            get {
+                return ResourceManager.GetString("EditReturnValueActionText", resourceCulture);
             }
         }
         

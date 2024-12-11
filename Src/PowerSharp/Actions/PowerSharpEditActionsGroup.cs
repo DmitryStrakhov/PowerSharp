@@ -7,7 +7,9 @@ namespace PowerSharp.Actions {
         public PowerSharpEditActionsGroup(
             EditMethodAction editMethodAction,
             EditPropertyGetterAction editPropertyGetterAction,
-            EditPropertySetterAction editPropertySetterAction
+            EditPropertySetterAction editPropertySetterAction,
+            EditReturnValueAction editReturnValueAction,
+            EditParametersAction editParametersAction
         ) {
         }
     }

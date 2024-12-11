@@ -18,7 +18,7 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.Application.Shortcuts.ShortcutManager;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.ReSharper.Feature.Services.CSharp.TypingAssist;
-using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
+using PowerSharp.Utils;
 
 namespace PowerSharp.Actions {
     [Action(typeof(PowerSharpResource), nameof(PowerSharpResource.NewMemberLineActionText), ShortcutScope = ShortcutScope.TextEditor, Id = 1412132)]
@@ -90,9 +90,7 @@ namespace PowerSharp.Actions {
         }
         [CanBeNull]
         static (ITreeNode, InsertionKind)? GetAnchor([NotNull] IDataContext context) {
-            TreeElement treeElement = context.GetSelectedTreeNode<TreeElement>();
-
-            for(TreeElement e = treeElement; e != null; e = e is ISandBox holder ? (TreeElement) holder.GetParentNode() : e.parent) {
+            foreach(TreeElement e in context.EnumerateSelectedTreeElementAndAncestors()) {
                 switch(e) {
                     case IAccessorDeclaration _:
                         break;

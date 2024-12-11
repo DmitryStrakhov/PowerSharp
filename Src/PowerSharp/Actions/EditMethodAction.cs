@@ -8,7 +8,7 @@ using JetBrains.Application.Shortcuts.ShortcutManager;
 
 namespace PowerSharp.Actions {
     [Action(typeof(PowerSharpResource), nameof(PowerSharpResource.EditMethodActionText), ShortcutScope = ShortcutScope.TextEditor, Id = 1552586)]
-    public sealed class EditMethodAction : EditActionBase {
+    public sealed class EditMethodAction : EditFunctionActionBase {
         protected override ICSharpFunctionDeclaration GetTargetFunction(IDataContext context) {
             ICSharpFunctionDeclaration function = context.TryGetFunctionDeclaration();
             return IntentionUtils.IsValid(function) && function.HasCodeBody() ? function : null;
