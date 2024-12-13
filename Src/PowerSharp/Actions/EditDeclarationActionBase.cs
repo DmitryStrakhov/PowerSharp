@@ -1,5 +1,4 @@
 ﻿using System;
-using Should;
 using JetBrains.Annotations;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
@@ -8,6 +7,7 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.TextControl.DataContext;
+using JetBrains.Diagnostics;
 
 namespace PowerSharp.Actions {
     public abstract class EditDeclarationActionBase<TDeclaration> : IExecutableAction
@@ -19,7 +19,7 @@ namespace PowerSharp.Actions {
             return (declaration = GetDeclaration(context)) != null;
         }
         public void Execute(IDataContext context, DelegateExecute nextExecute) {
-            declaration.ShouldNotBeNull();
+            declaration.NotNull();
 
             ITextControl editor = context.GetData(TextControlDataConstants.TEXT_CONTROL);
             if(editor == null)

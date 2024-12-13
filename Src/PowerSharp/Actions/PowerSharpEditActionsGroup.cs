@@ -9,7 +9,9 @@ namespace PowerSharp.Actions {
             EditPropertyGetterAction editPropertyGetterAction,
             EditPropertySetterAction editPropertySetterAction,
             EditReturnValueAction editReturnValueAction,
-            EditParametersAction editParametersAction
+            EditParametersAction editParametersAction,
+            NewMemberLineAction newMemberLineAction,
+            ForceMethodCallAction forceMethodCallAction
         ) {
         }
     }
