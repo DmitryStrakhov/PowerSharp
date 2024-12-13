@@ -96,18 +96,30 @@ Now you need to navigate through your code and implement the members. But there 
 
 If your caret is set at a method, the 'Edit Method' action is available. When it runs, you get the following result:
 
-![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Method.png)
+![Edit-Method](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Method.png)
 
 
 ***'Edit Property Getter' and 'Edit Property Setter' actions***
 
 If the caret is set at a property, the 'Edit Property Getter' and 'Edit Property Setter' actions are available. This time the result is the following:
 
-![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Getter.png)
+![Edit-Property-Getter](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Getter.png)
 
-![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Setter.png)
+![Edit-Property-Setter](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Setter.png)
 
 Those actions select a code of a method or a property, so you can start typing immediatelly in the correct position and replace old code at the same time. Of course, you can bind those actions to your favorite shortcuts to get a maximum efficiency.
+
+***'Edit Parameters' action***
+
+If you are typing a code, sometimes you need to jump to parameters list of method to fix it somehow. It usually takes a few keyboard actions to make it done. New 'Edit Parameters' actions makes it done in one action. Take a look:
+
+![Edit-Parameters](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Parameters.png)
+
+***'Edit Return Value' action***
+
+This actions is a sibling of previous one and allows to jump to return value of method in one action:
+
+![Edit-Return-Value](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Return-Value.png)
 
 ### 5. 'New Member Line' action
 
@@ -115,11 +127,11 @@ Let's imagine you are typing a code or navigating through your code base and you
 
 If your caret is placed inside some type-member, then running the action adds new line below the type-member and sets your caret to it considering IDE code-formatting rules. Look at the picture:
 
-![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-01.png)
+![New-Member-Line](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-01.png)
 
 If your caret is placed outside a type-member (e.g. in the fields-section of type), new line is created after last type-member of type.
 
-![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-02.png)
+![New-Member-Line](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/New-Member-Line-02.png)
 
 As usual, assigning a shortcut for this action makes a maximum efficiency.
 
@@ -129,7 +141,7 @@ This action helps to solve one subtle issue related to the code completion featu
 
 Look at the picture below:
 
-![Add-Favorite-Dependency](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Force-Method-Call.png)
+![Force-Method-Call](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Force-Method-Call.png)
 
 Running the 'Force Method Call' action cancels the code-completion popup, finishes method-call statement (by adding '(', ')', ';' symbols) and sets caret between '(' and ')' symbols which allows to pass arguments to the method if required.
 
