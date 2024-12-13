@@ -107,7 +107,7 @@ If the caret is set at a property, the 'Edit Property Getter' and 'Edit Property
 
 ![Edit-Property-Setter](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Property-Setter.png)
 
-Those actions select a code of a method or a property, so you can start typing immediatelly in the correct position and replace old code at the same time. Of course, you can bind those actions to your favorite shortcuts to get a maximum efficiency.
+Those actions select a code of a method or a property, so you can start typing immediately in the correct position and replace old code at the same time. Of course, you can bind those actions to your favorite shortcuts to get a maximum efficiency.
 
 ***'Edit Parameters' action***
 
