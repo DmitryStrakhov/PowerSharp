@@ -111,7 +111,7 @@ Those actions select a code of a method or a property, so you can start typing i
 
 ***'Edit Parameters' action***
 
-When you are typing a code, sometimes you need to jump to a parameters list of method to fix it somehow. It usually takes a few keyboard actions to make it done. New 'Edit Parameters' action makes it done immediatelly. Take a look:
+When you are typing a code, sometimes you need to jump to a parameters list of a method to fix it somehow. It usually takes a few keyboard actions to make it done. New 'Edit Parameters' action makes it done immediatelly. Take a look:
 
 ![Edit-Parameters](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Parameters.png)
 
