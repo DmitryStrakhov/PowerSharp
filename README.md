@@ -121,7 +121,7 @@ This actions is a sibling-brother of previous one and allows to jump to a method
 
 ![Edit-Return-Value](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Return-Value.png)
 
-Take a note, that 'Edit Return Value' actions has a little wider scope that the 'Edit Parameters' one. For example, along with methods, properties are supported too.
+Take a note that 'Edit Return Value' actions has a little wider scope that the 'Edit Parameters' one. For example, along with methods, properties are supported too.
 
 ### 5. 'New Member Line' action
 
