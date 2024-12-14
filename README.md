@@ -111,7 +111,7 @@ Those actions select a code of a method or a property, so you can start typing i
 
 ***'Edit Parameters' action***
 
-When you are typing a code, sometimes you need to jump to a parameters list of a method to fix it somehow. It usually takes a few keyboard actions to make it done. New 'Edit Parameters' action makes it done immediatelly. Take a look:
+When you are typing a code, sometimes you need to jump to a parameters list of a method or indexer to fix it somehow. It usually takes a few keyboard actions to make it done. New 'Edit Parameters' action makes it done immediatelly. Take a look:
 
 ![Edit-Parameters](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Parameters.png)
 
@@ -121,7 +121,7 @@ This actions is a sibling-brother of previous one and allows to jump to a method
 
 ![Edit-Return-Value](https://github.com/DmitryStrakhov/PowerSharp/blob/main/ReadMe-Images/Edit-Return-Value.png)
 
-Take a note that the 'Edit Return Value' actions has a little wider scope that the 'Edit Parameters' one. For example, along with methods, properties are supported too.
+Take a note that the 'Edit Return Value' action has a little wider scope than the 'Edit Parameters' one. For example, along with methods, properties are supported too.
 
 ### 5. 'New Member Line' action
 
