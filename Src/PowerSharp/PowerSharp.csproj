@@ -26,13 +26,21 @@
     <Content Remove="obj\**\*" />
   </ItemGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <HostFullIdentifier>ReSharperPlatformVs15_f63c42adPluginDebug</HostFullIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2024.3.0" PrivateAssets="all" />
-    <PackageReference Include="Wave" Version="243.0.0" />
+    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2025.1.0" PrivateAssets="all" />
+    <PackageReference Include="Wave" Version="251.0.0" />
   </ItemGroup>
 
   <ItemGroup>

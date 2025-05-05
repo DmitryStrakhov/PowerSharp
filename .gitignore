@@ -18,3 +18,5 @@ packages/
 # Resharper
 *.DotSettings
 *.lock
+# Rider
+*.idea/
