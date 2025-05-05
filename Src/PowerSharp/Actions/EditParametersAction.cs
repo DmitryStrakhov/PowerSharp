@@ -19,6 +19,8 @@ namespace PowerSharp.Actions {
                         return method.Params;
                     case IIndexerDeclaration indexer:
                         return indexer.Params;
+                    case IConstructorDeclaration ctor:
+                        return ctor.Params;
                 }
             }
             return null;

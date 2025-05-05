@@ -1,0 +1,11 @@
+﻿using System;
+
+namespace PluginTests {
+    class MyClass {
+        public MyClass({selstart}int x, int y{selend}) {
+            
+        }
+        public void Method1() {
+        }
+    }
+}

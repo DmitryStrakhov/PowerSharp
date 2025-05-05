@@ -73,6 +73,7 @@
     <Compile Remove="Test\Data\EditParametersAction\Test14.cs" />
     <Compile Remove="Test\Data\EditParametersAction\Test15.cs" />
     <Compile Remove="Test\Data\EditParametersAction\Test16.cs" />
+    <Compile Remove="Test\Data\EditParametersAction\Test17.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test01.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test02.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test03.cs" />
@@ -194,6 +195,7 @@
     <None Include="Test\Data\EditParametersAction\Test03.cs" />
     <None Include="Test\Data\EditParametersAction\Test02.cs" />
     <None Include="Test\Data\EditParametersAction\Test01.cs" />
+    <None Include="Test\Data\EditParametersAction\Test17.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test01.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test02.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test03.cs" />
