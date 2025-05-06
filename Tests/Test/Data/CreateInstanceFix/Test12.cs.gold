@@ -6,7 +6,7 @@ namespace ClassLibrary
   {
     public SomeClass() : base()
     {
-      this.field = new SomeClass();
+      field = new SomeClass();
     }
 
     SomeClass field{caret};

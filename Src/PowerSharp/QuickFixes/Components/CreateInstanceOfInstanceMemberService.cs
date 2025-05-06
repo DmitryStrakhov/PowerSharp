@@ -18,7 +18,7 @@ namespace PowerSharp.QuickFixes.Components {
 
         protected override void AddObjectInstantiationStatement(IConstructorDeclaration constructor, string memberName, IType memberType) {
             new ConstructorBuilder(constructor)
-                .WithBody(codeBuilder => codeBuilder.CreateObjectInstantiationStatement(memberName, memberType, true));
+                .WithBody(codeBuilder => codeBuilder.CreateObjectInstantiationStatement(memberName, memberType, false));
         }
         protected override IConstructorDeclaration AddDefaultConstructor(IClassLikeDeclaration classDeclaration) {
             return new MembersBuilder(classDeclaration)

@@ -6,7 +6,7 @@ namespace ClassLibrary
   {
     public OneClass()
     {
-      this.Property = new AnotherClass();
+      Property = new AnotherClass();
     }
 
     public AnotherClass Property{caret} { get; set }

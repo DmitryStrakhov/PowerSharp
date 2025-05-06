@@ -12,13 +12,9 @@ using PowerSharp.Utils;
 
 namespace PowerSharp.QuickFixes {
     [QuickFix]
-    public class CreateInstanceFix : QuickFixBase {
-        readonly ITypeMemberDeclaration memberDeclaration;
+    public class CreateInstanceFix([CanBeNull] ITypeMemberDeclaration memberDeclaration) : QuickFixBase {
+        readonly ITypeMemberDeclaration memberDeclaration = memberDeclaration;
         ICreateInstanceService serviceCore;
-
-        public CreateInstanceFix([CanBeNull] ITypeMemberDeclaration memberDeclaration) {
-            this.memberDeclaration = memberDeclaration;
-        }
 
         public CreateInstanceFix([NotNull] UnusedMemberWarningBase warning)
             : this(warning.Declaration as ITypeMemberDeclaration) {
@@ -55,7 +51,7 @@ namespace PowerSharp.QuickFixes {
             return null;
         }
         private ICreateInstanceService Service {
-            get { return serviceCore ?? (serviceCore = memberDeclaration.GetSolution().GetComponent<ICreateInstanceServiceFactory>().GetService(memberDeclaration)); }
+            get { return serviceCore ??= memberDeclaration.GetSolution().GetComponent<ICreateInstanceServiceFactory>().GetService(memberDeclaration); }
         }
     }
 }

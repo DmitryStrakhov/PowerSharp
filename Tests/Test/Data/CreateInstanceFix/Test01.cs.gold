@@ -9,7 +9,7 @@ namespace ClassLibrary
 
     public OneClass(int x)
     {
-      this.obj = new AnotherClass();
+      obj = new AnotherClass();
       this.x = x;
     }
   }
