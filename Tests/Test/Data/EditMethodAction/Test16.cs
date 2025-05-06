@@ -1,0 +1,20 @@
+﻿using System;
+
+namespace PluginTests {
+    class MyClass {
+        int x;
+
+        public MyClass(int x) {
+            this.x = x;
+        }
+
+        public int Method(int value) {
+            return Check(value * value);
+
+            static int Check(int v) {
+                Console.Write(v);
+                return {caret}v;
+            }
+        }
+    }
+}

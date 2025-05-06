@@ -15,5 +15,10 @@ namespace PowerSharp.Utils {
         public static bool IsValid([CanBeNull] IFunctionDeclaration functionDeclaration) {
             return functionDeclaration?.DeclaredElement != null && ValidUtils.Valid(functionDeclaration);
         }
+        [Pure]
+        [ContractAnnotation("null => false")]
+        public static bool IsValid([CanBeNull] ILocalFunctionDeclaration functionDeclaration) {
+            return functionDeclaration?.DeclaredElement != null && ValidUtils.Valid(functionDeclaration);
+        }
     }
 }

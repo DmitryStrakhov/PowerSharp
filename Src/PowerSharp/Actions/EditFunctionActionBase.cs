@@ -12,7 +12,7 @@ using JetBrains.TextControl.DataContext;
 
 namespace PowerSharp.Actions {
     public abstract class EditFunctionActionBase : IExecutableAction {
-        ICSharpFunctionDeclaration targetFunction;
+        IEditFunctionTarget targetFunction;
 
         #region IExecutableAction
 
@@ -31,11 +31,12 @@ namespace PowerSharp.Actions {
 
             if(range.IsValid())
                 editor.Selection.SetRange(range);
+
         }
 
         #endregion
 
-        private DocumentRange CalculateSelectionRange(ICSharpFunctionDeclaration function) {
+        private DocumentRange CalculateSelectionRange(IEditFunctionTarget function) {
             if(function.Body != null) {
                 return new DocumentRange(
                     function.Body.LBrace.GetNextNonWhitespaceSibling().GetDocumentStartOffset(),
@@ -43,15 +44,21 @@ namespace PowerSharp.Actions {
                 );
             }
 
-            if(function.ArrowClause != null && function.LastChild != null) {
+            if(function.ArrowClause != null && function.Node.LastChild != null) {
                 return new DocumentRange(
                     function.ArrowClause.Expression.GetDocumentStartOffset(),
-                    function.LastChild.GetDocumentEndOffset()
+                    function.Node.LastChild.GetDocumentEndOffset()
                 );
             }
             return DocumentRange.InvalidRange;
         }
         [CanBeNull]
-        protected abstract ICSharpFunctionDeclaration GetTargetFunction(IDataContext context);
+        protected abstract IEditFunctionTarget GetTargetFunction(IDataContext context);
+
+        protected interface IEditFunctionTarget {
+            IBlock Body { get; }
+            IArrowExpressionClause ArrowClause { get; }
+            ITreeNode Node { get; }
+        }
     }
 }
