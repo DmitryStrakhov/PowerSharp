@@ -1,0 +1,11 @@
+﻿using System;
+
+namespace PluginTests {
+    class MyClass {
+        public void Method1() {
+        }
+        public {selstart}string{selend} Method2(int x, int y, int z) {
+            return ToString(x) + ToString(y) + ToString(z);
+        }
+    }
+}

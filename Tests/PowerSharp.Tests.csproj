@@ -58,6 +58,8 @@
     <Compile Remove="Test\Data\EditMethodAction\Test14.cs" />
     <Compile Remove="Test\Data\EditMethodAction\Test15.cs" />
     <Compile Remove="Test\Data\EditMethodAction\Test16.cs" />
+    <Compile Remove="Test\Data\EditMethodAction\Test17.cs" />
+    <Compile Remove="Test\Data\EditMethodAction\Test18.cs" />
     <Compile Remove="Test\Data\EditParametersAction\Test01.cs" />
     <Compile Remove="Test\Data\EditParametersAction\Test02.cs" />
     <Compile Remove="Test\Data\EditParametersAction\Test03.cs" />
@@ -75,6 +77,8 @@
     <Compile Remove="Test\Data\EditParametersAction\Test15.cs" />
     <Compile Remove="Test\Data\EditParametersAction\Test16.cs" />
     <Compile Remove="Test\Data\EditParametersAction\Test17.cs" />
+    <Compile Remove="Test\Data\EditParametersAction\Test18.cs" />
+    <Compile Remove="Test\Data\EditParametersAction\Test19.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test01.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test02.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test03.cs" />
@@ -85,6 +89,8 @@
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test08.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test09.cs" />
     <Compile Remove="Test\Data\EditPropertyGetterAction\Test10.cs" />
+    <Compile Remove="Test\Data\EditPropertyGetterAction\Test11.cs" />
+    <Compile Remove="Test\Data\EditPropertyGetterAction\Test12.cs" />
     <Compile Remove="Test\Data\EditPropertySetterAction\Test01.cs" />
     <Compile Remove="Test\Data\EditPropertySetterAction\Test02.cs" />
     <Compile Remove="Test\Data\EditPropertySetterAction\Test03.cs" />
@@ -94,6 +100,8 @@
     <Compile Remove="Test\Data\EditPropertySetterAction\Test07.cs" />
     <Compile Remove="Test\Data\EditPropertySetterAction\Test08.cs" />
     <Compile Remove="Test\Data\EditPropertySetterAction\Test09.cs" />
+    <Compile Remove="Test\Data\EditPropertySetterAction\Test10.cs" />
+    <Compile Remove="Test\Data\EditPropertySetterAction\Test11.cs" />
     <Compile Remove="Test\Data\EditReturnValueAction\Test01.cs" />
     <Compile Remove="Test\Data\EditReturnValueAction\Test02.cs" />
     <Compile Remove="Test\Data\EditReturnValueAction\Test03.cs" />
@@ -110,6 +118,8 @@
     <Compile Remove="Test\Data\EditReturnValueAction\Test14.cs" />
     <Compile Remove="Test\Data\EditReturnValueAction\Test15.cs" />
     <Compile Remove="Test\Data\EditReturnValueAction\Test16.cs" />
+    <Compile Remove="Test\Data\EditReturnValueAction\Test17.cs" />
+    <Compile Remove="Test\Data\EditReturnValueAction\Test18.cs" />
     <Compile Remove="Test\Data\ForceMethodCallAction\Test01.cs" />
     <Compile Remove="Test\Data\ForceMethodCallAction\Test02.cs" />
     <Compile Remove="Test\Data\ForceMethodCallAction\Test03.cs" />
@@ -181,6 +191,8 @@
     <None Include="Test\Data\EditMethodAction\Test09.cs" />
     <None Include="Test\Data\EditMethodAction\Test08.cs" />
     <None Include="Test\Data\EditMethodAction\Test16.cs" />
+    <None Include="Test\Data\EditMethodAction\Test17.cs" />
+    <None Include="Test\Data\EditMethodAction\Test18.cs" />
     <None Include="Test\Data\EditParametersAction\Test08.cs" />
     <None Include="Test\Data\EditParametersAction\Test09.cs" />
     <None Include="Test\Data\EditParametersAction\Test11.cs" />
@@ -198,6 +210,8 @@
     <None Include="Test\Data\EditParametersAction\Test02.cs" />
     <None Include="Test\Data\EditParametersAction\Test01.cs" />
     <None Include="Test\Data\EditParametersAction\Test17.cs" />
+    <None Include="Test\Data\EditParametersAction\Test18.cs" />
+    <None Include="Test\Data\EditParametersAction\Test19.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test01.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test02.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test03.cs" />
@@ -208,6 +222,8 @@
     <None Include="Test\Data\EditPropertyGetterAction\Test09.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test08.cs" />
     <None Include="Test\Data\EditPropertyGetterAction\Test07.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test11.cs" />
+    <None Include="Test\Data\EditPropertyGetterAction\Test12.cs" />
     <None Include="Test\Data\EditPropertySetterAction\Test01.cs" />
     <None Include="Test\Data\EditPropertySetterAction\Test02.cs" />
     <None Include="Test\Data\EditPropertySetterAction\Test03.cs" />
@@ -217,6 +233,8 @@
     <None Include="Test\Data\EditPropertySetterAction\Test08.cs" />
     <None Include="Test\Data\EditPropertySetterAction\Test07.cs" />
     <None Include="Test\Data\EditPropertySetterAction\Test06.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test10.cs" />
+    <None Include="Test\Data\EditPropertySetterAction\Test11.cs" />
     <None Include="Test\Data\EditReturnValueAction\Test01.cs" />
     <None Include="Test\Data\EditReturnValueAction\Test02.cs" />
     <None Include="Test\Data\EditReturnValueAction\Test03.cs" />
@@ -233,6 +251,8 @@
     <None Include="Test\Data\EditReturnValueAction\Test14.cs" />
     <None Include="Test\Data\EditReturnValueAction\Test15.cs" />
     <None Include="Test\Data\EditReturnValueAction\Test16.cs" />
+    <None Include="Test\Data\EditReturnValueAction\Test17.cs" />
+    <None Include="Test\Data\EditReturnValueAction\Test18.cs" />
     <None Include="Test\Data\ForceMethodCallAction\Test08.cs" />
     <None Include="Test\Data\ForceMethodCallAction\Test07.cs" />
     <None Include="Test\Data\ForceMethodCallAction\Test06.cs" />

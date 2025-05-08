@@ -21,5 +21,7 @@ namespace PowerSharp.Tests {
          [Test] public void Test07() { DoNamedTest(); }
          [Test] public void Test08() { DoNamedTest(); }
          [Test] public void Test09() { DoNamedTest(); }
+         [Test] public void Test10() { DoNamedTest(); }
+         [Test] public void Test11() { DoNamedTest(); }
      }
 }

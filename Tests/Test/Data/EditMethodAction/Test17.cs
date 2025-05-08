@@ -1,0 +1,25 @@
+﻿using System;
+
+namespace PluginTests {
+    class MyClass {
+        int x;
+
+        public MyClass(int x) {
+            this.x = x;
+        }
+
+        public int X {
+            get { return x;} }
+            set {
+                if(X == value) return;
+                x = value;
+                OnXChanged();
+            }
+        }
+        public void M() {
+            {selstart}Console.{selend}WriteLine("one");
+            Console.WriteLine("two");
+            Console.WriteLine("three");
+        }
+    }
+}

@@ -1,0 +1,27 @@
+﻿Action is unavailable
+using System;
+
+namespace PluginTests {
+    class MyClass {
+        int x;
+
+        public MyClass(int x) {
+            this.x = x;
+        }
+
+        public int X {
+            get { return x;} }
+            set {
+                if(X == value) return;
+                x = value;
+                OnXChanged();
+            }
+        }
+        public void M() {
+            Console.WriteLine("one");
+            Console.WriteLine("two");{selstart}
+            Console.WriteLine("three");
+        }
+    }
+}
+{selend}
