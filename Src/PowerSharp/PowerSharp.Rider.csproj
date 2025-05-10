@@ -8,11 +8,12 @@
     <DefineConstants>$(DefineConstants);RIDER</DefineConstants>
     <LangVersion>latest</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratedAssemblyInfoFile>Properties\AssemblyInfo.cs</GeneratedAssemblyInfoFile>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin.Rider\$(Configuration)\</OutputPath>
     <Configurations>Debug;Release;Release and Deployment</Configurations>
     
-    <PluginName>RiderPlugin.PowerSharp.2024.3.0</PluginName>
+    <PluginName>RiderPlugin.PowerSharp.2025.1.0</PluginName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,9 +31,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Rider.SDK" Version="2024.3.0" />
+    <PackageReference Include="JetBrains.Rider.SDK" Version="2025.1.0" />
   </ItemGroup>
-
+  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  
   <ItemGroup>
     <Compile Update="Properties\PowerSharpResource.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -57,8 +65,8 @@
       <ActionsDir>$(LibDirectory)\PowerSharp</ActionsDir>
       <DotnetDirectory>$(PluginDirectory)\dotnet</DotnetDirectory>
       <Archiver>"$(ProjectDir)Build\7z.exe"</Archiver>
-      <RiderJDK>%LOCALAPPDATA%\JetBrains\Installations\Rider243\lib</RiderJDK>
-      <JavaCompiler>%LOCALAPPDATA%\JetBrains\Installations\Rider243\jbr\bin\javac.exe</JavaCompiler>
+      <RiderJDK>%LOCALAPPDATA%\JetBrains\Installations\Rider251\lib</RiderJDK>
+      <JavaCompiler>%LOCALAPPDATA%\JetBrains\Installations\Rider251\jbr\bin\javac.exe</JavaCompiler>
     </PropertyGroup>
     
     <ItemGroup>

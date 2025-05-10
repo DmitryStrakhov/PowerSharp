@@ -1,10 +1,10 @@
 <idea-plugin require-restart="true">
-  <change-notes>Added support of Rider 2024.3</change-notes>
+  <change-notes>Added support of Rider 2025.1</change-notes>
   <id>com.jetbrains.rider.plugins.powersharp</id>
   <name>PowerSharp</name>
-  <version>2024.3.0</version>
+  <version>2025.1.0</version>
   <vendor url="https://github.com/DmitryStrakhov/PowerSharp">Dmitry Strakhov</vendor>
-  <idea-version since-build="243.22562" until-build="243.*" />
+  <idea-version since-build="251.23774" until-build="251.*" />
   <depends>com.intellij.modules.rider</depends>
   <description><![CDATA[<p>PowerSharp extends Rider by a few nice features like 'Create Instance', 'Create Tests', 'Edit Method' and more. Please follow project's <a href="https://github.com/DmitryStrakhov/PowerSharp">github repository</a> for more details.</p>]]></description>
   
