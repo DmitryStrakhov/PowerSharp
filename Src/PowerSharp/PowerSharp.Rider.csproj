@@ -13,7 +13,7 @@
     <OutputPath>bin.Rider\$(Configuration)\</OutputPath>
     <Configurations>Debug;Release;Release and Deployment</Configurations>
     
-    <PluginName>RiderPlugin.PowerSharp.2025.1.0</PluginName>
+    <PluginName>RiderPlugin.PowerSharp.2025.2.0</PluginName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Rider.SDK" Version="2025.1.0" />
+    <PackageReference Include="JetBrains.Rider.SDK" Version="2025.2.0" />
   </ItemGroup>
   
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release and Deployment|AnyCPU' ">
@@ -65,8 +65,8 @@
       <ActionsDir>$(LibDirectory)\PowerSharp</ActionsDir>
       <DotnetDirectory>$(PluginDirectory)\dotnet</DotnetDirectory>
       <Archiver>"$(ProjectDir)Build\7z.exe"</Archiver>
-      <RiderJDK>%LOCALAPPDATA%\JetBrains\Installations\Rider251\lib</RiderJDK>
-      <JavaCompiler>%LOCALAPPDATA%\JetBrains\Installations\Rider251\jbr\bin\javac.exe</JavaCompiler>
+      <RiderJDK>%LOCALAPPDATA%\JetBrains\Installations\Rider252\lib</RiderJDK>
+      <JavaCompiler>%LOCALAPPDATA%\JetBrains\Installations\Rider252\jbr\bin\javac.exe</JavaCompiler>
     </PropertyGroup>
     
     <ItemGroup>
