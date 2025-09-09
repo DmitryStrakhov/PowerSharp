@@ -34,6 +34,9 @@
     <Compile Remove="Test\Data\CreateInstanceFix\Test10.cs" />
     <Compile Remove="Test\Data\CreateInstanceFix\Test11.cs" />
     <Compile Remove="Test\Data\CreateInstanceFix\Test12.cs" />
+    <Compile Remove="Test\Data\CreateInstanceFix\Test13.cs" />
+    <Compile Remove="Test\Data\CreateInstanceFix\Test14.cs" />
+    <Compile Remove="Test\Data\CreateInstanceFix\Test15.cs" />
     <Compile Remove="Test\Data\CreateTestsAction\Test01.cs" />
     <Compile Remove="Test\Data\CreateTestsRefactoring\Test01.cs" />
     <Compile Remove="Test\Data\CreateTestsRefactoring\Test02.cs" />
@@ -167,6 +170,9 @@
     <None Include="Test\Data\CreateInstanceFix\Test10.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test11.cs" />
     <None Include="Test\Data\CreateInstanceFix\Test12.cs" />
+    <None Include="Test\Data\CreateInstanceFix\Test13.cs" />
+    <None Include="Test\Data\CreateInstanceFix\Test14.cs" />
+    <None Include="Test\Data\CreateInstanceFix\Test15.cs" />
     <None Include="Test\Data\CreateTestsAction\Test01.cs" />
     <None Include="Test\Data\CreateTestsRefactoring\Test01.cs" />
     <None Include="Test\Data\CreateTestsRefactoring\Test02.cs" />

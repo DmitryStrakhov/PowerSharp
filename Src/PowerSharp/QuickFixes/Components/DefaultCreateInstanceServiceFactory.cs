@@ -2,10 +2,11 @@
 using JetBrains.Application.Parts;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.Tree;
-using PowerSharp.QuickFixes.Services;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
+using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.ReSharper.Psi.Util;
 using PowerSharp.Extensions;
+using PowerSharp.QuickFixes.Services;
 
 namespace PowerSharp.QuickFixes.Components {
     /// <summary>
@@ -17,11 +18,14 @@ namespace PowerSharp.QuickFixes.Components {
     [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
     public sealed class DefaultCreateInstanceServiceFactory : ICreateInstanceServiceFactory {
         public ICreateInstanceService GetService(ITypeMemberDeclaration memberDeclaration) {
-            CreateInstanceServiceBase.ITargetMember targetMember = memberDeclaration switch {
-                IFieldDeclaration field => new FieldMember(field),
-                IPropertyDeclaration property => new PropertyMember(property),
-                _ => null
-            };
+            CreateInstanceServiceBase.ITargetMember targetMember = null;
+
+            if(memberDeclaration is IFieldDeclaration field && CanBeInstantiatedWithNew(field)) {
+                targetMember = new FieldMember(field);
+            }
+            else if(memberDeclaration is IPropertyDeclaration property && CanBeInstantiatedWithNew(property)) {
+                targetMember = new PropertyMember(property);
+            }
 
             if(targetMember is not null) {
                 return ((IModifiersOwner)memberDeclaration).IsStatic
@@ -29,6 +33,11 @@ namespace PowerSharp.QuickFixes.Components {
                     : new CreateInstanceOfInstanceMemberService(targetMember);
             }
             return NullCreateInstanceService.Instance;
+
+            static bool CanBeInstantiatedWithNew(ITypeOwnerDeclaration typeOwner) {
+                return typeOwner.Type is IDeclaredType declaredType
+                       && !declaredType.IsEnumType() && !declaredType.IsSimplePredefined();
+            }
         }
 
         abstract class TargetMember<T>(T member)
