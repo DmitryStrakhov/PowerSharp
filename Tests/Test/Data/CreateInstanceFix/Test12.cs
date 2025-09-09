@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
   public class OneClass
   {
-    public SomeClass() : base()
+    public OneClass() : base()
     {
     }
 
