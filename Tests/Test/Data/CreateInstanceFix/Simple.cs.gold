@@ -4,11 +4,11 @@ namespace ClassLibrary
 {
   public class OneClass
   {
-    AnotherClass obj{caret};
+    AnotherClass obj;
 
     public OneClass()
     {
-      obj = new AnotherClass();
+      obj = new({caret});
     }
   }
 

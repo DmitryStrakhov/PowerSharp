@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 
 namespace PowerSharp.Builders {
@@ -17,10 +18,11 @@ namespace PowerSharp.Builders {
             this.constructor = constructor;
         }
         [NotNull]
-        public ConstructorBuilder WithBody([NotNull] Func<CodeBuilder, ICSharpStatement> getStatement) {
+        public ICSharpStatement WithBody([NotNull] Func<CodeBuilder, ICSharpStatement> getStatement) {
             Guard.IsNotNull(getStatement, nameof(getStatement));
-            constructor.Body.AddStatementAfter(getStatement(new CodeBuilder(constructor)), null);
-            return this;
+
+            CodeBuilder codeBuilder = new(CSharpElementFactory.GetInstance(constructor));
+            return constructor.Body.AddStatementAfter(getStatement(codeBuilder), null);
         }
         [NotNull]
         public ConstructorBuilder SetStatic() {

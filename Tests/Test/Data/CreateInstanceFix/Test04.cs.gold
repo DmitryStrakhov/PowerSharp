@@ -4,17 +4,24 @@ namespace ClassLibrary
 {
   public class OneClass
   {
-    static AnotherClass obj{caret};
+    static AnotherClass obj;
     static object x;
 
     static OneClass()
     {
-      obj = new AnotherClass();
+      obj = new({caret});
       x = new object();
     }
   }
 
   public class AnotherClass
   {
+    int x;
+    int y;
+    
+    public AnotherClass(int x, int y) {
+      this.x = x;
+      this.y = y;
+    }
   }
 }

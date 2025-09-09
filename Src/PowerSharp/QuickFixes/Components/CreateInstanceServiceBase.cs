@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using JetBrains.Diagnostics;
-using PowerSharp.Extensions;
 using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.Tree;
 using PowerSharp.QuickFixes.Services;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
+using JetBrains.Util;
+using PowerSharp.Builders;
 
 namespace PowerSharp.QuickFixes.Components {
     /// <summary>
@@ -15,40 +16,50 @@ namespace PowerSharp.QuickFixes.Components {
     /// 
     /// </summary>
     public abstract class CreateInstanceServiceBase : ICreateInstanceService {
-        [NotNull] readonly ITypeMemberDeclaration memberDeclaration;
-        [NotNull] readonly ITypeMember memberElement;
-
-        protected CreateInstanceServiceBase([NotNull] ITypeMemberDeclaration memberDeclaration) {
-            Guard.IsNotNull(memberDeclaration, nameof(memberDeclaration));
-            this.memberDeclaration = memberDeclaration;
-            this.memberElement = memberDeclaration.DeclaredElement.NotNull();
+        [NotNull] 
+        readonly ITargetMember member;
+        
+        protected CreateInstanceServiceBase([NotNull] ITargetMember member) {
+            Guard.IsNotNull(member, nameof(member));
+            this.member = member;
         }
 
-        public void Execute() {
-            IClassLikeDeclaration @class = (IClassLikeDeclaration)memberDeclaration.GetContainingTypeDeclaration().NotNull();
-
-            IType memberType = memberElement.MemberType();
-            string memberName = memberElement.MemberName();
-            bool shouldCreateDefaultCtor = true;
+        public IReadOnlyList<IExpressionStatement> Execute() {
+            IClassLikeDeclaration @class = (IClassLikeDeclaration)member.GetContainingTypeDeclaration().NotNull();
+            
+            bool needDefaultCtor = true;
+            LocalList<IExpressionStatement> statementList = new();
 
             foreach(IConstructorDeclaration constructor in @class.ConstructorDeclarations) {
                 if(IsAppropriateConstructor(constructor)) {
-                    AddObjectInstantiationStatement(constructor, memberName, memberType);
-                    shouldCreateDefaultCtor = false;
+                    var stmt = AddObjectInstantiationStatement(constructor, member);
+                    statementList.Add(stmt);
+                    needDefaultCtor = false;
                 }
             }
-            if(shouldCreateDefaultCtor) {
+            if(needDefaultCtor) {
                 IConstructorDeclaration defaultCtor = AddDefaultConstructor(@class);
-                AddObjectInstantiationStatement(defaultCtor, memberName, memberType);
+                var stmt = AddObjectInstantiationStatement(defaultCtor, member);
+                statementList.Add(stmt);
+            }
+            return statementList.ReadOnlyList();
+
+            static IExpressionStatement AddObjectInstantiationStatement(IConstructorDeclaration constructor, ITargetMember member) {
+                return (IExpressionStatement)new ConstructorBuilder(constructor)
+                    .WithBody(codeBuilder => codeBuilder.CreateObjectInstantiationStatement(member));
             }
         }
         public bool IsAvailable() {
-            IModifiersOwner modifiers = memberDeclaration.TypeModifiers();
-            if(modifiers == null || modifiers.IsAbstract) return false;
-            return true;
+            return member.TypeModifiers() is {IsAbstract: false};
         }
-        protected abstract void AddObjectInstantiationStatement([NotNull] IConstructorDeclaration constructor, [NotNull] string memberName, [NotNull] IType memberType);
+        
+        [NotNull]
+        protected abstract IConstructorDeclaration AddDefaultConstructor([NotNull] IClassLikeDeclaration classDeclaration);
         protected abstract bool IsAppropriateConstructor([NotNull] IConstructorDeclaration constructor);
-        [NotNull] protected abstract IConstructorDeclaration AddDefaultConstructor([NotNull] IClassLikeDeclaration classDeclaration);
+
+        public interface ITargetMember : IMemberToInstantiate {
+            ICSharpTypeDeclaration GetContainingTypeDeclaration();
+            IModifiersOwner TypeModifiers();
+        }
     }
 }

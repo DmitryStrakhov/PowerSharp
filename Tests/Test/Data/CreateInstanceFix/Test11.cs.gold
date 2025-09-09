@@ -6,7 +6,7 @@ namespace ClassLibrary
   {
     public SomeClass()
     {
-      field = new SomeClass();
+      field = new();
     }
     public OneClass(int _) : this()
     {
@@ -16,7 +16,7 @@ namespace ClassLibrary
     }
     public OneClass(int x, int y, int z)
     {
-      field = new SomeClass();
+      field = new();
     }
     SomeClass field{caret};
   }

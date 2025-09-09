@@ -6,10 +6,10 @@ namespace ClassLibrary
   {
     public OneClass()
     {
-      Property = new AnotherClass();
+      Property = new({caret});
     }
 
-    public AnotherClass Property{caret} { get; }
+    public AnotherClass Property { get; }
   }
 
   public class AnotherClass

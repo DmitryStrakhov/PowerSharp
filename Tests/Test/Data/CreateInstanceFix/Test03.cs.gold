@@ -6,10 +6,10 @@ namespace ClassLibrary
   {
     static OneClass()
     {
-      obj = new AnotherClass();
+      obj = new({caret});
     }
 
-    static AnotherClass obj{caret};
+    static AnotherClass obj;
   }
 
   public class AnotherClass

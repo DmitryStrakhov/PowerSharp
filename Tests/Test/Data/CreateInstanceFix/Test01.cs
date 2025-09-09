@@ -15,5 +15,11 @@ namespace ClassLibrary
 
   public class AnotherClass
   {
+    int value;
+
+    public AnotherClass(int value)
+    {
+      this.value = value;
+    }
   }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using JetBrains.ReSharper.Psi.CSharp.Tree;
 
 namespace PowerSharp.QuickFixes.Services {
     /// <summary>
@@ -8,6 +10,6 @@ namespace PowerSharp.QuickFixes.Services {
     /// </summary>
     public interface ICreateInstanceService {
         bool IsAvailable();
-        void Execute();
+        IReadOnlyList<IExpressionStatement> Execute();
     }
 }

@@ -5,16 +5,22 @@ namespace ClassLibrary
   public class OneClass
   {
     int x;
-    readonly AnotherClass obj{caret};
+    readonly AnotherClass obj;
 
     public OneClass(int x)
     {
-      obj = new AnotherClass();
+      obj = new({caret});
       this.x = x;
     }
   }
 
   public class AnotherClass
   {
+    int value;
+
+    public AnotherClass(int value)
+    {
+      this.value = value;
+    }
   }
 }

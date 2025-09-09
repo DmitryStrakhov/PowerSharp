@@ -6,10 +6,10 @@ namespace ClassLibrary
   {
     public SomeClass() : base()
     {
-      field = new SomeClass();
+      field = new({caret});
     }
 
-    SomeClass field{caret};
+    SomeClass field;
   }
 
   public class SomeClass

@@ -10,12 +10,12 @@ namespace ClassLibrary
 
     public OneClass(int x)
     {
-      obj = new AnotherClass();
+      obj = new();
       this.x = x;
     }
     public OneClass(double y)
     {
-      obj = new AnotherClass();
+      obj = new();
       this.y = y;
     }
   }

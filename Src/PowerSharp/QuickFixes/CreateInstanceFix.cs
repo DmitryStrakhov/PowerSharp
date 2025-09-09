@@ -5,9 +5,11 @@ using JetBrains.TextControl;
 using JetBrains.Util;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Application.Progress;
+using JetBrains.DocumentModel;
 using PowerSharp.QuickFixes.Services;
 using JetBrains.ReSharper.Daemon.UsageChecking;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
+using JetBrains.ReSharper.Psi.CSharp.Tree;
 using PowerSharp.Utils;
 
 namespace PowerSharp.QuickFixes {
@@ -47,8 +49,16 @@ namespace PowerSharp.QuickFixes {
             return Service.IsAvailable();
         }
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress) {
-            Service.Execute();
-            return null;
+            var statementList = Service.Execute();
+            if(statementList.Count != 1)
+                return null;
+            
+            IExpressionStatement initializeStmt = statementList[0];
+            return textControl => {
+                IObjectCreationExpression objectCreationExpression = (IObjectCreationExpression)((IAssignmentExpression)initializeStmt.Expression).Source;
+                DocumentOffset targetOffset = objectCreationExpression.LBound.GetDocumentStartOffset();
+                textControl.Caret.MoveTo(targetOffset + 1, CaretVisualPlacement.DontScrollIfVisible);
+            };
         }
         private ICreateInstanceService Service {
             get { return serviceCore ??= memberDeclaration.GetSolution().GetComponent<ICreateInstanceServiceFactory>().GetService(memberDeclaration); }

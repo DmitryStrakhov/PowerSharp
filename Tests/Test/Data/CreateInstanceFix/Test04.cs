@@ -15,5 +15,12 @@ namespace ClassLibrary
 
   public class AnotherClass
   {
+    int x;
+    int y;
+    
+    public AnotherClass(int x, int y) {
+      this.x = x;
+      this.y = y;
+    }
   }
 }
