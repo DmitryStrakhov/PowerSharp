@@ -19,32 +19,31 @@ using JetBrains.ReSharper.TestRunner.Abstractions.Extensions;
 namespace PowerSharp.ContextActions {
     [ContextAction(Name = "Create Tests", Description = "Creates a test fixture for a class", GroupType = typeof(CSharpContextActions))]
     public sealed class CreateTestsContextAction : ContextActionBase {
-        [NotNull]
-        readonly ICSharpContextActionDataProvider dataProvider;
-        [NotNull] readonly ISolution solution;
+        [NotNull] readonly ICSharpContextActionDataProvider dataProvider;
         [CanBeNull] IClassLikeDeclaration declaration;
 
         public CreateTestsContextAction([NotNull] ICSharpContextActionDataProvider dataProvider) {
             this.dataProvider = dataProvider;
-            this.solution = dataProvider.Solution;
         }
         public override string Text { get { return "Create tests"; } }
 
         public override bool IsAvailable(IUserDataHolder cache) {
-            ITypeElementResolutionService service = solution.GetComponent<ITypeElementResolutionService>();
-            if(!solution.ContainsProject(x => service.ContainsClrType(x, NUnitUtil.MarkerClrName)))
-                return false;
-
             declaration = dataProvider.TryGetClassLikeDeclaration();
-            return IntentionUtils.IsValid(declaration) && (declaration is IClassDeclaration || declaration is IStructDeclaration);
+            
+            if(IntentionUtils.IsValid(declaration) && declaration is IClassDeclaration or IStructDeclaration) {
+                return dataProvider.Solution.ContainsProject(x =>
+                    dataProvider.Solution.GetComponent<ITypeElementResolutionService>().ContainsClrType(x, NUnitUtil.MarkerClrName));
+            }
+            return false;
         }
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress) {
-            return _ => {
-                using(LifetimeDefinition lifetimeDefinition = Lifetime.Define(Lifetime.Eternal))
-                    RefactoringActionUtil.ExecuteRefactoring(
-                        solution.GetComponent<IActionManager>().DataContexts.CreateOnActiveControl(lifetimeDefinition.Lifetime),
-                        new CreateTestsWorkflow(solution, declaration.NotNull()));
-            };
+            using LifetimeDefinition lifetimeDefinition = Lifetime.Define(Lifetime.Eternal);
+
+            RefactoringActionUtil.ExecuteRefactoring(
+                solution.GetComponent<IActionManager>().DataContexts.CreateOnActiveControl(lifetimeDefinition.Lifetime),
+                new CreateTestsWorkflow(solution, declaration.NotNull()));
+
+            return null;
         }
     }
 }
