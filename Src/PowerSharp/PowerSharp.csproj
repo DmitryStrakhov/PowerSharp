@@ -38,8 +38,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2025.2.0" PrivateAssets="all" />
-    <PackageReference Include="Wave" Version="252.0.0" />
+    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2025.3.0" PrivateAssets="all" />
+    <PackageReference Include="Wave" Version="253.0.0" />
   </ItemGroup>
 
   <ItemGroup>
